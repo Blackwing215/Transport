@@ -1,0 +1,2 @@
+/Users/mike/Downloads/drive-download-20171118T120518Z-001/Road111/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/mike/Downloads/drive-download-20171118T120518Z-001/Road111/obj/x86/Debug/Road111.gtk-gui.gui.stetic
