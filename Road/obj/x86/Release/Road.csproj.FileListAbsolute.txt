@@ -1,0 +1,14 @@
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\Road.exe
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\atk-sharp.dll
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\gdk-sharp.dll
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\glade-sharp.dll
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\glib-sharp.dll
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\gtk-sharp.dll
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\Mono.Posix.dll
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\pango-sharp.dll
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\gdk-sharp.pdb
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\glib-sharp.pdb
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\glade-sharp.pdb
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\pango-sharp.pdb
+C:\Users\Max\Documents\Projects\Road\Road\bin\Release\atk-sharp.pdb
+C:\Users\Max\Documents\Projects\Road\Road\obj\x86\Release\Road.exe
