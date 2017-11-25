@@ -13,6 +13,8 @@ public partial class MainWindow
 
 	private global::Gtk.Action OpenAction;
 
+	private global::Gtk.Action AddFuelListAction;
+
 	private global::Gtk.VBox vbox1;
 
 	private global::Gtk.MenuBar menubar1;
@@ -127,9 +129,9 @@ public partial class MainWindow
 
 	private global::Gtk.Entry entry1;
 
-	private global::Gtk.Entry entry2;
-
 	private global::Gtk.Entry entry3;
+
+	private global::Gtk.Label label26;
 
 	private global::Gtk.Label label6;
 
@@ -287,6 +289,9 @@ public partial class MainWindow
 		this.OpenAction = new global::Gtk.Action("OpenAction", global::Mono.Unix.Catalog.GetString("Open"), null, null);
 		this.OpenAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Open");
 		w1.Add(this.OpenAction, null);
+		this.AddFuelListAction = new global::Gtk.Action("AddFuelListAction", global::Mono.Unix.Catalog.GetString("AddFuelList"), null, null);
+		this.AddFuelListAction.ShortLabel = global::Mono.Unix.Catalog.GetString("AddFuelList");
+		w1.Add(this.AddFuelListAction, null);
 		this.UIManager.InsertActionGroup(w1, 0);
 		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
@@ -297,10 +302,7 @@ public partial class MainWindow
 		this.vbox1.Name = "vbox1";
 		this.vbox1.Spacing = 6;
 		// Container child vbox1.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString("<ui><menubar name=\'menubar1\'><menu name=\'FileAction\' action=\'FileAction\'><menuite" +
-				"m name=\'SaveAction\' action=\'SaveAction\'/><menuitem name=\'SaveAsAction\' action=\'S" +
-				"aveAsAction\'/><menuitem name=\'OpenAction\' action=\'OpenAction\'/></menu></menubar>" +
-				"</ui>");
+		this.UIManager.AddUiFromString(@"<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='SaveAction' action='SaveAction'/><menuitem name='SaveAsAction' action='SaveAsAction'/><menuitem name='OpenAction' action='OpenAction'/></menu><menu name='AddFuelListAction' action='AddFuelListAction'/></menubar></ui>");
 		this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menubar1")));
 		this.menubar1.Name = "menubar1";
 		this.vbox1.Add(this.menubar1);
@@ -847,10 +849,9 @@ public partial class MainWindow
 		this.table3.ColumnSpacing = ((uint)(6));
 		// Container child table3.Gtk.Table+TableChild
 		this.checkbutton1 = new global::Gtk.CheckButton();
-		this.checkbutton1.Sensitive = false;
-		this.checkbutton1.CanFocus = true;
 		this.checkbutton1.Name = "checkbutton1";
 		this.checkbutton1.Label = "";
+		this.checkbutton1.Active = false;
 		this.checkbutton1.DrawIndicator = true;
 		this.checkbutton1.UseUnderline = true;
 		this.table3.Add(this.checkbutton1);
@@ -876,22 +877,6 @@ public partial class MainWindow
 		w55.XOptions = ((global::Gtk.AttachOptions)(0));
 		w55.YOptions = ((global::Gtk.AttachOptions)(0));
 		// Container child table3.Gtk.Table+TableChild
-		this.entry2 = new global::Gtk.Entry();
-		this.entry2.Sensitive = false;
-		this.entry2.CanFocus = true;
-		this.entry2.Name = "entry2";
-		this.entry2.Text = global::Mono.Unix.Catalog.GetString("param 2 value");
-		this.entry2.IsEditable = true;
-		this.entry2.InvisibleChar = '●';
-		this.table3.Add(this.entry2);
-		global::Gtk.Table.TableChild w56 = ((global::Gtk.Table.TableChild)(this.table3[this.entry2]));
-		w56.TopAttach = ((uint)(1));
-		w56.BottomAttach = ((uint)(2));
-		w56.LeftAttach = ((uint)(1));
-		w56.RightAttach = ((uint)(2));
-		w56.XOptions = ((global::Gtk.AttachOptions)(4));
-		w56.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table3.Gtk.Table+TableChild
 		this.entry3 = new global::Gtk.Entry();
 		this.entry3.Sensitive = false;
 		this.entry3.CanFocus = true;
@@ -900,9 +885,21 @@ public partial class MainWindow
 		this.entry3.IsEditable = true;
 		this.entry3.InvisibleChar = '●';
 		this.table3.Add(this.entry3);
-		global::Gtk.Table.TableChild w57 = ((global::Gtk.Table.TableChild)(this.table3[this.entry3]));
-		w57.TopAttach = ((uint)(2));
-		w57.BottomAttach = ((uint)(3));
+		global::Gtk.Table.TableChild w56 = ((global::Gtk.Table.TableChild)(this.table3[this.entry3]));
+		w56.TopAttach = ((uint)(2));
+		w56.BottomAttach = ((uint)(3));
+		w56.LeftAttach = ((uint)(1));
+		w56.RightAttach = ((uint)(2));
+		w56.XOptions = ((global::Gtk.AttachOptions)(4));
+		w56.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child table3.Gtk.Table+TableChild
+		this.label26 = new global::Gtk.Label();
+		this.label26.Name = "label26";
+		this.label26.LabelProp = global::Mono.Unix.Catalog.GetString("label2");
+		this.table3.Add(this.label26);
+		global::Gtk.Table.TableChild w57 = ((global::Gtk.Table.TableChild)(this.table3[this.label26]));
+		w57.TopAttach = ((uint)(1));
+		w57.BottomAttach = ((uint)(2));
 		w57.LeftAttach = ((uint)(1));
 		w57.RightAttach = ((uint)(2));
 		w57.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -910,7 +907,7 @@ public partial class MainWindow
 		// Container child table3.Gtk.Table+TableChild
 		this.label6 = new global::Gtk.Label();
 		this.label6.Name = "label6";
-		this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("Param1");
+		this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("Тип Транспорта:");
 		this.table3.Add(this.label6);
 		global::Gtk.Table.TableChild w58 = ((global::Gtk.Table.TableChild)(this.table3[this.label6]));
 		w58.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -918,7 +915,7 @@ public partial class MainWindow
 		// Container child table3.Gtk.Table+TableChild
 		this.label7 = new global::Gtk.Label();
 		this.label7.Name = "label7";
-		this.label7.LabelProp = global::Mono.Unix.Catalog.GetString("Param2");
+		this.label7.LabelProp = global::Mono.Unix.Catalog.GetString("Тип топлива");
 		this.table3.Add(this.label7);
 		global::Gtk.Table.TableChild w59 = ((global::Gtk.Table.TableChild)(this.table3[this.label7]));
 		w59.TopAttach = ((uint)(1));
@@ -964,6 +961,7 @@ public partial class MainWindow
 		this.checkbutton2.CanFocus = true;
 		this.checkbutton2.Name = "checkbutton2";
 		this.checkbutton2.Label = "";
+		this.checkbutton2.Active = false;
 		this.checkbutton2.DrawIndicator = true;
 		this.checkbutton2.UseUnderline = true;
 		this.table4.Add(this.checkbutton2);
@@ -1073,6 +1071,7 @@ public partial class MainWindow
 		this.checkbutton3.CanFocus = true;
 		this.checkbutton3.Name = "checkbutton3";
 		this.checkbutton3.Label = "";
+		this.checkbutton3.Active = false;
 		this.checkbutton3.DrawIndicator = true;
 		this.checkbutton3.UseUnderline = true;
 		this.table5.Add(this.checkbutton3);
@@ -1182,6 +1181,7 @@ public partial class MainWindow
 		this.checkbutton4.CanFocus = true;
 		this.checkbutton4.Name = "checkbutton4";
 		this.checkbutton4.Label = "";
+		this.checkbutton4.Active = false;
 		this.checkbutton4.DrawIndicator = true;
 		this.checkbutton4.UseUnderline = true;
 		this.table6.Add(this.checkbutton4);
@@ -1291,6 +1291,7 @@ public partial class MainWindow
 		this.checkbutton5.CanFocus = true;
 		this.checkbutton5.Name = "checkbutton5";
 		this.checkbutton5.Label = "";
+		this.checkbutton5.Active = false;
 		this.checkbutton5.DrawIndicator = true;
 		this.checkbutton5.UseUnderline = true;
 		this.table7.Add(this.checkbutton5);
@@ -1397,6 +1398,7 @@ public partial class MainWindow
 		this.common1 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common1.CanFocus = true;
 		this.common1.Name = "common1";
+		this.common1.Active = false;
 		this.common1.DrawIndicator = true;
 		this.common1.UseUnderline = true;
 		this.common1.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -1409,6 +1411,7 @@ public partial class MainWindow
 		this.railway1 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Railway"));
 		this.railway1.CanFocus = true;
 		this.railway1.Name = "railway1";
+		this.railway1.Active = false;
 		this.railway1.DrawIndicator = true;
 		this.railway1.UseUnderline = true;
 		this.railway1.Group = this.common1.Group;
@@ -1421,6 +1424,7 @@ public partial class MainWindow
 		this.electrified1 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Electrified"));
 		this.electrified1.CanFocus = true;
 		this.electrified1.Name = "electrified1";
+		this.electrified1.Active = false;
 		this.electrified1.DrawIndicator = true;
 		this.electrified1.UseUnderline = true;
 		this.electrified1.Group = this.common1.Group;
@@ -1445,6 +1449,7 @@ public partial class MainWindow
 		this.common2 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common2.CanFocus = true;
 		this.common2.Name = "common2";
+		this.common2.Active = false;
 		this.common2.DrawIndicator = true;
 		this.common2.UseUnderline = true;
 		this.common2.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -1457,6 +1462,7 @@ public partial class MainWindow
 		this.railway2 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Railway"));
 		this.railway2.CanFocus = true;
 		this.railway2.Name = "railway2";
+		this.railway2.Active = false;
 		this.railway2.DrawIndicator = true;
 		this.railway2.UseUnderline = true;
 		this.railway2.Group = this.common2.Group;
@@ -1469,6 +1475,7 @@ public partial class MainWindow
 		this.electrified2 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Electrified"));
 		this.electrified2.CanFocus = true;
 		this.electrified2.Name = "electrified2";
+		this.electrified2.Active = false;
 		this.electrified2.DrawIndicator = true;
 		this.electrified2.UseUnderline = true;
 		this.electrified2.Group = this.common2.Group;
@@ -1493,6 +1500,7 @@ public partial class MainWindow
 		this.common3 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common3.CanFocus = true;
 		this.common3.Name = "common3";
+		this.common3.Active = false;
 		this.common3.DrawIndicator = true;
 		this.common3.UseUnderline = true;
 		this.common3.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -1505,6 +1513,7 @@ public partial class MainWindow
 		this.railway3 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Railway"));
 		this.railway3.CanFocus = true;
 		this.railway3.Name = "railway3";
+		this.railway3.Active = false;
 		this.railway3.DrawIndicator = true;
 		this.railway3.UseUnderline = true;
 		this.railway3.Group = this.common3.Group;
@@ -1517,6 +1526,7 @@ public partial class MainWindow
 		this.electrified3 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Electrified"));
 		this.electrified3.CanFocus = true;
 		this.electrified3.Name = "electrified3";
+		this.electrified3.Active = false;
 		this.electrified3.DrawIndicator = true;
 		this.electrified3.UseUnderline = true;
 		this.electrified3.Group = this.common3.Group;
@@ -1541,6 +1551,7 @@ public partial class MainWindow
 		this.common4 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common4.CanFocus = true;
 		this.common4.Name = "common4";
+		this.common4.Active = false;
 		this.common4.DrawIndicator = true;
 		this.common4.UseUnderline = true;
 		this.common4.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -1553,6 +1564,7 @@ public partial class MainWindow
 		this.railway4 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Railway"));
 		this.railway4.CanFocus = true;
 		this.railway4.Name = "railway4";
+		this.railway4.Active = false;
 		this.railway4.DrawIndicator = true;
 		this.railway4.UseUnderline = true;
 		this.railway4.Group = this.common4.Group;
@@ -1565,6 +1577,7 @@ public partial class MainWindow
 		this.electrified4 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Electrified"));
 		this.electrified4.CanFocus = true;
 		this.electrified4.Name = "electrified4";
+		this.electrified4.Active = false;
 		this.electrified4.DrawIndicator = true;
 		this.electrified4.UseUnderline = true;
 		this.electrified4.Group = this.common4.Group;
@@ -1589,6 +1602,7 @@ public partial class MainWindow
 		this.common5 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common5.CanFocus = true;
 		this.common5.Name = "common5";
+		this.common5.Active = false;
 		this.common5.DrawIndicator = true;
 		this.common5.UseUnderline = true;
 		this.common5.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -1601,6 +1615,7 @@ public partial class MainWindow
 		this.railway5 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Railway"));
 		this.railway5.CanFocus = true;
 		this.railway5.Name = "railway5";
+		this.railway5.Active = false;
 		this.railway5.DrawIndicator = true;
 		this.railway5.UseUnderline = true;
 		this.railway5.Group = this.common5.Group;
@@ -1613,6 +1628,7 @@ public partial class MainWindow
 		this.electrified5 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Electrified"));
 		this.electrified5.CanFocus = true;
 		this.electrified5.Name = "electrified5";
+		this.electrified5.Active = false;
 		this.electrified5.DrawIndicator = true;
 		this.electrified5.UseUnderline = true;
 		this.electrified5.Group = this.common5.Group;
@@ -1727,6 +1743,7 @@ public partial class MainWindow
 		this.DefaultHeight = 847;
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
+		this.AddFuelListAction.Activated += new global::System.EventHandler(this.OnAddFuelListActionActivated);
 		this.start_stop.Clicked += new global::System.EventHandler(this.ToggleProgress);
 		this.button1.Clicked += new global::System.EventHandler(this.TransportInfo1_clicked);
 	}

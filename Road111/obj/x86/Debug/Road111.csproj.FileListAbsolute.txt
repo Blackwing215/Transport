@@ -21,3 +21,9 @@ C:/Users/Max/Documents/Projects/Road111/Road111/obj/x86/Debug/Road111.pdb
 /Users/mike/Downloads/drive-download-20171118T120518Z-001/Road111/obj/x86/Debug/Road111.exe
 /Users/mike/Downloads/drive-download-20171118T120518Z-001/Road111/obj/x86/Debug/Road111.pdb
 /Users/mike/Downloads/drive-download-20171118T120518Z-001/Road111/obj/x86/Debug/Road111.csprojResolveAssemblyReference.cache
+/Users/mike/Documents/GitHub/Transport/Road111/bin/Debug/Road111.exe
+/Users/mike/Documents/GitHub/Transport/Road111/bin/Debug/Road111.pdb
+/Users/mike/Documents/GitHub/Transport/Road111/obj/x86/Debug/Road111.csprojResolveAssemblyReference.cache
+/Users/mike/Documents/GitHub/Transport/Road111/obj/x86/Debug/Road111.csproj.CoreCompileInputs.cache
+/Users/mike/Documents/GitHub/Transport/Road111/obj/x86/Debug/Road111.exe
+/Users/mike/Documents/GitHub/Transport/Road111/obj/x86/Debug/Road111.pdb

@@ -62,8 +62,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransportDialog1.cs" />
     <Compile Include="gtk-gui\Road111.TransportDialog1.cs" />
-    <Compile Include="Dialog.cs" />
-    <Compile Include="gtk-gui\Road111.Dialog.cs" />
+    <Compile Include="FuelList.cs" />
+    <Compile Include="gtk-gui\Road111.FuelList.cs" />
+    <Compile Include="Fuel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
