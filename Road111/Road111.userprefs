@@ -1,23 +1,12 @@
 ﻿<Properties StartupConfiguration="{A523A490-35A4-48D9-B758-65881247A7D0}|Default">
   <MonoDevelop.Ide.ItemProperties.Road111 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TransportDialog1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MainWindow.cs">
     <Files>
-      <File FileName="FuelList.cs" Line="33" Column="10" />
-      <File FileName="MainWindow.cs" Line="22" Column="10" />
-      <File FileName="TransportDialog1.cs" Line="35" Column="31" />
-      <File FileName="Program.cs" Line="15" Column="22" />
+      <File FileName="FuelList.cs" Line="23" Column="26" />
+      <File FileName="TransportDialog1.cs" Line="36" Column="18" />
+      <File FileName="Sys.cs" Line="16" Column="38" />
+      <File FileName="MainWindow.cs" Line="11" Column="40" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Road111" expanded="True">
-            <Node name="Road111" expanded="True">
-              <Node name="TransportDialog1.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

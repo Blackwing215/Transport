@@ -4,43 +4,45 @@ namespace Road111
 {
     public partial class TransportDialog1 : Gtk.Dialog
     {
-        public static bool ben = false;
         public TransportDialog1()
         {
             Build();
-            if (MainWindow.fuel_label)
+            if (MainClass.getSystem().getFuelList().Count>0)
             {
+                foreach (Fuel value in MainClass.getSystem().getFuelList())
+                {
+                    if(value.equals(new Fuel("Бензин")))
+                    {
+                        this.benzin_rad.Sensitive = true;
+                    }
+                    if (value.equals(new Fuel("Дизель")))
+                    {
+                        this.dizel_rad.Sensitive = true;
+                    }
+                    if (value.equals(new Fuel("Электричество")))
+                    {
+                        this.electro_rad.Sensitive = true;
+                    }
+                }
                 entry9.Sensitive = true;
-                if (MainWindow.benzin_label)
-                {
-                    this.benzin_rad.Sensitive = true;
-                }
-                if (MainWindow.dizel_label)
-                {
-                    this.dizel_rad.Sensitive = true;
-                }
-                if (MainWindow.electro_label)
-                {
-                    this.electro_rad.Sensitive = true;
-                }
                 this.QueueDraw();
             }
         }
         protected void Ok_Button(object sender, EventArgs e)
         {
-            if (MainWindow.fuel_label)
+            if (MainClass.getSystem().getFuelList().Count > 0)
             {
                 if (this.benzin_rad.Active)
                 {
-                    MainClass.win.setFuelLabel("Бензин");
+                    MainClass.getWin().setFuelLabel("Бензин");
                 }
                 if (this.dizel_rad.Active)
                 {
-                    MainClass.win.setFuelLabel("Дизель");
+                    MainClass.getWin().setFuelLabel("Дизель");
                 }
                 if (this.electro_rad.Active)
                 {
-                    MainClass.win.setFuelLabel("Электричество");
+                    MainClass.getWin().setFuelLabel("Электричество");
                 }
                 this.QueueDraw();
             }

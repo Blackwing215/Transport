@@ -81,7 +81,6 @@ namespace Road111
 			this.benzin_rad.Sensitive = false;
 			this.benzin_rad.CanFocus = true;
 			this.benzin_rad.Name = "benzin_rad";
-			this.benzin_rad.Active = false;
 			this.benzin_rad.DrawIndicator = true;
 			this.benzin_rad.UseUnderline = true;
 			this.benzin_rad.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -93,7 +92,6 @@ namespace Road111
 			this.dizel_rad.Sensitive = false;
 			this.dizel_rad.CanFocus = true;
 			this.dizel_rad.Name = "dizel_rad";
-			this.dizel_rad.Active = false;
 			this.dizel_rad.DrawIndicator = true;
 			this.dizel_rad.UseUnderline = true;
 			this.dizel_rad.Group = this.benzin_rad.Group;
@@ -105,7 +103,6 @@ namespace Road111
 			this.electro_rad.Sensitive = false;
 			this.electro_rad.CanFocus = true;
 			this.electro_rad.Name = "electro_rad";
-			this.electro_rad.Active = false;
 			this.electro_rad.DrawIndicator = true;
 			this.electro_rad.UseUnderline = true;
 			this.electro_rad.Group = this.benzin_rad.Group;

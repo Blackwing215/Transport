@@ -4,11 +4,11 @@ namespace Road111
 {
     public partial class FuelList : Gtk.Dialog
     {
-        public Fuel benzin = new Fuel("Бензин");
-        public Fuel electro = new Fuel("Электричество");
-        public Fuel dizel = new Fuel("Дизель");
+        private Fuel benzin = new Fuel("Бензин");
+        private Fuel electro = new Fuel("Электричество");
+        private Fuel dizel = new Fuel("Дизель");
         public FuelList()
-        {
+        {         
             this.Build();
         }
 
@@ -16,18 +16,16 @@ namespace Road111
         {
             if(benzin_but.Active)
             {
-                MainWindow.fuel_label = true;
-                MainWindow.benzin_label = true;
+                MainClass.getSystem().addFuel(benzin);
             } 
             if(dizel_but.Active)
             {
-                MainWindow.fuel_label = true;
-                MainWindow.dizel_label = true;
+                MainClass.getSystem().addFuel(dizel);
+           
             } 
             if(electro_but.Active)
             {
-                MainWindow.fuel_label = true;
-                MainWindow.electro_label = true;
+                MainClass.getSystem().addFuel(electro);
             } 
             this.Hide();
         }

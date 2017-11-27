@@ -851,7 +851,6 @@ public partial class MainWindow
 		this.checkbutton1 = new global::Gtk.CheckButton();
 		this.checkbutton1.Name = "checkbutton1";
 		this.checkbutton1.Label = "";
-		this.checkbutton1.Active = false;
 		this.checkbutton1.DrawIndicator = true;
 		this.checkbutton1.UseUnderline = true;
 		this.table3.Add(this.checkbutton1);
@@ -961,7 +960,6 @@ public partial class MainWindow
 		this.checkbutton2.CanFocus = true;
 		this.checkbutton2.Name = "checkbutton2";
 		this.checkbutton2.Label = "";
-		this.checkbutton2.Active = false;
 		this.checkbutton2.DrawIndicator = true;
 		this.checkbutton2.UseUnderline = true;
 		this.table4.Add(this.checkbutton2);
@@ -1071,7 +1069,6 @@ public partial class MainWindow
 		this.checkbutton3.CanFocus = true;
 		this.checkbutton3.Name = "checkbutton3";
 		this.checkbutton3.Label = "";
-		this.checkbutton3.Active = false;
 		this.checkbutton3.DrawIndicator = true;
 		this.checkbutton3.UseUnderline = true;
 		this.table5.Add(this.checkbutton3);
@@ -1181,7 +1178,6 @@ public partial class MainWindow
 		this.checkbutton4.CanFocus = true;
 		this.checkbutton4.Name = "checkbutton4";
 		this.checkbutton4.Label = "";
-		this.checkbutton4.Active = false;
 		this.checkbutton4.DrawIndicator = true;
 		this.checkbutton4.UseUnderline = true;
 		this.table6.Add(this.checkbutton4);
@@ -1291,7 +1287,6 @@ public partial class MainWindow
 		this.checkbutton5.CanFocus = true;
 		this.checkbutton5.Name = "checkbutton5";
 		this.checkbutton5.Label = "";
-		this.checkbutton5.Active = false;
 		this.checkbutton5.DrawIndicator = true;
 		this.checkbutton5.UseUnderline = true;
 		this.table7.Add(this.checkbutton5);
@@ -1398,7 +1393,6 @@ public partial class MainWindow
 		this.common1 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common1.CanFocus = true;
 		this.common1.Name = "common1";
-		this.common1.Active = false;
 		this.common1.DrawIndicator = true;
 		this.common1.UseUnderline = true;
 		this.common1.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -1411,7 +1405,6 @@ public partial class MainWindow
 		this.railway1 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Railway"));
 		this.railway1.CanFocus = true;
 		this.railway1.Name = "railway1";
-		this.railway1.Active = false;
 		this.railway1.DrawIndicator = true;
 		this.railway1.UseUnderline = true;
 		this.railway1.Group = this.common1.Group;
@@ -1424,7 +1417,6 @@ public partial class MainWindow
 		this.electrified1 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Electrified"));
 		this.electrified1.CanFocus = true;
 		this.electrified1.Name = "electrified1";
-		this.electrified1.Active = false;
 		this.electrified1.DrawIndicator = true;
 		this.electrified1.UseUnderline = true;
 		this.electrified1.Group = this.common1.Group;
@@ -1449,7 +1441,6 @@ public partial class MainWindow
 		this.common2 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common2.CanFocus = true;
 		this.common2.Name = "common2";
-		this.common2.Active = false;
 		this.common2.DrawIndicator = true;
 		this.common2.UseUnderline = true;
 		this.common2.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -1462,7 +1453,6 @@ public partial class MainWindow
 		this.railway2 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Railway"));
 		this.railway2.CanFocus = true;
 		this.railway2.Name = "railway2";
-		this.railway2.Active = false;
 		this.railway2.DrawIndicator = true;
 		this.railway2.UseUnderline = true;
 		this.railway2.Group = this.common2.Group;
@@ -1475,7 +1465,6 @@ public partial class MainWindow
 		this.electrified2 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Electrified"));
 		this.electrified2.CanFocus = true;
 		this.electrified2.Name = "electrified2";
-		this.electrified2.Active = false;
 		this.electrified2.DrawIndicator = true;
 		this.electrified2.UseUnderline = true;
 		this.electrified2.Group = this.common2.Group;
@@ -1500,7 +1489,6 @@ public partial class MainWindow
 		this.common3 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common3.CanFocus = true;
 		this.common3.Name = "common3";
-		this.common3.Active = false;
 		this.common3.DrawIndicator = true;
 		this.common3.UseUnderline = true;
 		this.common3.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -1513,7 +1501,6 @@ public partial class MainWindow
 		this.railway3 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Railway"));
 		this.railway3.CanFocus = true;
 		this.railway3.Name = "railway3";
-		this.railway3.Active = false;
 		this.railway3.DrawIndicator = true;
 		this.railway3.UseUnderline = true;
 		this.railway3.Group = this.common3.Group;
@@ -1526,7 +1513,6 @@ public partial class MainWindow
 		this.electrified3 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Electrified"));
 		this.electrified3.CanFocus = true;
 		this.electrified3.Name = "electrified3";
-		this.electrified3.Active = false;
 		this.electrified3.DrawIndicator = true;
 		this.electrified3.UseUnderline = true;
 		this.electrified3.Group = this.common3.Group;
@@ -1551,7 +1537,6 @@ public partial class MainWindow
 		this.common4 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common4.CanFocus = true;
 		this.common4.Name = "common4";
-		this.common4.Active = false;
 		this.common4.DrawIndicator = true;
 		this.common4.UseUnderline = true;
 		this.common4.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -1564,7 +1549,6 @@ public partial class MainWindow
 		this.railway4 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Railway"));
 		this.railway4.CanFocus = true;
 		this.railway4.Name = "railway4";
-		this.railway4.Active = false;
 		this.railway4.DrawIndicator = true;
 		this.railway4.UseUnderline = true;
 		this.railway4.Group = this.common4.Group;
@@ -1577,7 +1561,6 @@ public partial class MainWindow
 		this.electrified4 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Electrified"));
 		this.electrified4.CanFocus = true;
 		this.electrified4.Name = "electrified4";
-		this.electrified4.Active = false;
 		this.electrified4.DrawIndicator = true;
 		this.electrified4.UseUnderline = true;
 		this.electrified4.Group = this.common4.Group;
@@ -1602,7 +1585,6 @@ public partial class MainWindow
 		this.common5 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common5.CanFocus = true;
 		this.common5.Name = "common5";
-		this.common5.Active = false;
 		this.common5.DrawIndicator = true;
 		this.common5.UseUnderline = true;
 		this.common5.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -1615,7 +1597,6 @@ public partial class MainWindow
 		this.railway5 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Railway"));
 		this.railway5.CanFocus = true;
 		this.railway5.Name = "railway5";
-		this.railway5.Active = false;
 		this.railway5.DrawIndicator = true;
 		this.railway5.UseUnderline = true;
 		this.railway5.Group = this.common5.Group;
@@ -1628,7 +1609,6 @@ public partial class MainWindow
 		this.electrified5 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Electrified"));
 		this.electrified5.CanFocus = true;
 		this.electrified5.Name = "electrified5";
-		this.electrified5.Active = false;
 		this.electrified5.DrawIndicator = true;
 		this.electrified5.UseUnderline = true;
 		this.electrified5.Group = this.common5.Group;
@@ -1745,6 +1725,9 @@ public partial class MainWindow
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.AddFuelListAction.Activated += new global::System.EventHandler(this.OnAddFuelListActionActivated);
 		this.start_stop.Clicked += new global::System.EventHandler(this.ToggleProgress);
+		this.button4.Clicked += new global::System.EventHandler(this.OnButton4Clicked);
+		this.button3.Clicked += new global::System.EventHandler(this.OnButton3Clicked);
+		this.button2.Clicked += new global::System.EventHandler(this.OnButton2Clicked);
 		this.button1.Clicked += new global::System.EventHandler(this.TransportInfo1_clicked);
 	}
 }

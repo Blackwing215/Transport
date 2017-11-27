@@ -4,21 +4,13 @@ using System.Collections.Generic;
 using System.Threading;
     public partial class MainWindow : Gtk.Window
     {
-    public static bool benzin_label = false;
-    public static bool electro_label = false;
-    public static bool dizel_label = false;
-    public static bool fuel_label = false;
-        public static bool progress = false;
-        public static bool lab = false;
+  
         public static Road111.FuelList dlg1;
         public static Road111.TransportDialog1 dlg;
-        public static bool ts1 = false;
-        public static bool fuel_list = false;
+        public static bool ts1,ts2 = false;
         public MainWindow() : base(Gtk.WindowType.Toplevel)
         {
-      
             Build();
-
         }
     public void setFuelLabel(String _name)
     {
@@ -51,11 +43,28 @@ using System.Threading;
         }
         protected void OnAddFuelListActionActivated(object sender, EventArgs e)
         {
-        if (fuel_list == false)
+        if (Road111.MainClass.getSystem().getFuelList().Count == 0)
         {
-            fuel_list = true;
+            
             dlg1 = new Road111.FuelList();
         }
             dlg1.Show(); 
         }
+
+    protected void OnButton2Clicked(object sender, EventArgs e)
+    {
+        if (ts2 == false)
+        {
+            dlg = new Road111.TransportDialog1();
+            dlg.Show();
+        }
     }
+
+    protected void OnButton3Clicked(object sender, EventArgs e)
+    {
+    }
+
+    protected void OnButton4Clicked(object sender, EventArgs e)
+    {
+    }
+}

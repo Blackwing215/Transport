@@ -116,6 +116,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">Add Transport</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnButton2Clicked" />
               </widget>
               <packing>
                 <property name="TopAttach">3</property>
@@ -139,6 +140,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">Add Transport</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnButton3Clicked" />
               </widget>
               <packing>
                 <property name="TopAttach">5</property>
@@ -162,6 +164,7 @@
                 <property name="Type">TextOnly</property>
                 <property name="Label" translatable="yes">Add Transport</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnButton4Clicked" />
               </widget>
               <packing>
                 <property name="TopAttach">7</property>
@@ -1068,7 +1071,6 @@
                   <widget class="Gtk.CheckButton" id="checkbutton1">
                     <property name="MemberName" />
                     <property name="Label" translatable="yes" />
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -1262,7 +1264,6 @@
                     <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes" />
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -1456,7 +1457,6 @@
                     <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes" />
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -1650,7 +1650,6 @@
                     <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes" />
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -1844,7 +1843,6 @@
                     <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes" />
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2034,6 +2032,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2051,7 +2050,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Railway</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2069,7 +2067,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Electrified</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2108,6 +2105,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2125,7 +2123,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Railway</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2143,7 +2140,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Electrified</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2182,6 +2178,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2199,7 +2196,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Railway</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2217,7 +2213,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Electrified</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2256,6 +2251,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2273,7 +2269,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Railway</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2291,7 +2286,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Electrified</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2330,7 +2324,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2348,7 +2341,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Railway</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2366,7 +2358,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Electrified</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2675,7 +2666,6 @@
                     <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Дизель</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2692,7 +2682,6 @@
                     <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Электричество</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2859,7 +2848,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Бензин</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2874,7 +2862,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Дизель</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2889,7 +2876,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Электричество</property>
-                    <property name="Active">False</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
