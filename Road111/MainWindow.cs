@@ -12,6 +12,20 @@ using System.Threading;
         {
             Build();
         }
+    public void setTsLabel(String _name,int Road)
+    {
+        if (Road == 1)
+            label31.Text = _name;
+        if (Road == 2)
+            label32.Text = _name;
+        if (Road == 3)
+            label33.Text = _name;
+        if (Road == 4)
+            label34.Text = _name;
+        if (Road == 5)
+            label35.Text = _name;
+        QueueDraw();
+    }
     public void setFuelLabel(String _name,int Road)
     {
         if(Road == 1)

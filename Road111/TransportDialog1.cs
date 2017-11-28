@@ -9,8 +9,10 @@ namespace Road111
         {
             this.road = r;
             Build();
+            buttonOk.Sensitive = false;
             if (MainClass.getSystem().getFuelList().Count>0)
             {
+                buttonOk.Sensitive = true;
                 foreach (Fuel value in MainClass.getSystem().getFuelList())
                 {
                     if(value.equals(new Fuel("Бензин")))
@@ -26,6 +28,7 @@ namespace Road111
                         this.electro_rad.Sensitive = true;
                     }
                 }
+
                 this.QueueDraw();
             }
         }
@@ -45,8 +48,36 @@ namespace Road111
                 {
                     MainClass.getWin().setFuelLabel("Электричество",road);
                 }
-                this.QueueDraw();
             }
+            if(car_rad.Active)
+            {
+                MainClass.getWin().setTsLabel("Автомобиль", road);
+            }
+            if (truck_rad.Active)
+            {
+                MainClass.getWin().setTsLabel("Грузовик", road);
+            }
+            if (loader_rad.Active)
+            {
+                MainClass.getWin().setTsLabel("Погрузчик", road);
+            }
+            if (bus_rad.Active)
+            {
+                MainClass.getWin().setTsLabel("Автобус", road);
+            }
+            if (troll_rad.Active)
+            {
+                MainClass.getWin().setTsLabel("Троллейбус", road);
+            }
+            if (moto_rad.Active)
+            {
+                MainClass.getWin().setTsLabel("Мотоцикл", road);
+            }
+            if (horse_rad.Active)
+            {
+                MainClass.getWin().setTsLabel("Гужевая повозка", road);
+            }
+            this.QueueDraw();
             this.Hide();
         }
 
