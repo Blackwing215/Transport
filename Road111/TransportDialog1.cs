@@ -4,8 +4,10 @@ namespace Road111
 {
     public partial class TransportDialog1 : Gtk.Dialog
     {
-        public TransportDialog1()
+        private int road;
+        public TransportDialog1(int r)
         {
+            this.road = r;
             Build();
             if (MainClass.getSystem().getFuelList().Count>0)
             {
@@ -24,7 +26,6 @@ namespace Road111
                         this.electro_rad.Sensitive = true;
                     }
                 }
-                entry9.Sensitive = true;
                 this.QueueDraw();
             }
         }
@@ -34,15 +35,15 @@ namespace Road111
             {
                 if (this.benzin_rad.Active)
                 {
-                    MainClass.getWin().setFuelLabel("Бензин");
+                    MainClass.getWin().setFuelLabel("Бензин",road);
                 }
                 if (this.dizel_rad.Active)
                 {
-                    MainClass.getWin().setFuelLabel("Дизель");
+                    MainClass.getWin().setFuelLabel("Дизель",road);
                 }
                 if (this.electro_rad.Active)
                 {
-                    MainClass.getWin().setFuelLabel("Электричество");
+                    MainClass.getWin().setFuelLabel("Электричество",road);
                 }
                 this.QueueDraw();
             }

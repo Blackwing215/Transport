@@ -7,14 +7,23 @@ using System.Threading;
   
         public static Road111.FuelList dlg1;
         public static Road111.TransportDialog1 dlg;
-        public static bool ts1,ts2 = false;
+        public static bool ts1,ts2,ts3,ts4,ts5 = false;
         public MainWindow() : base(Gtk.WindowType.Toplevel)
         {
             Build();
         }
-    public void setFuelLabel(String _name)
+    public void setFuelLabel(String _name,int Road)
     {
+        if(Road == 1)
         label26.Text = _name;
+        if (Road == 2)
+            label27.Text = _name;
+        if (Road == 3)
+            label28.Text = _name;
+        if (Road == 4)
+            label29.Text = _name;
+        if (Road == 5)
+            label30.Text = _name;
         QueueDraw();
     }
         protected void OnDeleteEvent(object sender, DeleteEventArgs a)
@@ -27,7 +36,7 @@ using System.Threading;
         {
         if (ts1 == false)
         {
-            dlg = new Road111.TransportDialog1();
+            dlg = new Road111.TransportDialog1(1);
             dlg.Show();
         }
            
@@ -55,16 +64,35 @@ using System.Threading;
     {
         if (ts2 == false)
         {
-            dlg = new Road111.TransportDialog1();
+            dlg = new Road111.TransportDialog1(2);
             dlg.Show();
         }
     }
 
     protected void OnButton3Clicked(object sender, EventArgs e)
     {
+        if (ts3 == false)
+        {
+            dlg = new Road111.TransportDialog1(3);
+            dlg.Show();
+        }
     }
 
     protected void OnButton4Clicked(object sender, EventArgs e)
     {
+        if (ts4 == false)
+        {
+            dlg = new Road111.TransportDialog1(4);
+            dlg.Show();
+        }
+    }
+
+    protected void OnButton5Clicked(object sender, EventArgs e)
+    {
+        if (ts5 == false)
+        {
+            dlg = new Road111.TransportDialog1(5);
+            dlg.Show();
+        }
     }
 }
