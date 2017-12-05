@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Threading;
     public partial class MainWindow : Gtk.Window
     {
-  
+        public Thread mt;
+    public bool thLabel = false;
+    public bool startLabel = true;
         public static Road111.FuelList dlg1;
         public static Road111.TransportDialog1 dlg;
         public static bool ts1,ts2,ts3,ts4,ts5 = false;
@@ -58,11 +60,8 @@ using System.Threading;
 
         protected void ToggleProgress(object sender, EventArgs e)
         {
-            progressbar1.Pulse();
-            progressbar2.Pulse();
-            progressbar3.Pulse();
-            progressbar4.Pulse();
-            progressbar5.Pulse();
+            this.mt = new Thread(pulse);
+            this.mt.Start();
         }
         protected void OnAddFuelListActionActivated(object sender, EventArgs e)
         {
@@ -107,6 +106,19 @@ using System.Threading;
         {
             dlg = new Road111.TransportDialog1(5);
             dlg.Show();
+        }
+    }
+    public void pulse()
+    {
+        for (int i = 0; i < 100;i++)
+        {
+            progressbar1.Pulse();
+            progressbar2.Pulse();
+            progressbar3.Pulse();
+            progressbar4.Pulse();
+            progressbar5.Pulse();
+            QueueDraw();
+            Thread.Sleep(100);
         }
     }
 }
