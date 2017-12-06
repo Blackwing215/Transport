@@ -42,6 +42,8 @@ namespace Road111
 
 		private global::Gtk.RadioButton electro_rad;
 
+		private global::Gtk.RadioButton gas_rad;
+
 		private global::Gtk.Label Param1;
 
 		private global::Gtk.Label Param2;
@@ -277,51 +279,62 @@ namespace Road111
 			this.hbox3.Add(this.electro_rad);
 			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.electro_rad]));
 			w18.Position = 2;
+			// Container child hbox3.Gtk.Box+BoxChild
+			this.gas_rad = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Газ"));
+			this.gas_rad.Sensitive = false;
+			this.gas_rad.CanFocus = true;
+			this.gas_rad.Name = "gas_rad";
+			this.gas_rad.DrawIndicator = true;
+			this.gas_rad.UseUnderline = true;
+			this.gas_rad.Group = this.benzin_rad.Group;
+			this.hbox3.Add(this.gas_rad);
+			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.gas_rad]));
+			w19.Position = 3;
 			this.table5.Add(this.hbox3);
-			global::Gtk.Table.TableChild w19 = ((global::Gtk.Table.TableChild)(this.table5[this.hbox3]));
-			w19.TopAttach = ((uint)(1));
-			w19.BottomAttach = ((uint)(2));
-			w19.LeftAttach = ((uint)(1));
-			w19.RightAttach = ((uint)(2));
-			w19.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w20 = ((global::Gtk.Table.TableChild)(this.table5[this.hbox3]));
+			w20.TopAttach = ((uint)(1));
+			w20.BottomAttach = ((uint)(2));
+			w20.LeftAttach = ((uint)(1));
+			w20.RightAttach = ((uint)(2));
+			w20.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table5.Gtk.Table+TableChild
 			this.Param1 = new global::Gtk.Label();
 			this.Param1.Name = "Param1";
 			this.Param1.LabelProp = global::Mono.Unix.Catalog.GetString("Тип");
 			this.table5.Add(this.Param1);
-			global::Gtk.Table.TableChild w20 = ((global::Gtk.Table.TableChild)(this.table5[this.Param1]));
-			w20.XOptions = ((global::Gtk.AttachOptions)(4));
-			w20.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w21 = ((global::Gtk.Table.TableChild)(this.table5[this.Param1]));
+			w21.XOptions = ((global::Gtk.AttachOptions)(4));
+			w21.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table5.Gtk.Table+TableChild
 			this.Param2 = new global::Gtk.Label();
 			this.Param2.Name = "Param2";
 			this.Param2.LabelProp = global::Mono.Unix.Catalog.GetString("Топливо");
 			this.table5.Add(this.Param2);
-			global::Gtk.Table.TableChild w21 = ((global::Gtk.Table.TableChild)(this.table5[this.Param2]));
-			w21.TopAttach = ((uint)(1));
-			w21.BottomAttach = ((uint)(2));
-			w21.XOptions = ((global::Gtk.AttachOptions)(4));
-			w21.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.table5[this.Param2]));
+			w22.TopAttach = ((uint)(1));
+			w22.BottomAttach = ((uint)(2));
+			w22.XOptions = ((global::Gtk.AttachOptions)(4));
+			w22.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table5.Gtk.Table+TableChild
 			this.Param3 = new global::Gtk.Label();
 			this.Param3.Name = "Param3";
 			this.Param3.Xalign = 0F;
 			this.Param3.LabelProp = global::Mono.Unix.Catalog.GetString("Скорость");
 			this.table5.Add(this.Param3);
-			global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.table5[this.Param3]));
-			w22.TopAttach = ((uint)(2));
-			w22.BottomAttach = ((uint)(3));
-			w22.XOptions = ((global::Gtk.AttachOptions)(4));
-			w22.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w23 = ((global::Gtk.Table.TableChild)(this.table5[this.Param3]));
+			w23.TopAttach = ((uint)(2));
+			w23.BottomAttach = ((uint)(3));
+			w23.XOptions = ((global::Gtk.AttachOptions)(4));
+			w23.YOptions = ((global::Gtk.AttachOptions)(4));
 			w1.Add(this.table5);
-			global::Gtk.Box.BoxChild w23 = ((global::Gtk.Box.BoxChild)(w1[this.table5]));
-			w23.Position = 0;
+			global::Gtk.Box.BoxChild w24 = ((global::Gtk.Box.BoxChild)(w1[this.table5]));
+			w24.Position = 0;
 			// Internal child Road111.TransportDialog1.ActionArea
-			global::Gtk.HButtonBox w24 = this.ActionArea;
-			w24.Name = "dialog1_ActionArea";
-			w24.Spacing = 10;
-			w24.BorderWidth = ((uint)(5));
-			w24.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
+			global::Gtk.HButtonBox w25 = this.ActionArea;
+			w25.Name = "dialog1_ActionArea";
+			w25.Spacing = 10;
+			w25.BorderWidth = ((uint)(5));
+			w25.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonCancel = new global::Gtk.Button();
 			this.buttonCancel.CanDefault = true;
@@ -331,9 +344,9 @@ namespace Road111
 			this.buttonCancel.UseUnderline = true;
 			this.buttonCancel.Label = "gtk-cancel";
 			this.AddActionWidget(this.buttonCancel, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w25 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w24[this.buttonCancel]));
-			w25.Expand = false;
-			w25.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w26 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w25[this.buttonCancel]));
+			w26.Expand = false;
+			w26.Fill = false;
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonOk = new global::Gtk.Button();
 			this.buttonOk.CanDefault = true;
@@ -343,10 +356,10 @@ namespace Road111
 			this.buttonOk.UseUnderline = true;
 			this.buttonOk.Label = "gtk-ok";
 			this.AddActionWidget(this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w26 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w24[this.buttonOk]));
-			w26.Position = 1;
-			w26.Expand = false;
-			w26.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w27 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w25[this.buttonOk]));
+			w27.Position = 1;
+			w27.Expand = false;
+			w27.Fill = false;
 			if ((this.Child != null))
 			{
 				this.Child.ShowAll();

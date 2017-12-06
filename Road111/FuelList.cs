@@ -7,6 +7,7 @@ namespace Road111
         private Fuel benzin = new Fuel("Бензин");
         private Fuel electro = new Fuel("Электричество");
         private Fuel dizel = new Fuel("Дизель");
+        private Fuel gas = new Fuel("Газ");
         public FuelList()
         {         
             this.Build();
@@ -26,6 +27,10 @@ namespace Road111
             if(electro_but.Active)
             {
                 MainClass.getSystem().addFuel(electro);
+            } 
+            if(gas_but.Active)
+            {
+                MainClass.getSystem().addFuel(gas);
             } 
             this.Hide();
         }

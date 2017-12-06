@@ -16,6 +16,8 @@ namespace Road111
 
 		private global::Gtk.CheckButton electro_but;
 
+		private global::Gtk.CheckButton gas_but;
+
 		private global::Gtk.VSeparator vseparator3;
 
 		private global::Gtk.Button buttonCancel;
@@ -76,26 +78,36 @@ namespace Road111
 			this.hbox1.Add(this.electro_but);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.electro_but]));
 			w5.Position = 2;
+			// Container child hbox1.Gtk.Box+BoxChild
+			this.gas_but = new global::Gtk.CheckButton();
+			this.gas_but.CanFocus = true;
+			this.gas_but.Name = "gas_but";
+			this.gas_but.Label = global::Mono.Unix.Catalog.GetString("Газ");
+			this.gas_but.DrawIndicator = true;
+			this.gas_but.UseUnderline = true;
+			this.hbox1.Add(this.gas_but);
+			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox1[this.gas_but]));
+			w6.Position = 3;
 			this.vbox2.Add(this.hbox1);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox1]));
-			w6.Position = 1;
-			w6.Expand = false;
-			w6.Fill = false;
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox1]));
+			w7.Position = 1;
+			w7.Expand = false;
+			w7.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.vseparator3 = new global::Gtk.VSeparator();
 			this.vseparator3.Name = "vseparator3";
 			this.vbox2.Add(this.vseparator3);
-			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.vseparator3]));
-			w7.Position = 2;
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.vseparator3]));
+			w8.Position = 2;
 			w1.Add(this.vbox2);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(w1[this.vbox2]));
-			w8.Position = 0;
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(w1[this.vbox2]));
+			w9.Position = 0;
 			// Internal child Road111.FuelList.ActionArea
-			global::Gtk.HButtonBox w9 = this.ActionArea;
-			w9.Name = "dialog1_ActionArea";
-			w9.Spacing = 10;
-			w9.BorderWidth = ((uint)(5));
-			w9.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
+			global::Gtk.HButtonBox w10 = this.ActionArea;
+			w10.Name = "dialog1_ActionArea";
+			w10.Spacing = 10;
+			w10.BorderWidth = ((uint)(5));
+			w10.LayoutStyle = ((global::Gtk.ButtonBoxStyle)(4));
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonCancel = new global::Gtk.Button();
 			this.buttonCancel.CanDefault = true;
@@ -105,9 +117,9 @@ namespace Road111
 			this.buttonCancel.UseUnderline = true;
 			this.buttonCancel.Label = "gtk-cancel";
 			this.AddActionWidget(this.buttonCancel, -6);
-			global::Gtk.ButtonBox.ButtonBoxChild w10 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w9[this.buttonCancel]));
-			w10.Expand = false;
-			w10.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w11 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w10[this.buttonCancel]));
+			w11.Expand = false;
+			w11.Fill = false;
 			// Container child dialog1_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.buttonOk = new global::Gtk.Button();
 			this.buttonOk.CanDefault = true;
@@ -117,10 +129,10 @@ namespace Road111
 			this.buttonOk.UseUnderline = true;
 			this.buttonOk.Label = "gtk-ok";
 			this.AddActionWidget(this.buttonOk, -5);
-			global::Gtk.ButtonBox.ButtonBoxChild w11 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w9[this.buttonOk]));
-			w11.Position = 1;
-			w11.Expand = false;
-			w11.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w12 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w10[this.buttonOk]));
+			w12.Position = 1;
+			w12.Expand = false;
+			w12.Fill = false;
 			if ((this.Child != null))
 			{
 				this.Child.ShowAll();

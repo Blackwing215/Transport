@@ -66,6 +66,10 @@
     <Compile Include="gtk-gui\Road111.FuelList.cs" />
     <Compile Include="Fuel.cs" />
     <Compile Include="Sys.cs" />
+    <Compile Include="Vehicle.cs" />
+    <Compile Include="ErrorWindow.cs" />
+    <Compile Include="gtk-gui\Road111.ErrorWindow.cs" />
+    <Compile Include="Strip.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
