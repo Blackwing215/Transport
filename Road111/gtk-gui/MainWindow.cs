@@ -257,11 +257,11 @@ public partial class MainWindow
 
 	private global::Gtk.Label elTime;
 
+	private global::Gtk.Label label41;
+
 	private global::Gtk.Label numTransport;
 
 	private global::Gtk.Statusbar statusbar1;
-
-	private global::Gtk.Label label41;
 
 	private global::Gtk.Statusbar statusbar2;
 
@@ -1576,7 +1576,7 @@ public partial class MainWindow
 		global::Gtk.Box.BoxChild w119 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.table1]));
 		w119.Position = 2;
 		// Container child vbox1.Gtk.Box+BoxChild
-		this.table2 = new global::Gtk.Table(((uint)(2)), ((uint)(4)), false);
+		this.table2 = new global::Gtk.Table(((uint)(2)), ((uint)(5)), false);
 		this.table2.Name = "table2";
 		this.table2.RowSpacing = ((uint)(6));
 		this.table2.ColumnSpacing = ((uint)(6));
@@ -1588,28 +1588,28 @@ public partial class MainWindow
 		global::Gtk.Table.TableChild w120 = ((global::Gtk.Table.TableChild)(this.table2[this.elTime]));
 		w120.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
+		this.label41 = new global::Gtk.Label();
+		this.label41.Name = "label41";
+		this.table2.Add(this.label41);
+		global::Gtk.Table.TableChild w121 = ((global::Gtk.Table.TableChild)(this.table2[this.label41]));
+		w121.LeftAttach = ((uint)(4));
+		w121.RightAttach = ((uint)(5));
+		w121.XOptions = ((global::Gtk.AttachOptions)(4));
+		w121.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child table2.Gtk.Table+TableChild
 		this.numTransport = new global::Gtk.Label();
 		this.numTransport.Name = "numTransport";
 		this.numTransport.LabelProp = global::Mono.Unix.Catalog.GetString("Number of transport:");
 		this.table2.Add(this.numTransport);
-		global::Gtk.Table.TableChild w121 = ((global::Gtk.Table.TableChild)(this.table2[this.numTransport]));
-		w121.LeftAttach = ((uint)(3));
-		w121.RightAttach = ((uint)(4));
-		w121.XOptions = ((global::Gtk.AttachOptions)(4));
-		w121.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w122 = ((global::Gtk.Table.TableChild)(this.table2[this.numTransport]));
+		w122.LeftAttach = ((uint)(3));
+		w122.RightAttach = ((uint)(4));
+		w122.XOptions = ((global::Gtk.AttachOptions)(4));
+		w122.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
 		this.statusbar1 = new global::Gtk.Statusbar();
 		this.statusbar1.Name = "statusbar1";
 		this.statusbar1.Spacing = 6;
-		// Container child statusbar1.Gtk.Box+BoxChild
-		this.label41 = new global::Gtk.Label();
-		this.label41.Name = "label41";
-		this.label41.LabelProp = global::Mono.Unix.Catalog.GetString("label3");
-		this.statusbar1.Add(this.label41);
-		global::Gtk.Box.BoxChild w122 = ((global::Gtk.Box.BoxChild)(this.statusbar1[this.label41]));
-		w122.Position = 1;
-		w122.Expand = false;
-		w122.Fill = false;
 		this.table2.Add(this.statusbar1);
 		global::Gtk.Table.TableChild w123 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar1]));
 		w123.TopAttach = ((uint)(1));

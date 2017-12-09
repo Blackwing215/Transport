@@ -191,6 +191,8 @@ using System.Threading;
     public void addTsN()
     {
         amountTs++;
+        label41.Text = Convert.ToString(amountTs);
+        QueueDraw();
     }
     private void setStrip()
     {
