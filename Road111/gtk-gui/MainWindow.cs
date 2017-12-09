@@ -261,6 +261,8 @@ public partial class MainWindow
 
 	private global::Gtk.Statusbar statusbar1;
 
+	private global::Gtk.Label label41;
+
 	private global::Gtk.Statusbar statusbar2;
 
 	private global::Gtk.Statusbar statusbar3;
@@ -1599,66 +1601,75 @@ public partial class MainWindow
 		this.statusbar1 = new global::Gtk.Statusbar();
 		this.statusbar1.Name = "statusbar1";
 		this.statusbar1.Spacing = 6;
+		// Container child statusbar1.Gtk.Box+BoxChild
+		this.label41 = new global::Gtk.Label();
+		this.label41.Name = "label41";
+		this.label41.LabelProp = global::Mono.Unix.Catalog.GetString("label3");
+		this.statusbar1.Add(this.label41);
+		global::Gtk.Box.BoxChild w122 = ((global::Gtk.Box.BoxChild)(this.statusbar1[this.label41]));
+		w122.Position = 1;
+		w122.Expand = false;
+		w122.Fill = false;
 		this.table2.Add(this.statusbar1);
-		global::Gtk.Table.TableChild w122 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar1]));
-		w122.TopAttach = ((uint)(1));
-		w122.BottomAttach = ((uint)(2));
-		w122.LeftAttach = ((uint)(3));
-		w122.RightAttach = ((uint)(4));
-		w122.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w123 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar1]));
+		w123.TopAttach = ((uint)(1));
+		w123.BottomAttach = ((uint)(2));
+		w123.LeftAttach = ((uint)(3));
+		w123.RightAttach = ((uint)(4));
+		w123.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
 		this.statusbar2 = new global::Gtk.Statusbar();
 		this.statusbar2.Name = "statusbar2";
 		this.statusbar2.Spacing = 6;
 		this.table2.Add(this.statusbar2);
-		global::Gtk.Table.TableChild w123 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar2]));
-		w123.TopAttach = ((uint)(1));
-		w123.BottomAttach = ((uint)(2));
-		w123.LeftAttach = ((uint)(2));
-		w123.RightAttach = ((uint)(3));
-		w123.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w124 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar2]));
+		w124.TopAttach = ((uint)(1));
+		w124.BottomAttach = ((uint)(2));
+		w124.LeftAttach = ((uint)(2));
+		w124.RightAttach = ((uint)(3));
+		w124.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
 		this.statusbar3 = new global::Gtk.Statusbar();
 		this.statusbar3.Name = "statusbar3";
 		this.statusbar3.Spacing = 6;
 		this.table2.Add(this.statusbar3);
-		global::Gtk.Table.TableChild w124 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar3]));
-		w124.TopAttach = ((uint)(1));
-		w124.BottomAttach = ((uint)(2));
-		w124.LeftAttach = ((uint)(1));
-		w124.RightAttach = ((uint)(2));
-		w124.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w125 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar3]));
+		w125.TopAttach = ((uint)(1));
+		w125.BottomAttach = ((uint)(2));
+		w125.LeftAttach = ((uint)(1));
+		w125.RightAttach = ((uint)(2));
+		w125.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
 		this.statusbar4 = new global::Gtk.Statusbar();
 		this.statusbar4.Name = "statusbar4";
 		this.statusbar4.Spacing = 6;
 		this.table2.Add(this.statusbar4);
-		global::Gtk.Table.TableChild w125 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar4]));
-		w125.TopAttach = ((uint)(1));
-		w125.BottomAttach = ((uint)(2));
-		w125.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w126 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar4]));
+		w126.TopAttach = ((uint)(1));
+		w126.BottomAttach = ((uint)(2));
+		w126.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
 		this.sumMoveTime = new global::Gtk.Label();
 		this.sumMoveTime.Name = "sumMoveTime";
 		this.sumMoveTime.LabelProp = global::Mono.Unix.Catalog.GetString("Total moveing time:");
 		this.table2.Add(this.sumMoveTime);
-		global::Gtk.Table.TableChild w126 = ((global::Gtk.Table.TableChild)(this.table2[this.sumMoveTime]));
-		w126.LeftAttach = ((uint)(1));
-		w126.RightAttach = ((uint)(2));
-		w126.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w127 = ((global::Gtk.Table.TableChild)(this.table2[this.sumMoveTime]));
+		w127.LeftAttach = ((uint)(1));
+		w127.RightAttach = ((uint)(2));
+		w127.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
 		this.sumStopTime = new global::Gtk.Label();
 		this.sumStopTime.Name = "sumStopTime";
 		this.sumStopTime.LabelProp = global::Mono.Unix.Catalog.GetString("Total stop time:");
 		this.table2.Add(this.sumStopTime);
-		global::Gtk.Table.TableChild w127 = ((global::Gtk.Table.TableChild)(this.table2[this.sumStopTime]));
-		w127.LeftAttach = ((uint)(2));
-		w127.RightAttach = ((uint)(3));
-		w127.YOptions = ((global::Gtk.AttachOptions)(4));
+		global::Gtk.Table.TableChild w128 = ((global::Gtk.Table.TableChild)(this.table2[this.sumStopTime]));
+		w128.LeftAttach = ((uint)(2));
+		w128.RightAttach = ((uint)(3));
+		w128.YOptions = ((global::Gtk.AttachOptions)(4));
 		this.vbox1.Add(this.table2);
-		global::Gtk.Box.BoxChild w128 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.table2]));
-		w128.Position = 3;
-		w128.Expand = false;
+		global::Gtk.Box.BoxChild w129 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.table2]));
+		w129.Position = 3;
+		w129.Expand = false;
 		this.Add(this.vbox1);
 		if ((this.Child != null))
 		{

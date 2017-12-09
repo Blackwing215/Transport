@@ -5,10 +5,13 @@ using System.Threading;
     public partial class MainWindow : Gtk.Window
     {
         public Thread mt;
+    public String rname;
+        public int amountTs;
         public bool thLabel = false;
+    private int roadNumb;
         public bool startLabel = true;
-        public static Road111.FuelList dlg1;
-        public static Road111.TransportDialog1 dlg;
+    public static Road111.FuelList fuelDialog;
+        public static Road111.TransportDialog1 tsDialog;
         public static bool ts1,ts2,ts3,ts4,ts5 = false;
         public MainWindow() : base(Gtk.WindowType.Toplevel)
         {
@@ -16,46 +19,52 @@ using System.Threading;
         }
     public void setTsLabel(String _name,int Road,double Speed)
     {
-        if (Road == 1)
+        switch(Road)
         {
-            label31.Text = _name;
-            label37.Text = Convert.ToString(Speed);
-        }
-        if (Road == 2)
-        {
-            label32.Text = _name;
-            label36.Text = Convert.ToString(Speed);
-        }
-        if (Road == 3)
-        {
-            label33.Text = _name;
-            label38.Text = Convert.ToString(Speed);
-        }
-        if (Road == 4)
-        {
-            label34.Text = _name;
-            label39.Text = Convert.ToString(Speed);
-        }
-        if (Road == 5)
-        {
-            label35.Text = _name;
-            label40.Text = Convert.ToString(Speed);
+            case 0:
+                label31.Text = _name;
+                label37.Text = Convert.ToString(Speed);
+                break;
+            case 1:
+                label32.Text = _name;
+                label36.Text = Convert.ToString(Speed);
+                break;
+            case 2:
+                label33.Text = _name;
+                label38.Text = Convert.ToString(Speed);
+                break;
+            case 3:
+                label34.Text = _name;
+                label39.Text = Convert.ToString(Speed);
+                break;
+            case 4:
+                label35.Text = _name;
+                label40.Text = Convert.ToString(Speed);
+                break;
         }
         QueueDraw();
     }
 
     public void setFuelLabel(String _name,int Road)
     {
-        if(Road == 1)
-        label26.Text = _name;
-        if (Road == 2)
-            label27.Text = _name;
-        if (Road == 3)
-            label28.Text = _name;
-        if (Road == 4)
-            label29.Text = _name;
-        if (Road == 5)
-            label30.Text = _name;
+        switch(Road)
+        {
+            case 0:
+                label26.Text = _name;
+                break;
+            case 1:
+                label27.Text = _name;
+                break;
+            case 2:
+                label28.Text = _name;
+                break;
+            case 3:
+                label29.Text = _name;
+                break;
+            case 4:
+                label30.Text = _name;
+                break;
+        }
         QueueDraw();
     }
         protected void OnDeleteEvent(object sender, DeleteEventArgs a)
@@ -66,18 +75,18 @@ using System.Threading;
 
         protected void TransportInfo1_clicked(object sender, EventArgs e)
         {
-        String r1name="";
+        roadNumb = 0;
         if (common1.Active)
-            r1name = "Обычная";
+          rname = "Обычная";
         if (electrified1.Active)
-            r1name = "Электро";
+            rname = "Электро";
         if (railway1.Active)
-            r1name = "Рельсы";
-        Road111.Strip r1 = new Road111.Strip(r1name);
+           rname = "Рельсы";
+        Road111.Strip r1 = new Road111.Strip(rname);
         if (ts1 == false)
         {
-            dlg = new Road111.TransportDialog1(1,r1);
-            dlg.Show();
+            tsDialog = new Road111.TransportDialog1(roadNumb,r1);
+            tsDialog.Show();
         }
            
         }
@@ -91,77 +100,79 @@ using System.Threading;
         {
         if (Road111.MainClass.getSystem().getFuelList().Count == 0)
         {
-            
-            dlg1 = new Road111.FuelList();
+
+            fuelDialog = new Road111.FuelList();
         }
-            dlg1.Show(); 
+            fuelDialog.Show(); 
         }
 
     protected void OnButton2Clicked(object sender, EventArgs e)
     {
-        String r2name = "";
+        roadNumb = 1;
         if (common2.Active)
-            r2name = "Обычная";
+            rname = "Обычная";
         if (electrified2.Active)
-            r2name = "Электро";
+            rname = "Электро";
         if (railway2.Active)
-            r2name = "Рельсы";
-        Road111.Strip r2 = new Road111.Strip(r2name);
+            rname = "Рельсы";
+        Road111.Strip r2 = new Road111.Strip(rname);
         if (ts2 == false)
         {
-            dlg = new Road111.TransportDialog1(2,r2);
-            dlg.Show();
+            tsDialog = new Road111.TransportDialog1(roadNumb,r2);
+            tsDialog.Show();
         }
     }
 
     protected void OnButton3Clicked(object sender, EventArgs e)
     {
-        String r3name = "";
+        roadNumb = 2;
         if (common3.Active)
-            r3name = "Обычная";
+            rname = "Обычная";
         if (electrified2.Active)
-            r3name = "Электро";
+            rname = "Электро";
         if (railway3.Active)
-            r3name = "Рельсы";
-        Road111.Strip r3 = new Road111.Strip(r3name);
+            rname = "Рельсы";
+
+
+        Road111.Strip r3 = new Road111.Strip(rname);
         if (ts3 == false)
         {
-            dlg = new Road111.TransportDialog1(3,r3);
-            dlg.Show();
+            tsDialog = new Road111.TransportDialog1(roadNumb,r3);
+            tsDialog.Show();
         }
     }
 
     protected void OnButton4Clicked(object sender, EventArgs e)
     {
-        String r4name = "";
+        roadNumb = 3;
         if (common4.Active)
-            r4name = "Обычная";
+            rname = "Обычная";
         if (electrified4.Active)
-            r4name = "Электро";
+            rname = "Электро";
         if (railway4.Active)
-            r4name = "Рельсы";
-        Road111.Strip r4 = new Road111.Strip(r4name);
+            rname = "Рельсы";
+        Road111.Strip r4 = new Road111.Strip(rname);
         if (ts4 == false)
         {
-            dlg = new Road111.TransportDialog1(4,r4);
-            dlg.Show();
+            tsDialog = new Road111.TransportDialog1(roadNumb,r4);
+            tsDialog.Show();
         }
     }
 
     protected void OnButton5Clicked(object sender, EventArgs e)
     {
-        String r5name = "";
+        roadNumb = 4;
         if (common5.Active)
-            r5name = "Обычная";
+            rname = "Обычная";
         if (electrified5.Active)
-            r5name = "Электро";
+            rname = "Электро";
         if (railway5.Active)
-            r5name = "Рельсы";
-        Road111.Strip r5 = new Road111.Strip(r5name);
+            rname = "Рельсы";
+        Road111.Strip r5 = new Road111.Strip(rname);
         if (ts5 == false)
         {
-            dlg = new Road111.TransportDialog1(5,r5);
-            dlg.Show();
+            tsDialog = new Road111.TransportDialog1(roadNumb,r5);
+            tsDialog.Show();
         }
     }
     public void pulse()
@@ -176,5 +187,13 @@ using System.Threading;
             QueueDraw();
             Thread.Sleep(100);
         }
+    }
+    public void addTsN()
+    {
+        amountTs++;
+    }
+    private void setStrip()
+    {
+        
     }
 }

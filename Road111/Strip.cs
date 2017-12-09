@@ -19,7 +19,7 @@ namespace Road111
         }
         public bool Equals(Strip s)
         {
-            if (this.type == s.type)
+            if (this.Type.Equals(s.Type))
                 return true;
             else
                 return false;

@@ -5,9 +5,10 @@ namespace Road111
     public class Vehicle
     {
         protected String type;
-        protected static Fuel fuel;
-        // protected List<Fuel> fuel;
-        protected static List<Strip> stripType = new List<Strip>();
+        protected String name;
+        protected  Fuel fuel;
+        protected List<Fuel> fuelType = new List<Fuel>();
+        protected  List<Strip> stripType = new List<Strip>();
         //protected bool[3] stripType;
         //protected Strip strip;
         protected double maxSpeed;
@@ -23,7 +24,7 @@ namespace Road111
             get { return type; }
             set { type = value; }
         }
-        public static Fuel Fuel
+        public  Fuel Fuel
         {
             get { return fuel; }
             set { fuel = value; }
@@ -43,10 +44,20 @@ namespace Road111
             get { return distance; }
             set { distance = value; }
         }
-        public static List<Strip> stripList()
+        public List<Strip> stripList()
         {
             return stripType;
         }
+        public List<Fuel> FuelList()
+        {
+            return fuelType;
+        }
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
     }
 
     public class Car : Vehicle
@@ -60,9 +71,14 @@ namespace Road111
         //---------------------------Constructors---------------------------------------
         public Car()
         {
+            name = "Автомобиль";
             type = "Passenger";
             stripType.Add(new Strip("Электро"));
             stripType.Add(new Strip("Обычная"));
+            fuelType.Add(new Fuel("Бензин"));
+            fuelType.Add(new Fuel("Дизель"));
+            fuelType.Add(new Fuel("Электричество"));
+            fuelType.Add(new Fuel("Газ"));
             fuel = new Fuel("Бензин");
             //strip = strip[0];
             maxSpeed = 180.0;
@@ -73,6 +89,7 @@ namespace Road111
             nWheels = 4;
             maxDist = 800;
         }
+       
         //---------------------------Get/Set--------------------------------------------
         public double AmountOfFuel { get { return amountFuel; } }
         public String Brand { get { return brand; } }
@@ -91,9 +108,11 @@ namespace Road111
         //---------------------------Constructors---------------------------------------
         public Moto()
         {
+            name = "Мотоцикл";
             type = "Passenger";
             stripType.Add(new Strip("Электро"));
             stripType.Add(new Strip("Обычная"));
+            fuelType.Add(new Fuel("Бензин"));
             //fuel = new Fuel("Бензин");
             //strip = strip[0];
             maxSpeed = 250.0;
@@ -123,7 +142,10 @@ namespace Road111
         //---------------------------Constructors---------------------------------------
         public Truck()
         {
+            name = "Грузовик";
             type = "Cargo";
+            fuelType.Add(new Fuel("Бензин"));
+            fuelType.Add(new Fuel("Дизель"));
             stripType.Add(new Strip("Электро"));
             stripType.Add(new Strip("Обычная"));
             //fuel = new Fuel("Бензин");
@@ -156,7 +178,10 @@ namespace Road111
         //---------------------------Constructors---------------------------------------
         public Loader()
         {
+            name = "Погрузчик";
             type = "Cargo";
+            fuelType.Add(new Fuel("Бензин"));
+            fuelType.Add(new Fuel("Дизель"));
             stripType.Add(new Strip("Электро"));
             stripType.Add(new Strip("Обычная"));
             //fuel = new Fuel("Бензин");
@@ -190,7 +215,11 @@ namespace Road111
         //---------------------------Constructors---------------------------------------
         public Bus()
         {
+            name = "Автобус";
             type = "Public";
+            fuelType.Add(new Fuel("Бензин"));
+            fuelType.Add(new Fuel("Дизель"));
+            fuelType.Add(new Fuel("Электричество"));
             stripType.Add(new Strip("Электро"));
             stripType.Add(new Strip("Обычная"));
             //fuel = new Fuel("Бензин");
@@ -229,7 +258,9 @@ namespace Road111
         //---------------------------Constructors---------------------------------------
         public Trolleybus()
         {
+            name = "Троллейбус";
             type = "Public";
+            fuelType.Add(new Fuel("Электричество"));
             stripType.Add(new Strip("Электро"));
             //stripType[] = { 1, 1, 1 };
             //fuel = new Fuel("Бензин");
@@ -264,8 +295,10 @@ namespace Road111
         //---------------------------Constructors---------------------------------------
         public Tram()
         {
+            name = "Трамвай";
             type = "Public";
             stripType.Add(new Strip("Рельсы"));
+            fuelType.Add(new Fuel("Электричество"));
             //fuel = new Fuel("Бензин");
             //strip = strip[0];
             maxSpeed = 100.0;
@@ -294,6 +327,7 @@ namespace Road111
         //---------------------------Constructors---------------------------------------
         public Horse()
         {
+            name = "Гужевая повозка";
             type = "Cargo";
             //stripType[] = { 1, 1, 1 };
             //fuel = new Fuel("Бензин");

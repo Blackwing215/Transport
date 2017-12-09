@@ -7,10 +7,14 @@ namespace Road111
         private int road;
         private Fuel fuel;
         private Strip strip;
+        private bool tOk = false;
+        private bool fOk = false;
+        private ExTWindow eror;
+        private Vehicle transport;
         public TransportDialog1(int r,Strip st)
         {
             this.road = r;
-            this.strip = st;
+            this.strip = new Strip(st.Type);
             Build();
             buttonOk.Sensitive = false;
             if (MainClass.getSystem().getFuelList().Count>0)
@@ -45,75 +49,110 @@ namespace Road111
             {
                 if (this.benzin_rad.Active)
                 {
-                    MainClass.getWin().setFuelLabel("Бензин", road);
                     fuel = new Fuel("Бензин");
                 }
                 if (this.dizel_rad.Active)
                 {
-                    MainClass.getWin().setFuelLabel("Дизель",road);
                     fuel = new Fuel("Дизель");
                 }
                 if (this.electro_rad.Active)
                 {
-                    MainClass.getWin().setFuelLabel("Электричество",road);
                     fuel = new Fuel("Электричество");
                 }
                 if (this.gas_rad.Active)
                 {
-                    MainClass.getWin().setFuelLabel("Газ", road);
                     fuel = new Fuel("Газ");
                 }
             }
             if(car_rad.Active)
             {
-                foreach(Strip value in Vehicle.stripList())
-                {
-                }
-                MainClass.getSystem().getTransportList().Insert(road-1,new Car());
-                MainClass.getWin().setTsLabel("Автомобиль", road,MainClass.getSystem().getTransportList()[road-1].MaxSpeed);
+                MainClass.getSystem().getTransportList().Insert(road, new Car());
+                transport = MainClass.getSystem().getTransportList()[road];
             }
             if (truck_rad.Active)
             {
-                MainClass.getSystem().getTransportList().Insert(road-1,new Truck());
-                MainClass.getWin().setTsLabel("Грузовик", road,MainClass.getSystem().getTransportList()[road-1].MaxSpeed);
+                
+                MainClass.getSystem().getTransportList().Insert(road,new Truck());
+                transport = MainClass.getSystem().getTransportList()[road];
             }
             if (loader_rad.Active)
             {
-                MainClass.getSystem().getTransportList().Insert(road - 1, new Loader());
-                MainClass.getWin().setTsLabel("Погрузчик", road,MainClass.getSystem().getTransportList()[road - 1].MaxSpeed);
+                
+                MainClass.getSystem().getTransportList().Insert(road, new Loader());
+                transport = MainClass.getSystem().getTransportList()[road];
+
             }
             if (bus_rad.Active)
             {
-                MainClass.getSystem().getTransportList().Insert(road - 1, new Bus());
-                MainClass.getWin().setTsLabel("Автобус", road,MainClass.getSystem().getTransportList()[road - 1].MaxSpeed);
+                
+                MainClass.getSystem().getTransportList().Insert(road, new Bus());
+                transport = MainClass.getSystem().getTransportList()[road];
+
             }
             if (troll_rad.Active)
             {
-                MainClass.getSystem().getTransportList().Insert(road - 1, new Trolleybus());
-                MainClass.getWin().setTsLabel("Троллейбус", road,MainClass.getSystem().getTransportList()[road - 1].MaxSpeed);
+              
+                MainClass.getSystem().getTransportList().Insert(road, new Trolleybus());
+                transport = MainClass.getSystem().getTransportList()[road];
+
             }
             if (moto_rad.Active)
             {
-                MainClass.getSystem().getTransportList().Insert(road - 1, new Moto());
-                MainClass.getWin().setTsLabel("Мотоцикл", road,MainClass.getSystem().getTransportList()[road - 1].MaxSpeed);
+                MainClass.getSystem().getTransportList().Insert(road, new Moto());
+                transport = MainClass.getSystem().getTransportList()[road];
+
             }
             if (horse_rad.Active)
             {
-                MainClass.getSystem().getTransportList().Insert(road - 1, new Horse());
-                MainClass.getWin().setTsLabel("Гужевая повозка", road,MainClass.getSystem().getTransportList()[road - 1].MaxSpeed);
+                MainClass.getSystem().getTransportList().Insert(road, new Horse());
+                transport = MainClass.getSystem().getTransportList()[road];
             }
             if(tram_rad.Active)
             {
-                MainClass.getSystem().getTransportList().Insert(road - 1, new Tram());
-                MainClass.getWin().setTsLabel("Трамвай", road, MainClass.getSystem().getTransportList()[road - 1].MaxSpeed);
+                MainClass.getSystem().getTransportList().Insert(road, new Tram());
+                transport = MainClass.getSystem().getTransportList()[road];
             }
-            this.QueueDraw();
-            this.Hide();
+            checkStrip();
+            if (fOk && tOk)
+            {
+                MainClass.getWin().addTsN();
+                MainClass.getWin().setFuelLabel(fuel.GetFuel(), road);
+                MainClass.getSystem().getTransportList()[road].Fuel = fuel;
+                MainClass.getWin().setTsLabel(transport.Name, road, transport.MaxSpeed);
+                this.QueueDraw();
+                this.Hide();
+            }
+            else
+            {
+
+                eror = new ExTWindow();
+                eror.Show();
+                this.Destroy();
+            }
+                
         }
 
         protected void Cancel_Button(object sender, EventArgs e)
         {
             this.Destroy();
+        }
+        private void checkStrip()
+        {
+            foreach (Strip value in transport.stripList())
+            {
+                if (value.Equals(strip))
+                {
+                    tOk = true;
+                }
+
+            }
+            foreach (Fuel value in transport.FuelList())
+            {
+                if (value.Equals(fuel))
+                {
+                    fOk = true;
+                }
+            }
         }
     }
 }
