@@ -4,16 +4,15 @@ using System.Collections.Generic;
 using System.Threading;
     public partial class MainWindow : Gtk.Window
     {
-        public Thread mt;
-    public String rname;
-        public int amountTs;
-        public bool thLabel = false;
-    private int roadNumb;
-        public bool startLabel = true;
-    public static Road111.FuelList fuelDialog;
-        public static Road111.TransportDialog1 tsDialog;
-        public static bool ts1,ts2,ts3,ts4,ts5 = false;
-        public MainWindow() : base(Gtk.WindowType.Toplevel)
+    public Thread mt;
+    public String rname;//road name
+    public int amountTs;//amount of transports
+    private int roadNumb;// road number
+    public bool startLabel = true;
+    public static Road111.FuelList fuelDialog;//fuel dialog window
+    public static Road111.TransportDialog1 tsDialog;//add transport dialog window
+    public static bool ts1,ts2,ts3,ts4,ts5 = false;//transport dialog labels
+    public MainWindow() : base(Gtk.WindowType.Toplevel)
         {
             Build();
         }
