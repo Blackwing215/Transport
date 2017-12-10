@@ -1,14 +1,16 @@
 ﻿<Properties StartupConfiguration="{A523A490-35A4-48D9-B758-65881247A7D0}|Default">
   <MonoDevelop.Ide.ItemProperties.Road111 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TransportDialog1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FuelList.cs">
     <Files>
-      <File FileName="TransportDialog1.cs" Line="129" Column="29" />
-      <File FileName="Vehicle.cs" Line="219" Column="29" />
-      <File FileName="ExTWindow.cs" Line="13" Column="10" />
-      <File FileName="MainWindow.cs" Line="174" Column="56" />
+      <File FileName="MainWindow.cs" Line="34" Column="27" />
+      <File FileName="Vehicle.cs" Line="20" Column="12" />
+      <File FileName="PropertiWindow.cs" Line="16" Column="10" />
+      <File FileName="Fuel.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName="FuelList.cs" Line="13" Column="26" />
+      <File FileName="ExTWindow.cs" Line="1" Column="1" />
       <File FileName="Sys.cs" Line="1" Column="1" />
-      <File FileName="Program.cs" Line="19" Column="34" />
-      <File FileName="Strip.cs" Line="1" Column="1" />
+      <File FileName="TransportDialog1.cs" Line="153" Column="76" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

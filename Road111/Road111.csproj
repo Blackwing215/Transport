@@ -70,6 +70,8 @@
     <Compile Include="Strip.cs" />
     <Compile Include="ExTWindow.cs" />
     <Compile Include="gtk-gui\Road111.ExTWindow.cs" />
+    <Compile Include="gtk-gui\Road111.PropertiWindow.cs" />
+    <Compile Include="PropertiWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -119,8 +119,9 @@ namespace Road111
                 MainClass.getWin().setFuelLabel(fuel.GetFuel(), road);
                 MainClass.getSystem().getTransportList()[road].Fuel = fuel;
                 MainClass.getWin().setTsLabel(transport.Name, road, transport.MaxSpeed);
+                MainClass.getWin().QueueDraw();
                 this.QueueDraw();
-                this.Hide();
+                this.Destroy();
             }
             else
             {
@@ -142,7 +143,7 @@ namespace Road111
             {
                 if (value.Equals(strip))
                 {
-                    tOk = true;
+                    tOk = true;//совместимость транспорта и типа полосы
                 }
 
             }
@@ -150,7 +151,7 @@ namespace Road111
             {
                 if (value.Equals(fuel))
                 {
-                    fOk = true;
+                    fOk = true;//совместимость топлила транспорта и топлива
                 }
             }
         }
