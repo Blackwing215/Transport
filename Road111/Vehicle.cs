@@ -86,6 +86,7 @@ namespace Road111
             type = "Passenger";
             stripType.Add(new Strip("Электро"));
             stripType.Add(new Strip("Обычная"));
+			stripType.Add(new Strip("Рельсы"));
             fuelType.Add(new Fuel("Бензин"));
             fuelType.Add(new Fuel("Дизель"));
             fuelType.Add(new Fuel("Электричество"));
@@ -156,6 +157,7 @@ namespace Road111
             type = "Passenger";
             stripType.Add(new Strip("Электро"));
             stripType.Add(new Strip("Обычная"));
+			stripType.Add(new Strip("Рельсы"));
             fuelType.Add(new Fuel("Бензин"));
             //fuel = new Fuel("Бензин");
             //strip = strip[0];
@@ -218,6 +220,7 @@ namespace Road111
             fuelType.Add(new Fuel("Дизель"));
             stripType.Add(new Strip("Электро"));
             stripType.Add(new Strip("Обычная"));
+			stripType.Add(new Strip("Рельсы"));
             //fuel = new Fuel("Бензин");
             //strip = strip[0];
             maxSpeed = 180.0;
@@ -280,6 +283,7 @@ namespace Road111
             fuelType.Add(new Fuel("Дизель"));
             stripType.Add(new Strip("Электро"));
             stripType.Add(new Strip("Обычная"));
+			stripType.Add(new Strip("Рельсы"));
             //fuel = new Fuel("Бензин");
             //strip = strip[0];
             maxSpeed = 90.0;
@@ -347,6 +351,7 @@ namespace Road111
             fuelType.Add(new Fuel("Электричество"));
             stripType.Add(new Strip("Электро"));
             stripType.Add(new Strip("Обычная"));
+			stripType.Add(new Strip("Рельсы"));
             //fuel = new Fuel("Бензин");
             //strip = strip[0];
             maxSpeed = 150.0;
@@ -512,6 +517,9 @@ namespace Road111
         {
             name = "Гужевая повозка";
             type = "Cargo";
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
+			stripType.Add(new Strip("Рельсы"));
             //stripType[] = { 1, 1, 1 };
             //fuel = new Fuel("Бензин");
             //strip = strip[0];
