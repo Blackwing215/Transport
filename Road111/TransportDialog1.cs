@@ -66,59 +66,64 @@ namespace Road111
             }
             if(car_rad.Active)
             {
-                MainClass.getSystem().getTransportList().Insert(road, new Car());
+                MainClass.getSystem().getTransportList().Insert(road, new Car(spinbutton3.Value,spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text));
                 transport = MainClass.getSystem().getTransportList()[road];
             }
             if (truck_rad.Active)
             {
-                
-                MainClass.getSystem().getTransportList().Insert(road,new Truck());
+                MainClass.getSystem().getTransportList().Insert(road, new Truck(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text, spinbutton5.Value));
                 transport = MainClass.getSystem().getTransportList()[road];
             }
             if (loader_rad.Active)
             {
-                
-                MainClass.getSystem().getTransportList().Insert(road, new Loader());
+                MainClass.getSystem().getTransportList().Insert(road, new Loader(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text, spinbutton5.Value));
                 transport = MainClass.getSystem().getTransportList()[road];
 
             }
             if (bus_rad.Active)
             {
-                
-                MainClass.getSystem().getTransportList().Insert(road, new Bus());
+                MainClass.getSystem().getTransportList().Insert(road, new Bus(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text));
                 transport = MainClass.getSystem().getTransportList()[road];
 
             }
             if (troll_rad.Active)
             {
-              
-                MainClass.getSystem().getTransportList().Insert(road, new Trolleybus());
+                MainClass.getSystem().getTransportList().Insert(road, new Trolleybus(spinbutton3.Value, spinbutton4.Value, spinbutton6.ValueAsInt, entry1.Text));
                 transport = MainClass.getSystem().getTransportList()[road];
 
             }
             if (moto_rad.Active)
             {
-                MainClass.getSystem().getTransportList().Insert(road, new Moto());
+                MainClass.getSystem().getTransportList().Insert(road, new Moto(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text));
                 transport = MainClass.getSystem().getTransportList()[road];
 
             }
             if (horse_rad.Active)
             {
-                MainClass.getSystem().getTransportList().Insert(road, new Horse());
+                MainClass.getSystem().getTransportList().Insert(road, new Horse(spinbutton3.Value, spinbutton4.Value, entry1.Text, spinbutton5.Value));
                 transport = MainClass.getSystem().getTransportList()[road];
             }
-            if(tram_rad.Active)
+            if (tram_rad.Active)
             {
-                MainClass.getSystem().getTransportList().Insert(road, new Tram());
+                MainClass.getSystem().getTransportList().Insert(road, new Tram(spinbutton3.Value, spinbutton4.Value, spinbutton6.ValueAsInt, entry1.Text));
                 transport = MainClass.getSystem().getTransportList()[road];
             }
+            if(!horse_rad.Active)
             checkStrip();
+            else
+            {
+                fOk = true;
+                tOk = true;
+            }
             if (fOk && tOk)
             {
                 MainClass.getWin().addTsN();
-                MainClass.getWin().setFuelLabel(fuel.GetFuel(), road);
                 MainClass.getSystem().getTransportList()[road].Fuel = fuel;
-                MainClass.getWin().setTsLabel(transport.Name, road, transport.MaxSpeed);
+                MainClass.getSystem().getTransportList()[road].Strip = strip;
+                if(!horse_rad.Active)
+                MainClass.getWin().setTsLabel(transport, fuel, road, transport.MaxSpeed);
+                else
+                    MainClass.getWin().setTsLabel(transport, new Fuel("-"), road, transport.MaxSpeed);
                 MainClass.getWin().QueueDraw();
                 this.QueueDraw();
                 this.Destroy();
@@ -154,6 +159,98 @@ namespace Road111
                     fOk = true;//совместимость топлила транспорта и топлива
                 }
             }
+        }
+
+        protected void OnBikeRadClicked(object sender, EventArgs e)
+        {
+            spinbutton1.Sensitive = false;
+            spinbutton2.Sensitive = false;
+            spinbutton5.Sensitive = false;
+            spinbutton6.Sensitive = false;
+            QueueDraw();
+        }
+
+        protected void OnCarRadClicked(object sender, EventArgs e)
+        {
+            spinbutton1.Sensitive = true;
+            spinbutton2.Sensitive = true;
+            spinbutton6.Sensitive = true;
+            spinbutton5.Sensitive = false;
+            QueueDraw();
+        }
+        protected void OnHorseRadClicked(object sender, EventArgs e)
+        {
+            spinbutton1.Sensitive = false;
+            spinbutton2.Sensitive = false;
+            spinbutton6.Sensitive = false;
+            QueueDraw();
+        }
+
+        protected void OnRadiobutton19Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void OnRadiobutton21Clicked(object sender, EventArgs e)
+        {
+        }
+
+        protected void OnTrollRadClicked(object sender, EventArgs e)
+        {
+            spinbutton1.Sensitive = false;
+            spinbutton2.Sensitive = false;
+            spinbutton5.Sensitive = false;
+            spinbutton6.Sensitive = true;
+
+            QueueDraw();
+        }
+
+        protected void OnBusRadClicked(object sender, EventArgs e)
+        {
+ 
+            spinbutton1.Sensitive = true;
+            spinbutton2.Sensitive = true;
+            spinbutton5.Sensitive = false;
+            spinbutton6.Sensitive = true;
+
+            QueueDraw();
+        }
+
+        protected void OnLoaderRadClicked(object sender, EventArgs e)
+        {
+            spinbutton1.Sensitive = true;
+            spinbutton2.Sensitive = true;
+            spinbutton5.Sensitive = true;
+            spinbutton6.Sensitive = false;
+            QueueDraw();
+        }
+
+        protected void OnTruckRadClicked(object sender, EventArgs e)
+        {
+            spinbutton1.Sensitive = true;
+            spinbutton2.Sensitive = true;
+            spinbutton5.Sensitive = true;
+            spinbutton6.Sensitive = false;
+            QueueDraw();
+        }
+
+        protected void OnTramRadClicked(object sender, EventArgs e)
+        {
+
+            spinbutton1.Sensitive = false;
+            spinbutton2.Sensitive = false;
+            spinbutton5.Sensitive = false;
+            spinbutton6.Sensitive = true;
+
+        }
+
+        protected void OnMotoRadClicked(object sender, EventArgs e)
+        {
+            spinbutton1.Sensitive = true;
+            spinbutton2.Sensitive = true;
+            spinbutton6.Sensitive = false;
+            spinbutton5.Sensitive = false;
+            QueueDraw();
         }
     }
 }

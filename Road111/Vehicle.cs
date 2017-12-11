@@ -6,11 +6,12 @@ namespace Road111
     {
         protected String type;
         protected String name;
+        protected String brand;
         protected  Fuel fuel;
         protected List<Fuel> fuelType = new List<Fuel>();
         protected  List<Strip> stripType = new List<Strip>();
         //protected bool[3] stripType;
-        //protected Strip strip;
+        protected Strip strip;
         protected double maxSpeed;
         protected double speed;
         protected double distance;
@@ -23,6 +24,11 @@ namespace Road111
         {
             get { return type; }
             set { type = value; }
+        }
+        public String Brand
+        {
+            get { return brand; }
+            set { brand = value; }
         }
         public  Fuel Fuel
         {
@@ -57,17 +63,22 @@ namespace Road111
             get { return name; }
             set { name = value; }
         }
+        public Strip Strip
+        {
+            get { return strip; }
+            set { strip = value; }
+        }
 
     }
 
     public class Car : Vehicle
     {
         //String type = "Passenger";
-        double amountFuel;
-        String brand;
         int nWheels;
         double maxDist;
-
+        double amoutFuel;
+        double rashodF;
+        int passengers;
         //---------------------------Constructors---------------------------------------
         public Car()
         {
@@ -80,28 +91,61 @@ namespace Road111
             fuelType.Add(new Fuel("Электричество"));
             fuelType.Add(new Fuel("Газ"));
             fuel = new Fuel("Бензин");
-            //strip = strip[0];
             maxSpeed = 180.0;
             speed = 0.0;
-            amountFuel = 0.0;
+            amoutFuel = 0.0;
             distance = 0.0;
             brand = "Ford";
             nWheels = 4;
             maxDist = 800;
         }
+        public Car(double maxSp, double sp,double amFuel,double rashod,int pass,String _brand )
+        {
+            name = "Автомобиль";
+            type = "Passenger";
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
+            fuelType.Add(new Fuel("Бензин"));
+            fuelType.Add(new Fuel("Дизель"));
+            fuelType.Add(new Fuel("Электричество"));
+            fuelType.Add(new Fuel("Газ"));
+            fuel = new Fuel("Бензин");
+            maxSpeed = maxSp;
+            speed = sp;
+            amoutFuel = amFuel;
+            rashodF = rashod;
+            distance = 0.0;
+            brand = _brand;
+            nWheels = 4;
+            passengers = pass;
+            maxDist = amoutFuel * 100 / rashodF;
+        }
        
         //---------------------------Get/Set--------------------------------------------
-        public double AmountOfFuel { get { return amountFuel; } }
-        public String Brand { get { return brand; } }
         public int N_Wheels { get { return nWheels; } }
         public double Dist { get { return maxDist; } }
+        public int Pass
+        {
+            get { return passengers; }
+            set { passengers = value; }  
+        }
+        public double amFuel
+        {
+            get { return amoutFuel; }
+            set { amoutFuel = value; }
+        }
+        public double rasF
+        {
+            get { return rashodF; }
+            set { rashodF = value; }
+        }
     }
 
     public class Moto : Vehicle
     {
         //String type = "Passenger";
-        double amountFuel;
-        String brand;
+        double amoutFuel;
+        double rashodF;
         int nWheels;
         double maxDist;
 
@@ -117,15 +161,41 @@ namespace Road111
             //strip = strip[0];
             maxSpeed = 250.0;
             speed = 0.0;
-            amountFuel = 0.0;
+            amoutFuel = 0.0;
             distance = 0.0;
             brand = "Kawasaki";
             nWheels = 2;
             maxDist = 500;
         }
+        public Moto(double maxSp, double sp, double amFuel, double rashod, String _brand)
+        {
+            name = "Мотоцикл";
+            type = "Passenger";
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
+            fuelType.Add(new Fuel("Бензин"));
+            //fuel = new Fuel("Бензин");
+            //strip = strip[0];
+            maxSpeed = maxSp;
+            speed = sp;
+            amoutFuel = amFuel;
+            rashodF = rashod;
+            distance = amoutFuel * 100 / rashodF;;
+            brand = _brand;
+            nWheels = 2;
+            maxDist = amoutFuel * 100 / rashodF;
+        }
+        public double amFuel
+        {
+            get { return amoutFuel; }
+            set { amoutFuel = value; }
+        }
+        public double rasF
+        {
+            get { return rashodF; }
+            set { rashodF = value; }
+        }
         //---------------------------Get/Set--------------------------------------------
-        public double AmountOfFuel { get { return amountFuel; } }
-        public String Brand { get { return brand; } }
         public int N_Wheels { get { return nWheels; } }
         public double Dist { get { return maxDist; } }
     }
@@ -133,11 +203,11 @@ namespace Road111
     public class Truck : Vehicle
     {
         //String type = "Cargo";
-        double amountFuel;
-        String brand;
         int nWheels;
         double maxDist;
         double carrying;
+        double amoutFuel;
+        double rashodF;
 
         //---------------------------Constructors---------------------------------------
         public Truck()
@@ -152,15 +222,42 @@ namespace Road111
             //strip = strip[0];
             maxSpeed = 180.0;
             speed = 0.0;
-            amountFuel = 0.0;
+            amoutFuel = 0.0;
             distance = 0.0;
             brand = "MAN";
             nWheels = 6;
             maxDist = 1000;
         }
+        public Truck(double maxSp, double sp, double amFuel, double rashod, String _brand,double carr)
+        {
+            name = "Грузовик";
+            type = "Cargo";
+            fuelType.Add(new Fuel("Бензин"));
+            fuelType.Add(new Fuel("Дизель"));
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
+            //fuel = new Fuel("Бензин");
+            //strip = strip[0];
+            maxSpeed = maxSp;
+            speed = sp;
+            amoutFuel = amFuel;
+            distance = rashod;
+            brand = _brand;
+            nWheels = 6;
+            maxDist = amoutFuel * 100 / rashodF;
+            carrying = carr;
+        }
         //---------------------------Get/Set--------------------------------------------
-        public double AmountOfFuel { get { return amountFuel; } }
-        public String Brand { get { return brand; } }
+        public double amFuel
+        {
+            get { return amoutFuel; }
+            set { amoutFuel = value; }
+        }
+        public double rasF
+        {
+            get { return rashodF; }
+            set { rashodF = value; }
+        }
         public int N_Wheels { get { return nWheels; } }
         public double Dist { get { return maxDist; } }
         public double Carrying { get { return carrying; } }
@@ -169,12 +266,11 @@ namespace Road111
     public class Loader : Vehicle
     {
         //String type = "Cargo";
-        double amountFuel;
-        String brand;
+        double amoutFuel;
+        double rashodF;
         int nWheels;
         double maxDist;
         double carrying;
-
         //---------------------------Constructors---------------------------------------
         public Loader()
         {
@@ -188,29 +284,58 @@ namespace Road111
             //strip = strip[0];
             maxSpeed = 90.0;
             speed = 0.0;
-            amountFuel = 0.0;
+            amoutFuel = 0.0;
             distance = 0.0;
             brand = "CAT";
             nWheels = 4;
             maxDist = 200;
         }
+        public Loader(double maxSp, double sp, double amFuel, double rashod, String _brand, double carr)
+        {
+            name = "Погрузчик";
+            type = "Cargo";
+            fuelType.Add(new Fuel("Бензин"));
+            fuelType.Add(new Fuel("Дизель"));
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
+            //fuel = new Fuel("Бензин");
+            //strip = strip[0];
+            maxSpeed = maxSp;
+            speed = sp;
+            amoutFuel = amFuel;
+            rashodF = rashod;
+            distance = 0.0;
+            brand = _brand;
+            nWheels = 4;
+            maxDist = amoutFuel * 100 / rashodF;
+            carrying = carr;
+        }
         //---------------------------Get/Set--------------------------------------------
-        public double AmountOfFuel { get { return amountFuel; } }
-        public String Brand { get { return brand; } }
+        public double amFuel
+        {
+            get { return amoutFuel; }
+            set { amoutFuel = value; }
+        }
+        public double rasF
+        {
+            get { return rashodF; }
+            set { rashodF = value; }
+        }
         public int N_Wheels { get { return nWheels; } }
-        public double Dist { get { return maxDist; } }
+        public double Dist
+        { get { return maxDist; } }
         public double Carrying { get { return carrying; } }
     }
 
     public class Bus : Vehicle
     {
-        //String type = "Public";
-        double amountFuel;
-        String brand;
+        //String type = "Public"
         int nWheels;
         double maxDist;
         int passengers;
         int maxPassengers;
+        double amoutFuel;
+        double rashodF;
 
         //---------------------------Constructors---------------------------------------
         public Bus()
@@ -226,7 +351,7 @@ namespace Road111
             //strip = strip[0];
             maxSpeed = 150.0;
             speed = 0.0;
-            amountFuel = 0.0;
+            amoutFuel = 0.0;
             distance = 0.0;
             brand = "MAZ";
             nWheels = 6;
@@ -234,12 +359,42 @@ namespace Road111
             passengers = 0;
             maxPassengers = 50;
         }
+        public Bus(double maxSp, double sp, double amFuel, double rashod, int pass,String _brand)
+        {
+            name = "Автобус";
+            type = "Public";
+            fuelType.Add(new Fuel("Бензин"));
+            fuelType.Add(new Fuel("Дизель"));
+            fuelType.Add(new Fuel("Электричество"));
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
+            //fuel = new Fuel("Бензин");
+            //strip = strip[0];
+            maxSpeed = maxSp;
+            speed = sp;
+            amoutFuel = amFuel;
+            rashodF = rashod;
+            distance = 0.0;
+            brand = _brand;
+            nWheels = 6;
+            maxDist = amoutFuel * 100 / rashodF;
+            passengers = pass;
+            maxPassengers = 50;
+        }
         //---------------------------Get/Set--------------------------------------------
-        public double AmountOfFuel { get { return amountFuel; } }
-        public String Brand { get { return brand; } }
+        public double amFuel
+        {
+            get { return amoutFuel; }
+            set { amoutFuel = value; }
+        }
+        public double rasF
+        {
+            get { return rashodF; }
+            set { rashodF = value; }
+        }
         public int N_Wheels { get { return nWheels; } }
         public double Dist { get { return maxDist; } }
-        public int Passengers
+        public int Pass
         {
             get { return passengers; }
             set { passengers = value; }
@@ -250,7 +405,6 @@ namespace Road111
     public class Trolleybus : Vehicle
     {
         //String type = "Public";
-        String brand;
         int nWheels;
         int passengers;
         int maxPassengers;
@@ -273,10 +427,26 @@ namespace Road111
             passengers = 0;
             maxPassengers = 50;
         }
+        public Trolleybus(double maxSp, double sp, int pass, String _brand)
+        {
+            name = "Троллейбус";
+            type = "Public";
+            fuelType.Add(new Fuel("Электричество"));
+            stripType.Add(new Strip("Электро"));
+            //stripType[] = { 1, 1, 1 };
+            //fuel = new Fuel("Бензин");
+            //strip = strip[0];
+            maxSpeed = maxSp;
+            speed = sp;
+            distance = 0.0;
+            brand = _brand;
+            nWheels = 6;
+            passengers = pass;
+            maxPassengers = 50;
+        }
         //---------------------------Get/Set--------------------------------------------
-        public String Brand { get { return brand; } }
         public int N_Wheels { get { return nWheels; } }
-        public int Passengers
+        public int Pass
         {
             get { return passengers; }
             set { passengers = value; }
@@ -287,7 +457,6 @@ namespace Road111
     public class Tram : Vehicle
     {
         //String type = "Public";
-        String brand;
         int nWheels;
         int passengers;
         int maxPassengers;
@@ -307,10 +476,24 @@ namespace Road111
             brand = "MAZ";
             nWheels = 8;
         }
+        public Tram(double maxSp, double sp, int pass, String _brand)
+        {
+            name = "Трамвай";
+            type = "Public";
+            stripType.Add(new Strip("Рельсы"));
+            fuelType.Add(new Fuel("Электричество"));
+            //fuel = new Fuel("Бензин");
+            //strip = strip[0];
+            maxSpeed = maxSp;
+            speed = sp;
+            distance = 0.0;
+            brand = _brand;
+            nWheels = 8;
+            passengers = pass;
+        }
         //---------------------------Get/Set--------------------------------------------
-        public String Brand { get { return brand; } }
         public int N_Wheels { get { return nWheels; } }
-        public int Passengers
+        public int Pass
         {
             get { return passengers; }
             set { passengers = value; }
@@ -336,6 +519,20 @@ namespace Road111
             speed = 0.0;
             distance = 0.0;
             nWheels = 6;
+        }
+        public Horse(double maxSp, double sp, String _brand, double carr)
+        {
+            name = "Гужевая повозка";
+            type = "Cargo";
+            //stripType[] = { 1, 1, 1 };
+            //fuel = new Fuel("Бензин");
+            //strip = strip[0];
+            maxSpeed = maxSp;
+            speed = sp;
+            distance = 0.0;
+            nWheels = 6;
+            carrying = carr;
+            brand =_brand;
         }
         //---------------------------Get/Set--------------------------------------------
         public int N_Wheels { get { return nWheels; } }

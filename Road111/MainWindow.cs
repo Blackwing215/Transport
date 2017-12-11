@@ -18,61 +18,44 @@ using System.Threading;
             Build();
 
         }
-        public void setTsLabel(String _name, int Road, double Speed)
+    public void setTsLabel(Road111.Vehicle transport, Road111.Fuel fuel, int Road, double Speed)
         {
             switch (Road)
             {
                 case 0:
-                    label31.Text = _name;
+                label31.Text = transport.Name;
                     label37.Text = Convert.ToString(Speed);
+                label26.Text = fuel.GetFuel();
                 info_but1.Sensitive = true;
                     break;
                 case 1:
-                    label32.Text = _name;
+                label32.Text = transport.Name;
                     label36.Text = Convert.ToString(Speed);
+                label27.Text = fuel.GetFuel();
                 info_but2.Sensitive = true;
                     break;
                 case 2:
-                    label33.Text = _name;
+                label33.Text = transport.Name;
                     label38.Text = Convert.ToString(Speed);
+                label28.Text = fuel.GetFuel();
                 info_but3.Sensitive = true;
                     break;
                 case 3:
-                    label34.Text = _name;
+                label34.Text = transport.Name;
                     label39.Text = Convert.ToString(Speed);
+                label29.Text = fuel.GetFuel();
                 info_but4.Sensitive = true;
                     break;
                 case 4:
-                    label35.Text = _name;
+                label35.Text = transport.Name;
                     label40.Text = Convert.ToString(Speed);
+                label30.Text = fuel.GetFuel();
                 info_but5.Sensitive = true;
                     break;
             }
             QueueDraw();
         }
 
-        public void setFuelLabel(String _name, int Road)
-        {
-            switch (Road)
-            {
-                case 0:
-                    label26.Text = _name;
-                    break;
-                case 1:
-                    label27.Text = _name;
-                    break;
-                case 2:
-                    label28.Text = _name;
-                    break;
-                case 3:
-                    label29.Text = _name;
-                    break;
-                case 4:
-                    label30.Text = _name;
-                    break;
-            }
-            QueueDraw();
-        }
         protected void OnDeleteEvent(object sender, DeleteEventArgs a)
         {
             Application.Quit();
@@ -206,7 +189,7 @@ using System.Threading;
             if (info2 == null)
             {
             info2 = new Road111.PropertiWindow("Полоса №2");
-            info1.setParametrs(Road111.MainClass.getSystem().getTransportList()[1]);
+            info2.setParametrs(Road111.MainClass.getSystem().getTransportList()[1]);
                 info2.Show();
             }
             else
@@ -219,8 +202,8 @@ using System.Threading;
         {
             if (info3 == null)
             {
-            info3 = new Road111.PropertiWindow("ТПолоса №3");
-            info1.setParametrs(Road111.MainClass.getSystem().getTransportList()[2]);
+            info3 = new Road111.PropertiWindow("Полоса №3");
+            info3.setParametrs(Road111.MainClass.getSystem().getTransportList()[2]);
                 info3.Show();
             }
             else
@@ -234,7 +217,7 @@ using System.Threading;
             if (info4 == null)
             {
             info4 = new Road111.PropertiWindow("Полоса №4");
-            info1.setParametrs(Road111.MainClass.getSystem().getTransportList()[3]);
+            info4.setParametrs(Road111.MainClass.getSystem().getTransportList()[3]);
                 info4.Show();
             }
             else
@@ -248,7 +231,7 @@ using System.Threading;
             if (info5 == null)
             {
             info5 = new Road111.PropertiWindow("Полоса №5");
-            info1.setParametrs(Road111.MainClass.getSystem().getTransportList()[4]);
+            info5.setParametrs(Road111.MainClass.getSystem().getTransportList()[4]);
                 info5.Show();
             }
             else
@@ -256,4 +239,8 @@ using System.Threading;
                 info5.Show();
             }
         }
+    public void destroyP(int Road)
+    {
+ 
+    }
     }
