@@ -10,7 +10,6 @@ namespace Road111
         protected  Fuel fuel;
         protected List<Fuel> fuelType = new List<Fuel>();
         protected  List<Strip> stripType = new List<Strip>();
-        //protected bool[3] stripType;
         protected Strip strip;
         protected double maxSpeed;
         protected double speed;
@@ -519,10 +518,6 @@ namespace Road111
             type = "Cargo";
             stripType.Add(new Strip("Электро"));
             stripType.Add(new Strip("Обычная"));
-			stripType.Add(new Strip("Рельсы"));
-            //stripType[] = { 1, 1, 1 };
-            //fuel = new Fuel("Бензин");
-            //strip = strip[0];
             maxSpeed = 150.0;
             speed = 0.0;
             distance = 0.0;
@@ -532,9 +527,8 @@ namespace Road111
         {
             name = "Гужевая повозка";
             type = "Cargo";
-            //stripType[] = { 1, 1, 1 };
-            //fuel = new Fuel("Бензин");
-            //strip = strip[0];
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
             maxSpeed = maxSp;
             speed = sp;
             distance = 0.0;
@@ -546,5 +540,84 @@ namespace Road111
         public int N_Wheels { get { return nWheels; } }
         public double Carrying { get { return carrying; } }
     }
+    public class Bicycle: Vehicle
+    {
+        public Bicycle()
+        {
+            name = "Велосипед";
+            type = "Passenger";
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
+            maxSpeed = 50.0;
+
+        }
+        public Bicycle(double maxSp, double sp, String _brand)
+        {
+            name = "Велосипед";
+            type = "Passenger";
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
+            brand = _brand;
+            maxSpeed = maxSp;
+            speed = sp;
+        }
+    }
+    public class Kscooter: Vehicle
+    {
+        public Kscooter()
+        {
+            name = "Самокат";
+            type = "Passenger";
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
+            maxSpeed = 50.0;
+        }
+        public Kscooter(double maxSp, double sp, String _brand)
+        {
+            name = "Самокат";
+            type = "Passenger";
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
+            brand = _brand;
+            maxSpeed = maxSp;
+            speed = sp;
+        }
+    }
+    public class Panzer: Vehicle
+    {
+        double amoutFuel;
+        double rashodF;
+        double maxDist;
+        public Panzer(double maxSp, double sp, double amFuel, double rashod, int pass, String _brand)
+        {
+            name = "Танк";
+            type = "Passenger";
+            fuelType.Add(new Fuel("Бензин"));
+            fuelType.Add(new Fuel("Дизель"));
+            stripType.Add(new Strip("Электро"));
+            stripType.Add(new Strip("Обычная"));
+            maxSpeed = maxSp;
+            speed = sp;
+            amoutFuel = amFuel;
+            rashodF = rashod;
+            distance = 0.0;
+            brand = _brand;
+            maxDist = amoutFuel * 100 / rashodF;
+        }
+        public double Dist { get { return maxDist; } }
+        public double amFuel
+        {
+            get { return amoutFuel; }
+            set { amoutFuel = value; }
+        }
+        public double rasF
+        {
+            get { return rashodF; }
+            set { rashodF = value; }
+        }
+
+        
+    }
+
 
 }

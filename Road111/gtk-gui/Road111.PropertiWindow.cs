@@ -356,13 +356,8 @@ namespace Road111
 			{
 				this.Child.ShowAll();
 			}
-<<<<<<< HEAD
 			this.DefaultWidth = 442;
 			this.DefaultHeight = 472;
-=======
-			this.DefaultWidth = 421;
-			this.DefaultHeight = 436;
->>>>>>> f5c2046ca6ddb148bd5ddd8acdb6c06c117e9355
 			this.Show();
 			this.button266.Clicked += new global::System.EventHandler(this.OnButton266Clicked);
 		}

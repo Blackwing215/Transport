@@ -116,10 +116,56 @@ namespace Road111
                     this.label6.Text = horse.Name;
                     this.label14.Text = horse.Type;
                     this.label15.Text = "-";
+                    this.label16.Text = "-";
+                    this.label24.Text = "-";
                     this.label17.Text = Convert.ToString(horse.MaxSpeed);
                     this.label22.Text = Convert.ToString(horse.Speed);
                     this.label19.Text = Convert.ToString(horse.Carrying);
+                    this.label26.Text = Convert.ToString(500);
+                    this.label20.Text = "-";
                     this.label18.Text = horse.Brand;
+                    break;
+                case "Велосипед":
+                    Bicycle bike = (Bicycle)ts;
+                    this.label6.Text = bike.Name;
+                    this.label14.Text = bike.Type;
+                    this.label15.Text = "-";
+                    this.label16.Text = "-";
+                    this.label24.Text = "-";
+                    this.label26.Text = Convert.ToString(500);
+                    this.label17.Text = Convert.ToString(bike.MaxSpeed);
+                    this.label22.Text = Convert.ToString(bike.Speed);
+                    this.label19.Text = "-";
+                    this.label20.Text = "-";
+                    this.label18.Text = bike.Brand;
+                    break;
+                case "Самокат":
+                    Kscooter scooter = (Kscooter)ts;
+                    this.label6.Text = scooter.Name;
+                    this.label14.Text = scooter.Type;
+                    this.label15.Text = "-";
+                    this.label16.Text = "-";
+                    this.label24.Text = "-";
+                    this.label26.Text = Convert.ToString(500);
+                    this.label17.Text = Convert.ToString(scooter.MaxSpeed);
+                    this.label22.Text = Convert.ToString(scooter.Speed);
+                    this.label19.Text = "-";
+                    this.label20.Text = "-";
+                    this.label18.Text = scooter.Brand;
+                    break;
+                case "Танк":
+                    Panzer panzer = (Panzer)ts;
+                    this.label6.Text = panzer .Name;
+                    this.label14.Text = panzer.Type;
+                    this.label15.Text = panzer.Fuel.GetFuel();
+                    this.label16.Text = Convert.ToString(panzer.amFuel);
+                    this.label24.Text = Convert.ToString(panzer.rasF);
+                    this.label17.Text = Convert.ToString(panzer.MaxSpeed);
+                    this.label22.Text = Convert.ToString(panzer.Speed);
+                    this.label19.Text = Convert.ToString("-");
+                    this.label18.Text = panzer.Brand;
+                    this.label26.Text = Convert.ToString(panzer.Dist);
+                    this.label20.Text = "-";
                     break;
             }
 
