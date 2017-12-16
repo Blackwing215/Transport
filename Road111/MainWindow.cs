@@ -15,7 +15,7 @@ public partial class MainWindow : Gtk.Window
     public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window       
 
 	protected int i = 0, j = 0;
-	private bool timer = true;
+	private bool timer = false;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
@@ -234,18 +234,26 @@ public partial class MainWindow : Gtk.Window
 
 	protected void ToggleProgress(object sender, EventArgs e)		//Start/Stop button action
 	{
-		GLib.Timeout.Add(500, new GLib.TimeoutHandler(OnTimer));
+		timer = !timer;
+		GLib.Timeout.Add(50, new GLib.TimeoutHandler(OnTimer));
 	}
 
 	bool OnTimer()													//timer for roads animation
 	{
 		if (!timer) return false;
-		j += 2;
+		if (j >= drawingarea1.Allocation.Width - drawingarea1.Allocation.Height / 2)
+		{
+			j = 0; return false;
+		}
+		/*
 		drawingarea1.QueueDraw();
 		drawingarea2.QueueDraw();
 		drawingarea3.QueueDraw();
 		drawingarea4.QueueDraw();
 		drawingarea5.QueueDraw();
+		*/
+		QueueDraw();
+		j += 5;
 		return true;
 	}
 
@@ -279,7 +287,7 @@ public partial class MainWindow : Gtk.Window
 		DrawingArea area = (DrawingArea)o;
 		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
 
-		cr.SetSourceRGB(0.2, 0.2, 0.2);
+		cr.SetSourceRGB(0.3, 0.3, 0.3);
 		cr.Paint();
 
 		cr.LineWidth = 9;
