@@ -1,5 +1,7 @@
 ﻿using System;
 using Gtk;
+using Gdk;
+using Cairo;
 using System.Collections.Generic;
 using System.Threading;
 public partial class MainWindow : Gtk.Window
@@ -11,10 +13,14 @@ public partial class MainWindow : Gtk.Window
     public bool startLabel = true;
     public static Road111.FuelList fuelDialog;//fuel dialog window
     public static Road111.TransportDialog1 tsDialog;//add transport dialog window
-    public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window                                                                       
+    public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window       
+
+	protected int da1_x, da1_y, i = 0;
+	protected Gdk.GC gc;
+	protected Cairo.Context cr;
+
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
-
         Build();
 
     }
@@ -152,13 +158,13 @@ public partial class MainWindow : Gtk.Window
     {
         for (int i = 0; i < 100; i++)
         {
-            progressbar1.Pulse();
+            //progressbar1.Pulse();
             progressbar2.Pulse();
             progressbar3.Pulse();
             progressbar4.Pulse();
             progressbar5.Pulse();
-            QueueDraw();
-            Thread.Sleep(100);
+            drawingarea1.QueueDraw();
+            Thread.Sleep(500);
         }
     }
     public void addTsN()
@@ -243,4 +249,41 @@ public partial class MainWindow : Gtk.Window
     {
         Road111.MainClass.getSystem().writeJ();
     }
+
+	protected void OnDrawingarea1ExposeEvent(object o, ExposeEventArgs args)
+	{
+		/*
+		gc = new Gdk.GC((Drawable)base.GdkWindow);
+		gc.RgbFgColor = new Gdk.Color(255, 50, 50);
+		gc.RgbBgColor = new Gdk.Color(200, 200, 200);
+		gc.SetLineAttributes(3, LineStyle.OnOffDash,
+	  							CapStyle.Projecting, JoinStyle.Round);
+		drawingarea1.GetSizeRequest(out da1_x, out da1_y);
+
+		Rectangle r = new Rectangle(i, 10, da1_x / 20, da1_y / 20);
+
+		drawingarea1.GdkWindow.DrawRectangle(gc, true, r);
+		*/
+
+
+		cr = Gdk.CairoHelper.Create(drawingarea1.GdkWindow);
+
+		cr.LineWidth = 9;
+		cr.SetSourceRGB(0.7, 0.2, 0.0);
+
+		int width, height;
+		width = drawingarea1.Allocation.Width;
+		height = drawingarea1.Allocation.Height;
+
+		double d = width < height ? width : height;
+
+		cr.Translate(d/2, height / 2);
+		cr.Arc(0, 0, d / 2 - 10, 0, 2 * Math.PI);
+		cr.StrokePreserve();
+
+		cr.SetSourceRGB(0.3, 0.4, 0.6);
+		cr.Fill();
+
+		QueueDraw();
+	}
 }
