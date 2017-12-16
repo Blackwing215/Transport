@@ -259,7 +259,7 @@ public partial class MainWindow : Gtk.Window
 	bool OnTimer()
 	{
 		if (!timer) return false;
-
+		j += 2;
 		drawingarea1.QueueDraw();
 		drawingarea2.QueueDraw();
 		drawingarea3.QueueDraw();
@@ -318,7 +318,7 @@ public partial class MainWindow : Gtk.Window
 		cr.Fill();
 
 		//if (timer) 
-			j += 5;
+			//j += 5;
 
 		//QueueDraw();
 	}
