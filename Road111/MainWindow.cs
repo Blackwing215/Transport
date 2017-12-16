@@ -1,5 +1,7 @@
 ﻿using System;
 using Gtk;
+using Gdk;
+using Cairo;
 using System.Collections.Generic;
 using System.Threading;
 public partial class MainWindow : Gtk.Window
@@ -11,7 +13,13 @@ public partial class MainWindow : Gtk.Window
     public bool startLabel = true;
     public static Road111.FuelList fuelDialog;//fuel dialog window
     public static Road111.TransportDialog1 tsDialog;//add transport dialog window
-    public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window                                                                       
+    public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window       
+
+	protected int da1_x, da1_y, i = 0, j = 0;
+	//protected Gdk.GC gc;
+	//protected Cairo.Context cr;
+	private bool timer = true;
+
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
 
@@ -78,8 +86,10 @@ public partial class MainWindow : Gtk.Window
 
     protected void ToggleProgress(object sender, EventArgs e)
     {
-        this.mt = new Thread(pulse);
-        this.mt.Start();
+		//this.mt = new Thread(pulse);
+		//this.mt.Start();
+		GLib.Timeout.Add(500, new GLib.TimeoutHandler(OnTimer));
+		//timer = !timer;
     }
     protected void OnAddFuelListActionActivated(object sender, EventArgs e)
     {
@@ -148,19 +158,21 @@ public partial class MainWindow : Gtk.Window
         tsDialog = new Road111.TransportDialog1(roadNumb, r5);
         tsDialog.Show();
     }
+	/*
     public void pulse()
     {
         for (int i = 0; i < 100; i++)
         {
-            progressbar1.Pulse();
+            //progressbar1.Pulse();
             progressbar2.Pulse();
             progressbar3.Pulse();
             progressbar4.Pulse();
             progressbar5.Pulse();
-            QueueDraw();
-            Thread.Sleep(100);
+            drawingarea1.QueueDraw();
+            Thread.Sleep(500);
         }
     }
+	*/
     public void addTsN()
     {
         amountTs++;
@@ -243,4 +255,68 @@ public partial class MainWindow : Gtk.Window
     {
         Road111.MainClass.getSystem().writeJ();
     }
+
+	bool OnTimer()
+	{
+		if (!timer) return false;
+
+		drawingarea1.QueueDraw();
+		drawingarea2.QueueDraw();
+		drawingarea3.QueueDraw();
+		drawingarea4.QueueDraw();
+		drawingarea5.QueueDraw();
+		return true;
+	}
+
+	protected void OnDrawingarea1ExposeEvent(object o, ExposeEventArgs args)
+	{
+		Drawing(o);
+	}
+
+	protected void OnDrawingarea2ExposeEvent(object o, ExposeEventArgs args)
+	{
+		Drawing(o);
+	}
+
+	protected void OnDrawingarea3ExposeEvent(object o, ExposeEventArgs args)
+	{
+		Drawing(o);
+	}
+
+	protected void OnDrawingarea4ExposeEvent(object o, ExposeEventArgs args)
+	{
+		Drawing(o);
+	}
+
+	protected void OnDrawingarea5ExposeEvent(object o, ExposeEventArgs args)
+	{
+		Drawing(o);
+	}
+
+	protected void Drawing(object o)
+	{
+		DrawingArea area = (DrawingArea)o;
+		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
+
+		cr.LineWidth = 9;
+		cr.SetSourceRGB(0.7, 0.2, 0.0);
+
+		int width, height;
+		width = drawingarea1.Allocation.Width;
+		height = drawingarea1.Allocation.Height;
+
+		double d = width < height ? width : height;
+
+		cr.Translate(d / 2, height / 2);
+		cr.Arc(j, 0, d / 2 - 10, 0, 2 * Math.PI);
+		cr.StrokePreserve();
+
+		cr.SetSourceRGB(0.3, 0.4, 0.6);
+		cr.Fill();
+
+		//if (timer) 
+			j += 5;
+
+		//QueueDraw();
+	}
 }

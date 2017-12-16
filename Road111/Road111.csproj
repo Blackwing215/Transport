@@ -56,6 +56,7 @@
     <Reference Include="Microsoft.Office.Interop.Excel">
       <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Cairo, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">

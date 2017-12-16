@@ -6,7 +6,7 @@ namespace Road111
 	{
 		private global::Gtk.VBox vbox2;
 
-		private global::Gtk.HSeparator hseparator1;
+		private global::Gtk.VSeparator vseparator1;
 
 		private global::Gtk.HBox hbox1;
 
@@ -18,7 +18,7 @@ namespace Road111
 
 		private global::Gtk.CheckButton gas_but;
 
-		private global::Gtk.HSeparator hseparator2;
+		private global::Gtk.VSeparator vseparator3;
 
 		private global::Gtk.Button buttonCancel;
 
@@ -30,7 +30,6 @@ namespace Road111
 			// Widget Road111.FuelList
 			this.Name = "Road111.FuelList";
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
-			this.Resizable = false;
 			// Internal child Road111.FuelList.VBox
 			global::Gtk.VBox w1 = this.VBox;
 			w1.Name = "dialog1_VBox";
@@ -40,18 +39,15 @@ namespace Road111
 			this.vbox2.Name = "vbox2";
 			this.vbox2.Spacing = 6;
 			// Container child vbox2.Gtk.Box+BoxChild
-			this.hseparator1 = new global::Gtk.HSeparator();
-			this.hseparator1.Name = "hseparator1";
-			this.vbox2.Add(this.hseparator1);
-			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hseparator1]));
+			this.vseparator1 = new global::Gtk.VSeparator();
+			this.vseparator1.Name = "vseparator1";
+			this.vbox2.Add(this.vseparator1);
+			global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.vseparator1]));
 			w2.Position = 0;
-			w2.Expand = false;
-			w2.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.hbox1 = new global::Gtk.HBox();
 			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
-			this.hbox1.BorderWidth = ((uint)(30));
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.benzin_but = new global::Gtk.CheckButton();
 			this.benzin_but.CanFocus = true;
@@ -98,18 +94,14 @@ namespace Road111
 			w7.Expand = false;
 			w7.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
-			this.hseparator2 = new global::Gtk.HSeparator();
-			this.hseparator2.Name = "hseparator2";
-			this.vbox2.Add(this.hseparator2);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hseparator2]));
+			this.vseparator3 = new global::Gtk.VSeparator();
+			this.vseparator3.Name = "vseparator3";
+			this.vbox2.Add(this.vseparator3);
+			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.vseparator3]));
 			w8.Position = 2;
-			w8.Expand = false;
-			w8.Fill = false;
 			w1.Add(this.vbox2);
 			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(w1[this.vbox2]));
 			w9.Position = 0;
-			w9.Expand = false;
-			w9.Fill = false;
 			// Internal child Road111.FuelList.ActionArea
 			global::Gtk.HButtonBox w10 = this.ActionArea;
 			w10.Name = "dialog1_ActionArea";
@@ -145,8 +137,8 @@ namespace Road111
 			{
 				this.Child.ShowAll();
 			}
-			this.DefaultWidth = 723;
-			this.DefaultHeight = 154;
+			this.DefaultWidth = 600;
+			this.DefaultHeight = 300;
 			this.Show();
 			this.buttonCancel.Clicked += new global::System.EventHandler(this.OnButtonCancelClicked);
 			this.buttonOk.Clicked += new global::System.EventHandler(this.OnButtonOkClicked);
