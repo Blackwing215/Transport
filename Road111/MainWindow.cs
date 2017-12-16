@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Threading;
 public partial class MainWindow : Gtk.Window
 {
-    public Thread mt;
     public String rname;//road name
     public int amountTs;//amount of transports
     private int roadNumb;// road number
@@ -15,9 +14,7 @@ public partial class MainWindow : Gtk.Window
     public static Road111.TransportDialog1 tsDialog;//add transport dialog window
     public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window       
 
-	protected int da1_x, da1_y, i = 0, j = 0;
-	//protected Gdk.GC gc;
-	//protected Cairo.Context cr;
+	protected int i = 0, j = 0;
 	private bool timer = true;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
@@ -84,13 +81,6 @@ public partial class MainWindow : Gtk.Window
         tsDialog.Show();
     }
 
-    protected void ToggleProgress(object sender, EventArgs e)
-    {
-		//this.mt = new Thread(pulse);
-		//this.mt.Start();
-		GLib.Timeout.Add(500, new GLib.TimeoutHandler(OnTimer));
-		//timer = !timer;
-    }
     protected void OnAddFuelListActionActivated(object sender, EventArgs e)
     {
         if (Road111.MainClass.getSystem().getFuelList().Count == 0)
@@ -158,21 +148,7 @@ public partial class MainWindow : Gtk.Window
         tsDialog = new Road111.TransportDialog1(roadNumb, r5);
         tsDialog.Show();
     }
-	/*
-    public void pulse()
-    {
-        for (int i = 0; i < 100; i++)
-        {
-            //progressbar1.Pulse();
-            progressbar2.Pulse();
-            progressbar3.Pulse();
-            progressbar4.Pulse();
-            progressbar5.Pulse();
-            drawingarea1.QueueDraw();
-            Thread.Sleep(500);
-        }
-    }
-	*/
+
     public void addTsN()
     {
         amountTs++;
@@ -256,7 +232,12 @@ public partial class MainWindow : Gtk.Window
         Road111.MainClass.getSystem().writeJ();
     }
 
-	bool OnTimer()
+	protected void ToggleProgress(object sender, EventArgs e)		//Start/Stop button action
+	{
+		GLib.Timeout.Add(500, new GLib.TimeoutHandler(OnTimer));
+	}
+
+	bool OnTimer()													//timer for roads animation
 	{
 		if (!timer) return false;
 		j += 2;
