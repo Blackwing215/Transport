@@ -298,6 +298,9 @@ public partial class MainWindow : Gtk.Window
 		DrawingArea area = (DrawingArea)o;
 		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
 
+		cr.SetSourceRGB(0.2, 0.2, 0.2);
+		cr.Paint();
+
 		cr.LineWidth = 9;
 		cr.SetSourceRGB(0.7, 0.2, 0.0);
 
