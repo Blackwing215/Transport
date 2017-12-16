@@ -15,12 +15,14 @@ public partial class MainWindow : Gtk.Window
     public static Road111.TransportDialog1 tsDialog;//add transport dialog window
     public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window       
 
-	protected int da1_x, da1_y, i = 0;
-	protected Gdk.GC gc;
-	protected Cairo.Context cr;
+	protected int da1_x, da1_y, i = 0, j = 0;
+	//protected Gdk.GC gc;
+	//protected Cairo.Context cr;
+	private bool timer = true;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
+
         Build();
 
     }
@@ -84,8 +86,10 @@ public partial class MainWindow : Gtk.Window
 
     protected void ToggleProgress(object sender, EventArgs e)
     {
-        this.mt = new Thread(pulse);
-        this.mt.Start();
+		//this.mt = new Thread(pulse);
+		//this.mt.Start();
+		GLib.Timeout.Add(500, new GLib.TimeoutHandler(OnTimer));
+		//timer = !timer;
     }
     protected void OnAddFuelListActionActivated(object sender, EventArgs e)
     {
@@ -154,6 +158,7 @@ public partial class MainWindow : Gtk.Window
         tsDialog = new Road111.TransportDialog1(roadNumb, r5);
         tsDialog.Show();
     }
+	/*
     public void pulse()
     {
         for (int i = 0; i < 100; i++)
@@ -167,6 +172,7 @@ public partial class MainWindow : Gtk.Window
             Thread.Sleep(500);
         }
     }
+	*/
     public void addTsN()
     {
         amountTs++;
@@ -250,23 +256,47 @@ public partial class MainWindow : Gtk.Window
         Road111.MainClass.getSystem().writeJ();
     }
 
+	bool OnTimer()
+	{
+		if (!timer) return false;
+
+		drawingarea1.QueueDraw();
+		drawingarea2.QueueDraw();
+		drawingarea3.QueueDraw();
+		drawingarea4.QueueDraw();
+		drawingarea5.QueueDraw();
+		return true;
+	}
+
 	protected void OnDrawingarea1ExposeEvent(object o, ExposeEventArgs args)
 	{
-		/*
-		gc = new Gdk.GC((Drawable)base.GdkWindow);
-		gc.RgbFgColor = new Gdk.Color(255, 50, 50);
-		gc.RgbBgColor = new Gdk.Color(200, 200, 200);
-		gc.SetLineAttributes(3, LineStyle.OnOffDash,
-	  							CapStyle.Projecting, JoinStyle.Round);
-		drawingarea1.GetSizeRequest(out da1_x, out da1_y);
+		Drawing(o);
+	}
 
-		Rectangle r = new Rectangle(i, 10, da1_x / 20, da1_y / 20);
+	protected void OnDrawingarea2ExposeEvent(object o, ExposeEventArgs args)
+	{
+		Drawing(o);
+	}
 
-		drawingarea1.GdkWindow.DrawRectangle(gc, true, r);
-		*/
+	protected void OnDrawingarea3ExposeEvent(object o, ExposeEventArgs args)
+	{
+		Drawing(o);
+	}
 
+	protected void OnDrawingarea4ExposeEvent(object o, ExposeEventArgs args)
+	{
+		Drawing(o);
+	}
 
-		cr = Gdk.CairoHelper.Create(drawingarea1.GdkWindow);
+	protected void OnDrawingarea5ExposeEvent(object o, ExposeEventArgs args)
+	{
+		Drawing(o);
+	}
+
+	protected void Drawing(object o)
+	{
+		DrawingArea area = (DrawingArea)o;
+		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
 
 		cr.LineWidth = 9;
 		cr.SetSourceRGB(0.7, 0.2, 0.0);
@@ -277,13 +307,16 @@ public partial class MainWindow : Gtk.Window
 
 		double d = width < height ? width : height;
 
-		cr.Translate(d/2, height / 2);
-		cr.Arc(0, 0, d / 2 - 10, 0, 2 * Math.PI);
+		cr.Translate(d / 2, height / 2);
+		cr.Arc(j, 0, d / 2 - 10, 0, 2 * Math.PI);
 		cr.StrokePreserve();
 
 		cr.SetSourceRGB(0.3, 0.4, 0.6);
 		cr.Fill();
 
-		QueueDraw();
+		//if (timer) 
+			j += 5;
+
+		//QueueDraw();
 	}
 }
