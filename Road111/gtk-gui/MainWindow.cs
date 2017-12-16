@@ -15,6 +15,8 @@ public partial class MainWindow
 
 	private global::Gtk.Action AddFuelListAction;
 
+	private global::Gtk.Action JournalAction;
+
 	private global::Gtk.VBox vbox1;
 
 	private global::Gtk.MenuBar menubar1;
@@ -284,6 +286,9 @@ public partial class MainWindow
 		this.AddFuelListAction = new global::Gtk.Action("AddFuelListAction", global::Mono.Unix.Catalog.GetString("AddFuelList"), null, null);
 		this.AddFuelListAction.ShortLabel = global::Mono.Unix.Catalog.GetString("AddFuelList");
 		w1.Add(this.AddFuelListAction, null);
+		this.JournalAction = new global::Gtk.Action("JournalAction", global::Mono.Unix.Catalog.GetString("Journal"), null, null);
+		this.JournalAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Journal");
+		w1.Add(this.JournalAction, null);
 		this.UIManager.InsertActionGroup(w1, 0);
 		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
@@ -294,7 +299,7 @@ public partial class MainWindow
 		this.vbox1.Name = "vbox1";
 		this.vbox1.Spacing = 6;
 		// Container child vbox1.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString(@"<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='SaveAction' action='SaveAction'/><menuitem name='SaveAsAction' action='SaveAsAction'/><menuitem name='OpenAction' action='OpenAction'/></menu><menu name='AddFuelListAction' action='AddFuelListAction'/></menubar></ui>");
+		this.UIManager.AddUiFromString(@"<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='SaveAction' action='SaveAction'/><menuitem name='SaveAsAction' action='SaveAsAction'/><menuitem name='OpenAction' action='OpenAction'/></menu><menu name='AddFuelListAction' action='AddFuelListAction'/><menu name='JournalAction' action='JournalAction'/></menubar></ui>");
 		this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menubar1")));
 		this.menubar1.Name = "menubar1";
 		this.vbox1.Add(this.menubar1);
@@ -1608,6 +1613,7 @@ public partial class MainWindow
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.AddFuelListAction.Activated += new global::System.EventHandler(this.OnAddFuelListActionActivated);
+		this.JournalAction.Activated += new global::System.EventHandler(this.OnJournalActionActivated);
 		this.start_stop.Clicked += new global::System.EventHandler(this.ToggleProgress);
 		this.info_but5.Clicked += new global::System.EventHandler(this.OnInfoBut5Clicked);
 		this.info_but4.Clicked += new global::System.EventHandler(this.OnInfoBut4Clicked);

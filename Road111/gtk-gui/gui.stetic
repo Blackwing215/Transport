@@ -34,6 +34,12 @@
         <property name="ShortLabel" translatable="yes">AddFuelList</property>
         <signal name="Activated" handler="OnAddFuelListActionActivated" />
       </action>
+      <action id="JournalAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Journal</property>
+        <property name="ShortLabel" translatable="yes">Journal</property>
+        <signal name="Activated" handler="OnJournalActionActivated" />
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
@@ -53,6 +59,7 @@
                 <node type="Menuitem" action="OpenAction" />
               </node>
               <node type="Menu" action="AddFuelListAction" />
+              <node type="Menu" action="JournalAction" />
             </node>
           </widget>
           <packing>
@@ -2110,6 +2117,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2182,6 +2190,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
