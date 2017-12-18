@@ -231,12 +231,12 @@ public partial class MainWindow : Gtk.Window
     }
     protected void OnJournalActionActivated(object sender, EventArgs e)
     {
-        for (int i = 0; i < Road111.MainClass.getSystem().getTransportList().Count;i++)
+        for (int i = 0; i < Road111.MainClass.getSystem().getTransportList().Count;i++)//пример записи в журнал
         {
             Road111.MainClass.getSystem().writeJ(i, Road111.MainClass.getSystem().getTransportList()[i]);
          
         }
-        Road111.MainClass.getSystem().ViewJournal();
+        Road111.MainClass.getSystem().ViewJournal();//просмотр журнала 
     }
     bool OnTimer()
     {

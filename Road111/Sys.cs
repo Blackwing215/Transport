@@ -39,7 +39,7 @@ namespace Road111
         {
             return listT;
         }
-        public void writeJ(int road,Vehicle veh)
+        public void writeJ(int road,Vehicle veh)//запись в журнал
         {
             //создание файла
             Workbook book = Workbook.Load(file);
