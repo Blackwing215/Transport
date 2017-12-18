@@ -47,3 +47,15 @@ C:/Users/Max/Documents/GitHub/Transport/Road111/obj/x86/Debug/Road111.pdb
 /Users/mike/Documents/GitHub/Transport/Road111/bin/Debug/FileHelpers.dll
 /Users/mike/Documents/GitHub/Transport/Road111/bin/Debug/FileHelpers.xml
 /Users/mike/Documents/GitHub/Transport/Road111/bin/Debug/Microsoft.Office.Interop.Excel.dll
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/obj/x86/Debug/Road111.csprojResolveAssemblyReference.cache
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/obj/x86/Debug/Road111.csproj.CoreCompileInputs.cache
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/obj/x86/Debug/Road111.exe
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/obj/x86/Debug/Road111.pdb
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/bin/Debug/Road111.exe
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/bin/Debug/Road111.pdb
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/bin/Debug/FileHelpers.dll
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/bin/Debug/Microsoft.Office.Interop.Excel.dll
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/bin/Debug/FileHelpers.xml
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/bin/Debug/Mono.CairoWarp.dll
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/bin/Debug/Mono.CSharp.dll
+/Users/mike/Documents/GitHub/Ts/Transport/Road111/bin/Debug/ExcelLibrary.dll
