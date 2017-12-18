@@ -14,7 +14,8 @@ public partial class MainWindow : Gtk.Window
     public static Road111.TransportDialog1 tsDialog;//add transport dialog window
     public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window       
 
-	protected int i = 0, j = 0;
+	protected int i = 0;
+	protected double j = 0.0;
 	private bool timer = false;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
@@ -235,13 +236,13 @@ public partial class MainWindow : Gtk.Window
 	protected void ToggleProgress(object sender, EventArgs e)		//Start/Stop button action
 	{
 		timer = !timer;
-		GLib.Timeout.Add(50, new GLib.TimeoutHandler(OnTimer));
+		GLib.Timeout.Add(10, new GLib.TimeoutHandler(OnTimer));
 	}
 
 	bool OnTimer()													//timer for roads animation
 	{
 		if (!timer) return false;
-		if (j >= drawingarea1.Allocation.Width - drawingarea1.Allocation.Height / 2)
+		if (j >= drawingarea1.Allocation.Width - drawingarea1.Allocation.Height)
 		{
 			j = 0; return false;
 		}
@@ -253,13 +254,13 @@ public partial class MainWindow : Gtk.Window
 		drawingarea5.QueueDraw();
 		*/
 		QueueDraw();
-		j += 5;
+		j += 2;
 		return true;
 	}
 
 	protected void OnDrawingarea1ExposeEvent(object o, ExposeEventArgs args)
 	{
-		Drawing(o);
+		DrawingCar(o);
 	}
 
 	protected void OnDrawingarea2ExposeEvent(object o, ExposeEventArgs args)
@@ -308,6 +309,55 @@ public partial class MainWindow : Gtk.Window
 
 		//if (timer) 
 			//j += 5;
+
+		//QueueDraw();
+	}
+
+	protected void DrawingCar(object o)
+	{
+		DrawingArea area = (DrawingArea)o;
+		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
+
+		cr.SetSourceRGB(0.3, 0.3, 0.3);
+		cr.Paint();
+
+		cr.LineWidth = 0.1;
+		cr.SetSourceRGB(0.0, 0.0, 0.0);
+
+		int width, height;
+		width = drawingarea1.Allocation.Width;
+		height = drawingarea1.Allocation.Height;
+
+		double h = height / 1.5, l = 2*h, hu = h/20, wheelD = 7*hu;
+
+		cr.SetSourceRGB(0.7, 0.2, 0.0);
+		cr.Translate(0, (height - h) / 2);
+		cr.MoveTo(j, h - 7*hu);
+		cr.LineTo(j, 6 * hu);
+		cr.LineTo(j + 6*hu, 6 * hu);
+		cr.LineTo(j + 10*hu, 0);
+		cr.LineTo(j + 30*hu, 0);
+		cr.LineTo(j + 34*hu, 6 * hu);
+		cr.LineTo(j + 40*hu, 6 * hu);
+		cr.LineTo(j + 40*hu, h - 7 * hu);
+		cr.ClosePath();
+		cr.Fill();
+
+		cr.SetSourceRGB(0.0, 0.0, 0.0);
+		cr.LineWidth = wheelD / 2;
+		cr.Arc(j + 8*hu, h - wheelD, wheelD / 2, 0, 2 * Math.PI);
+		cr.StrokePreserve();
+		cr.SetSourceRGB(0.9, 0.9, 0.9);
+		cr.Fill();
+
+		cr.SetSourceRGB(0.0, 0.0, 0.0);
+		cr.Arc(j + 32*hu, h - wheelD, wheelD/2, 0, 2 * Math.PI);
+		cr.StrokePreserve();
+		cr.SetSourceRGB(0.9, 0.9, 0.9);
+		cr.Fill();
+
+		//if (timer) 
+		//j += 5;
 
 		//QueueDraw();
 	}
