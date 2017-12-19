@@ -14,14 +14,26 @@ public partial class MainWindow : Gtk.Window
     public static Road111.TransportDialog1 tsDialog;//add transport dialog window
     public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window       
 
-	protected int i = 0;
+	protected ImageSurface yellowCar;
+	protected int i = 0, imW, imH;
 	protected double j = 0.0;
 	private bool timer = false;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
+		try
+		{
+			yellowCar = new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Moto.png");
+		}
+		catch
+		{
+			Console.WriteLine("File not found");
+			Environment.Exit(1);
+		}
+		imW = yellowCar.Width;
+		imH = yellowCar.Height;
 
-        Build();
+		Build();
 
     }
     public void setTsLabel(Road111.Vehicle transport, Road111.Fuel fuel, int Road, double Speed)
@@ -260,7 +272,7 @@ public partial class MainWindow : Gtk.Window
 
 	protected void OnDrawingarea1ExposeEvent(object o, ExposeEventArgs args)
 	{
-		DrawingCar(o);
+		DrawingPicCar(o);
 	}
 
 	protected void OnDrawingarea2ExposeEvent(object o, ExposeEventArgs args)
@@ -330,8 +342,9 @@ public partial class MainWindow : Gtk.Window
 
 		double h = height / 1.5, l = 2*h, hu = h/20, wheelD = 7*hu;
 
-		cr.SetSourceRGB(0.7, 0.2, 0.0);
 		cr.Translate(0, (height - h) / 2);
+
+		cr.SetSourceRGB(0.7, 0.2, 0.0);
 		cr.MoveTo(j, h - 7*hu);
 		cr.LineTo(j, 6 * hu);
 		cr.LineTo(j + 6*hu, 6 * hu);
@@ -341,6 +354,16 @@ public partial class MainWindow : Gtk.Window
 		cr.LineTo(j + 40*hu, 6 * hu);
 		cr.LineTo(j + 40*hu, h - 7 * hu);
 		cr.ClosePath();
+		cr.Fill();
+
+		cr.SetSourceRGB(0.0, 0.0, 0.0);
+		cr.LineWidth = hu;
+		cr.MoveTo(j + 8 * hu, 6 * hu);
+		cr.LineTo(j + 11 * hu, 2*hu);
+		cr.LineTo(j + 11 * hu, 6 * hu);
+		cr.ClosePath();
+		cr.StrokePreserve();
+		cr.SetSourceRGB(0.5, 0.5, 1);
 		cr.Fill();
 
 		cr.SetSourceRGB(0.0, 0.0, 0.0);
@@ -360,5 +383,28 @@ public partial class MainWindow : Gtk.Window
 		//j += 5;
 
 		//QueueDraw();
+	}
+
+	protected void DrawingPicCar(object o)
+	{
+		DrawingArea area = (DrawingArea)o;
+		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
+
+		int width, height;
+		width = drawingarea1.Allocation.Width;
+		height = drawingarea1.Allocation.Height;
+
+		cr.SetSourceRGB(0.3, 0.3, 0.3);
+		cr.Paint();
+
+		//cr.Translate(imW/2, imH/2);
+		cr.Scale(height / imH, height / imH);
+		//cr.Translate(-0.5 * imW, -0.5 * imH);
+
+		//cr.Scale(height / imH, height / imH);
+		//cr.Translate((double)((imH / height) * imH), (double)((imH / height) * imH));
+
+		cr.SetSourceSurface(yellowCar, (int)j, 0);
+		cr.Paint();
 	}
 }
