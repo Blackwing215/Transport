@@ -1,39 +1,25 @@
 ﻿using System;
 using Gtk;
-using Gdk;
-using Cairo;
 using System.Collections.Generic;
 using System.Threading;
+using Gdk;
+using CairoWarp;
+using Glade;
 public partial class MainWindow : Gtk.Window
 {
+    public Thread mt;
     public String rname;//road name
     public int amountTs;//amount of transports
     private int roadNumb;// road number
     public bool startLabel = true;
     public static Road111.FuelList fuelDialog;//fuel dialog window
     public static Road111.TransportDialog1 tsDialog;//add transport dialog window
-    public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window       
-
-	protected ImageSurface yellowCar;
-	protected int i = 0, imW, imH;
-	protected double j = 0.0;
-	private bool timer = false;
-
+    public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window  
+    private bool timer = true;
+    protected int da1_x, da1_y, i = 0, j = 0;
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
-		try
-		{
-			yellowCar = new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Moto.png");
-		}
-		catch
-		{
-			Console.WriteLine("File not found");
-			Environment.Exit(1);
-		}
-		imW = yellowCar.Width;
-		imH = yellowCar.Height;
-
-		Build();
+        Build();
 
     }
     public void setTsLabel(Road111.Vehicle transport, Road111.Fuel fuel, int Road, double Speed)
@@ -94,6 +80,10 @@ public partial class MainWindow : Gtk.Window
         tsDialog.Show();
     }
 
+    protected void ToggleProgress(object sender, EventArgs e)
+    {
+        GLib.Timeout.Add(500, new GLib.TimeoutHandler(OnTimer));
+    }
     protected void OnAddFuelListActionActivated(object sender, EventArgs e)
     {
         if (Road111.MainClass.getSystem().getFuelList().Count == 0)
@@ -161,7 +151,6 @@ public partial class MainWindow : Gtk.Window
         tsDialog = new Road111.TransportDialog1(roadNumb, r5);
         tsDialog.Show();
     }
-
     public void addTsN()
     {
         amountTs++;
@@ -242,169 +231,74 @@ public partial class MainWindow : Gtk.Window
     }
     protected void OnJournalActionActivated(object sender, EventArgs e)
     {
-        Road111.MainClass.getSystem().writeJ();
+        for (int i = 0; i < 5;i++)//пример записи в журнал
+        {
+            Road111.MainClass.getSystem().writeJ(0, Road111.MainClass.getSystem().getTransportList()[0]);
+         
+        }
+        Road111.MainClass.getSystem().ViewJournal();//просмотр журнала 
+    }
+    bool OnTimer()
+    {
+        if (!timer) return false;
+
+        drawingarea1.QueueDraw();
+        drawingarea2.QueueDraw();
+        drawingarea3.QueueDraw();
+        drawingarea4.QueueDraw();
+        drawingarea5.QueueDraw();
+        return true;
+    }
+    protected void OnDrawingarea1ExposeEvent(object o, ExposeEventArgs args)
+    {
+        Drawing(o);
     }
 
-	protected void ToggleProgress(object sender, EventArgs e)		//Start/Stop button action
-	{
-		timer = !timer;
-		GLib.Timeout.Add(10, new GLib.TimeoutHandler(OnTimer));
-	}
+    protected void OnDrawingarea2ExposeEvent(object o, ExposeEventArgs args)
+    {
+        Drawing(o);
+    }
 
-	bool OnTimer()													//timer for roads animation
-	{
-		if (!timer) return false;
-		if (j >= drawingarea1.Allocation.Width - drawingarea1.Allocation.Height)
-		{
-			j = 0; return false;
-		}
-		/*
-		drawingarea1.QueueDraw();
-		drawingarea2.QueueDraw();
-		drawingarea3.QueueDraw();
-		drawingarea4.QueueDraw();
-		drawingarea5.QueueDraw();
-		*/
-		QueueDraw();
-		j += 2;
-		return true;
-	}
+    protected void OnDrawingarea3ExposeEvent(object o, ExposeEventArgs args)
+    {
+        Drawing(o);
+    }
 
-	protected void OnDrawingarea1ExposeEvent(object o, ExposeEventArgs args)
-	{
-		DrawingPicCar(o);
-	}
+    protected void OnDrawingarea4ExposeEvent(object o, ExposeEventArgs args)
+    {
+        Drawing(o);
+    }
 
-	protected void OnDrawingarea2ExposeEvent(object o, ExposeEventArgs args)
-	{
-		Drawing(o);
-	}
+    protected void OnDrawingarea5ExposeEvent(object o, ExposeEventArgs args)
+    {
+        Drawing(o);
+    }
 
-	protected void OnDrawingarea3ExposeEvent(object o, ExposeEventArgs args)
-	{
-		Drawing(o);
-	}
+    protected void Drawing(object o)
+    {
+        DrawingArea area = (DrawingArea)o;
+       /* Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
 
-	protected void OnDrawingarea4ExposeEvent(object o, ExposeEventArgs args)
-	{
-		Drawing(o);
-	}
+        cr.LineWidth = 9;
+        cr.SetSourceRGB(0.7, 0.2, 0.0);*/
 
-	protected void OnDrawingarea5ExposeEvent(object o, ExposeEventArgs args)
-	{
-		Drawing(o);
-	}
+        int width, height;
+        width = drawingarea1.Allocation.Width;
+        height = drawingarea1.Allocation.Height;
 
-	protected void Drawing(object o)
-	{
-		DrawingArea area = (DrawingArea)o;
-		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
+        double d = width < height ? width : height;
 
-		cr.SetSourceRGB(0.3, 0.3, 0.3);
-		cr.Paint();
+        /*cr.Translate(d / 2, height / 2);
+        cr.Arc(j, 0, d / 2 - 10, 0, 2 * Math.PI);
+        cr.StrokePreserve();
 
-		cr.LineWidth = 9;
-		cr.SetSourceRGB(0.7, 0.2, 0.0);
+        cr.SetSourceRGB(0.3, 0.4, 0.6);
+        cr.Fill();
+        */
+        //if (timer) 
+        j += 5;
 
-		int width, height;
-		width = drawingarea1.Allocation.Width;
-		height = drawingarea1.Allocation.Height;
-
-		double d = width < height ? width : height;
-
-		cr.Translate(d / 2, height / 2);
-		cr.Arc(j, 0, d / 2 - 10, 0, 2 * Math.PI);
-		cr.StrokePreserve();
-
-		cr.SetSourceRGB(0.3, 0.4, 0.6);
-		cr.Fill();
-
-		//if (timer) 
-			//j += 5;
-
-		//QueueDraw();
-	}
-
-	protected void DrawingCar(object o)
-	{
-		DrawingArea area = (DrawingArea)o;
-		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
-
-		cr.SetSourceRGB(0.3, 0.3, 0.3);
-		cr.Paint();
-
-		cr.LineWidth = 0.1;
-		cr.SetSourceRGB(0.0, 0.0, 0.0);
-
-		int width, height;
-		width = drawingarea1.Allocation.Width;
-		height = drawingarea1.Allocation.Height;
-
-		double h = height / 1.5, l = 2*h, hu = h/20, wheelD = 7*hu;
-
-		cr.Translate(0, (height - h) / 2);
-
-		cr.SetSourceRGB(0.7, 0.2, 0.0);
-		cr.MoveTo(j, h - 7*hu);
-		cr.LineTo(j, 6 * hu);
-		cr.LineTo(j + 6*hu, 6 * hu);
-		cr.LineTo(j + 10*hu, 0);
-		cr.LineTo(j + 30*hu, 0);
-		cr.LineTo(j + 34*hu, 6 * hu);
-		cr.LineTo(j + 40*hu, 6 * hu);
-		cr.LineTo(j + 40*hu, h - 7 * hu);
-		cr.ClosePath();
-		cr.Fill();
-
-		cr.SetSourceRGB(0.0, 0.0, 0.0);
-		cr.LineWidth = hu;
-		cr.MoveTo(j + 8 * hu, 6 * hu);
-		cr.LineTo(j + 11 * hu, 2*hu);
-		cr.LineTo(j + 11 * hu, 6 * hu);
-		cr.ClosePath();
-		cr.StrokePreserve();
-		cr.SetSourceRGB(0.5, 0.5, 1);
-		cr.Fill();
-
-		cr.SetSourceRGB(0.0, 0.0, 0.0);
-		cr.LineWidth = wheelD / 2;
-		cr.Arc(j + 8*hu, h - wheelD, wheelD / 2, 0, 2 * Math.PI);
-		cr.StrokePreserve();
-		cr.SetSourceRGB(0.9, 0.9, 0.9);
-		cr.Fill();
-
-		cr.SetSourceRGB(0.0, 0.0, 0.0);
-		cr.Arc(j + 32*hu, h - wheelD, wheelD/2, 0, 2 * Math.PI);
-		cr.StrokePreserve();
-		cr.SetSourceRGB(0.9, 0.9, 0.9);
-		cr.Fill();
-
-		//if (timer) 
-		//j += 5;
-
-		//QueueDraw();
-	}
-
-	protected void DrawingPicCar(object o)
-	{
-		DrawingArea area = (DrawingArea)o;
-		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
-
-		int width, height;
-		width = drawingarea1.Allocation.Width;
-		height = drawingarea1.Allocation.Height;
-
-		cr.SetSourceRGB(0.3, 0.3, 0.3);
-		cr.Paint();
-
-		//cr.Translate(imW/2, imH/2);
-		cr.Scale(height / imH, height / imH);
-		//cr.Translate(-0.5 * imW, -0.5 * imH);
-
-		//cr.Scale(height / imH, height / imH);
-		//cr.Translate((double)((imH / height) * imH), (double)((imH / height) * imH));
-
-		cr.SetSourceSurface(yellowCar, (int)j, 0);
-		cr.Paint();
-	}
+        //QueueDraw();
+    }
+   
 }

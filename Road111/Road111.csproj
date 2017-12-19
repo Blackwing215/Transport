@@ -56,7 +56,15 @@
     <Reference Include="Microsoft.Office.Interop.Excel">
       <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cairo, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+    <Reference Include="Mono.CairoWarp">
+      <HintPath>packages\Mono.CairoWarp.2.0.5\lib\net40-client\Mono.CairoWarp.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CSharp">
+      <HintPath>packages\Mono.CSharp.4.0.0.143\lib\4.5\Mono.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelLibrary">
+      <HintPath>packages\ExcelLibrary.1.2011.7.31\lib\ExcelLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -81,6 +89,8 @@
     <Compile Include="gtk-gui\Road111.ExTWindow.cs" />
     <Compile Include="gtk-gui\Road111.PropertiWindow.cs" />
     <Compile Include="PropertiWindow.cs" />
+    <Compile Include="ViewJournal.cs" />
+    <Compile Include="gtk-gui\Road111.ViewJournal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
