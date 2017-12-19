@@ -41,6 +41,7 @@ namespace Road111
         }
         public void writeJ(int road,Vehicle veh)//запись в журнал
         {
+<<<<<<< HEAD
             //создание файла
             Workbook book = Workbook.Load(file);
             Worksheet sheet = book.Worksheets[0];
@@ -98,6 +99,16 @@ namespace Road111
             tree.Model = tsListStore;
 
             window.ShowAll();
+=======
+                Excel.Application ObjExcel = new Excel.Application();
+                ObjExcel.Visible = true;
+                Excel.Workbook ObjWorkBook;
+                Excel.Worksheet ObjWorkSheet;
+                ObjWorkBook = ObjExcel.Workbooks.Add(System.Reflection.Missing.Value);
+                ObjWorkSheet = (Excel.Worksheet)ObjWorkBook.Sheets[1];
+                ObjWorkSheet.Cells[3, 1] = "51";
+                ObjExcel.Quit();
+>>>>>>> MaxBranch
         }
     }
 }
