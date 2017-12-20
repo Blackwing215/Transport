@@ -46,6 +46,10 @@ namespace Road111
         {
             return listT;
         }
+		public List<Strip> getStripList()
+		{
+			return listS;
+		}
 
         public void writeJ(int road, Vehicle veh)//запись в журнал
         {
@@ -62,12 +66,9 @@ namespace Road111
 				}
 				else
 				{
-					if (veh.Distance % (MainWindow.RoadLength / 10) < (MainWindow.RoadLength / 50))
-					{
-						sheet.Cells[veh.Stop_C, road] = new Cell(veh.Distance);
-						//sheet.Cells[veh.Stop_C, road] = new Cell(veh.Stop_C*50);
-						veh.Stop_C++;
-					}
+					sheet.Cells[veh.Stop_C, road] = new Cell(veh.Distance);
+					//sheet.Cells[veh.Stop_C, road] = new Cell(veh.Stop_C*50);
+					veh.Stop_C++;
 				}
 				book.Worksheets.Add(sheet);
 				book.Save(file);

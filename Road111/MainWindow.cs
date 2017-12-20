@@ -20,8 +20,6 @@ public partial class MainWindow : Gtk.Window
 
 	protected List<ImageSurface> vehIm = new List<ImageSurface>();
 	protected int i = 0, imW, imH;
-	//protected List<double> dist = new List<double>();
-	//protected List<double> distIncr = new List<double>();
 	int width, height;
 	static uint time = 10, roadLength = 50;
 
@@ -330,31 +328,200 @@ public partial class MainWindow : Gtk.Window
 		DrawingArea area = (DrawingArea)o;
 		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
 
-		//int width, height;
 		width = area.Allocation.Width;
 		height = area.Allocation.Height;
 		imW = vehIm[road].Width;
 		imH = vehIm[road].Height;
 
-		//cr.SetSourceRGB(0.3, 0.3, 0.3);
-		//cr.Paint();
+		cr.SetSourceRGB(0.3, 0.3, 0.3);
+		cr.Paint();
+		switch (road)
+		{
+			case 0:
+				if (railway1.Active)
+				{
+					for (int k = 0; k < width / (height / 8); k++)
+					{
+						cr.LineWidth = height / 30;
+						cr.SetSourceRGB(0.4, 0.3, 0.15);
+						cr.MoveTo(k * height / 8, 2 * height / 9);
+						cr.LineTo(k * height / 8, 7 * height / 9);
+						cr.Stroke();
+					}
+					cr.LineWidth = height / 20;
+					cr.SetSourceRGB(0.75, 0.75, 0.75);
+					cr.MoveTo(0, height / 3);
+					cr.LineTo(width, height / 3);
+					cr.MoveTo(0, 2 * height / 3);
+					cr.LineTo(width, 2 * height / 3);
+					cr.Stroke();
+				}
+				break;
+			case 1:
+				if (railway2.Active)
+				{
+					for (int k = 0; k < width / (height / 8); k++)
+					{
+						cr.LineWidth = height / 30;
+						cr.SetSourceRGB(0.4, 0.3, 0.15);
+						cr.MoveTo(k * height / 8, 2 * height / 9);
+						cr.LineTo(k * height / 8, 7 * height / 9);
+						cr.Stroke();
+					}
+					cr.LineWidth = height / 20;
+					cr.SetSourceRGB(0.75, 0.75, 0.75);
+					cr.MoveTo(0, height / 3);
+					cr.LineTo(width, height / 3);
+					cr.MoveTo(0, 2 * height / 3);
+					cr.LineTo(width, 2 * height / 3);
+					cr.Stroke();
+				}
+				break;
+			case 2:
+				if (railway3.Active)
+				{
+					for (int k = 0; k < width / (height / 8); k++)
+					{
+						cr.LineWidth = height / 30;
+						cr.SetSourceRGB(0.4, 0.3, 0.15);
+						cr.MoveTo(k * height / 8, 2 * height / 9);
+						cr.LineTo(k * height / 8, 7 * height / 9);
+						cr.Stroke();
+					}
+					cr.LineWidth = height / 20;
+					cr.SetSourceRGB(0.75, 0.75, 0.75);
+					cr.MoveTo(0, height / 3);
+					cr.LineTo(width, height / 3);
+					cr.MoveTo(0, 2 * height / 3);
+					cr.LineTo(width, 2 * height / 3);
+					cr.Stroke();
+				}
+				break;
+			case 3:
+				if (railway4.Active)
+				{
+					for (int k = 0; k < width / (height / 8); k++)
+					{
+						cr.LineWidth = height / 30;
+						cr.SetSourceRGB(0.4, 0.3, 0.15);
+						cr.MoveTo(k * height / 8, 2 * height / 9);
+						cr.LineTo(k * height / 8, 7 * height / 9);
+						cr.Stroke();
+					}
+					cr.LineWidth = height / 20;
+					cr.SetSourceRGB(0.75, 0.75, 0.75);
+					cr.MoveTo(0, height / 3);
+					cr.LineTo(width, height / 3);
+					cr.MoveTo(0, 2 * height / 3);
+					cr.LineTo(width, 2 * height / 3);
+					cr.Stroke();
+				}
+				break;
+			case 4:
+				if (railway5.Active)
+				{
+					for (int k = 0; k < width / (height / 8); k++)
+					{
+						cr.LineWidth = height / 30;
+						cr.SetSourceRGB(0.4, 0.3, 0.15);
+						cr.MoveTo(k * height / 8, 2 * height / 9);
+						cr.LineTo(k * height / 8, 7 * height / 9);
+						cr.Stroke();
+					}
+					cr.LineWidth = height / 20;
+					cr.SetSourceRGB(0.75, 0.75, 0.75);
+					cr.MoveTo(0, height / 3);
+					cr.LineTo(width, height / 3);
+					cr.MoveTo(0, 2 * height / 3);
+					cr.LineTo(width, 2 * height / 3);
+					cr.Stroke();
+				}
+				break;
+		}
 
 		if (Road111.MainClass.getSystem().getTransportList()[road] != null)
 		{
-			
-			cr.SetSourceSurface(vehIm[road], 
-			                    Convert.ToInt32((width / roadLength)*Road111.MainClass.getSystem().getTransportList()[road].Distance),
-			                    (height - imH) / 2);
+
+			cr.SetSourceSurface(vehIm[road],
+								Convert.ToInt32((width / roadLength) * Road111.MainClass.getSystem().getTransportList()[road].Distance),
+								(height - imH) / 2);
 			cr.Paint();
-			if (timer && (roadLength / width) * Road111.MainClass.getSystem().getTransportList()[road].Distance < width - imW)
+			if (timer && (width / roadLength) * Road111.MainClass.getSystem().getTransportList()[road].Distance < width - imW)
 			{
 				double speed = Road111.MainClass.getSystem().getTransportList()[road].Speed;
-				//double incr = (width / roadLength) * (speed * time / 3600000);
-				//dist[road] += incr;
 				Road111.MainClass.getSystem().getTransportList()[road].Distance += 1 * speed * time / 3600000;
+				if (Road111.MainClass.getSystem().getTransportList()[road].Distance
+					% (RoadLength / 10) < (RoadLength / 5000))
+				{
+					Road111.MainClass.getSystem().writeJ(road, Road111.MainClass.getSystem().getTransportList()[road]);
+				}
 			}
 		}
+		switch (road)
+		{
+			case 0:
+				if (railway1.Active || electrified1.Active)
+				{
+					cr.LineWidth = height / 30;
+					cr.SetSourceRGB(0.1, 0.0, 0.0);
+					cr.MoveTo(0, 2 * height / 5);
+					cr.LineTo(width, 2 * height / 5);
+					cr.MoveTo(0, 3 * height / 5);
+					cr.LineTo(width, 3 * height / 5);
+					cr.Stroke();
+				}
+				break;
+			case 1:
+				if (railway2.Active || electrified2.Active)
+				{
+					cr.LineWidth = height / 30;
+					cr.SetSourceRGB(0.1, 0.0, 0.0);
+					cr.MoveTo(0, 2 * height / 5);
+					cr.LineTo(width, 2 * height / 5);
+					cr.MoveTo(0, 3 * height / 5);
+					cr.LineTo(width, 3 * height / 5);
+					cr.Stroke();
+				}
+				break;
+			case 2:
+				if (railway3.Active || electrified3.Active)
+				{
+					cr.LineWidth = height / 30;
+					cr.SetSourceRGB(0.1, 0.0, 0.0);
+					cr.MoveTo(0, 2 * height / 5);
+					cr.LineTo(width, 2 * height / 5);
+					cr.MoveTo(0, 3 * height / 5);
+					cr.LineTo(width, 3 * height / 5);
+					cr.Stroke();
+				}
+				break;
+			case 3:
+				if (railway4.Active || electrified4.Active)
+				{
+					cr.LineWidth = height / 30;
+					cr.SetSourceRGB(0.1, 0.0, 0.0);
+					cr.MoveTo(0, 2 * height / 5);
+					cr.LineTo(width, 2 * height / 5);
+					cr.MoveTo(0, 3 * height / 5);
+					cr.LineTo(width, 3 * height / 5);
+					cr.Stroke();
+				}
+				break;
+			case 4:
+				if (railway5.Active || electrified5.Active)
+				{
+					cr.LineWidth = height / 30;
+					cr.SetSourceRGB(0.1, 0.0, 0.0);
+					cr.MoveTo(0, 2 * height / 5);
+					cr.LineTo(width, 2 * height / 5);
+					cr.MoveTo(0, 3 * height / 5);
+					cr.LineTo(width, 3 * height / 5);
+					cr.Stroke();
+				}
+				break;
+		}
 	}
+
 	protected void DrawingRoad(object o, int road)
 	{
 		DrawingArea area = (DrawingArea)o;
@@ -362,5 +529,79 @@ public partial class MainWindow : Gtk.Window
 
 		cr.SetSourceRGB(0.3, 0.3, 0.3);
 		cr.Paint();
+	}
+
+	protected void OnCommon1Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnRailway1Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnElectrified1Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnCommon2Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnRailway2Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnElectrified2Toggled(object sender, EventArgs e)
+	{
+	}
+
+	protected void OnCommon3Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnRailway3Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnElectrified3Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnCommon4Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnRailway4Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnElectrified4Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnCommon5Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnRailway5Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
+	}
+
+	protected void OnElectrified5Toggled(object sender, EventArgs e)
+	{
+		QueueDraw();
 	}
 }
