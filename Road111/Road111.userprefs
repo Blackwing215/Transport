@@ -1,33 +1,18 @@
-﻿<Properties StartupConfiguration="{A523A490-35A4-48D9-B758-65881247A7D0}|Default">
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Road111 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MainWindow.cs">
-    <Files>
-      <File FileName="Vehicle.cs" Line="14" Column="35" />
-      <File FileName="PropertiWindow.cs" Line="168" Column="45" />
-      <File FileName="TransportDialog1.cs" Line="24" Column="44" />
-      <File FileName="FuelList.cs" Line="1" Column="1" />
-      <File FileName="Sys.cs" Line="39" Column="45" />
-      <File FileName="MainWindow.cs" Line="186" Column="1" />
-    </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Road111" expanded="True">
-            <Node name="Road111" expanded="True">
-              <Node name="References" expanded="True" />
-              <Node name="Packages" expanded="True" />
-              <Node name="UserInterface" expanded="True" />
-              <Node name="MainWindow.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TransportDialog1.cs">
+    <Files>
+      <File FileName="Sys.cs" Line="91" Column="49" />
+      <File FileName="Vehicle.cs" Line="17" Column="39" />
+      <File FileName="MainWindow.cs" Line="212" Column="6" />
+      <File FileName="Program.cs" Line="11" Column="22" />
+      <File FileName="TransportDialog1.cs" Line="106" Column="14" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
 </Properties>

@@ -7,6 +7,7 @@ namespace Road111
         private String type;
         public Strip()
         {
+			this.type = "Обычная";
         }
         public Strip(String name)
         {

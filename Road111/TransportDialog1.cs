@@ -16,7 +16,6 @@ namespace Road111
             this.road = r;
             this.strip = new Strip(st.Type);
             Build();
-            buttonOk.Sensitive = false;
             if(road == 0 || road ==4)
             {
                 bike_rad.Sensitive = true;
@@ -33,7 +32,6 @@ namespace Road111
             }
             if (MainClass.getSystem().getFuelList().Count>0)
             {
-                buttonOk.Sensitive = true;
                 foreach (Fuel value in MainClass.getSystem().getFuelList())
                 {
                     if(value.Equals(new Fuel("Бензин")))
@@ -78,7 +76,7 @@ namespace Road111
                     fuel = new Fuel("Газ");
                 }
             }
-            if (car_rad.Active)
+            /*if (car_rad.Active)
             {
                 MainClass.getSystem().getTransportList().Insert(road, new Car(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text));
                 transport = MainClass.getSystem().getTransportList()[road];
@@ -136,6 +134,54 @@ namespace Road111
             {
                 MainClass.getSystem().getTransportList().Insert(road, new Panzer(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text));
                 transport = MainClass.getSystem().getTransportList()[road];
+            }*/
+			if (car_rad.Active)
+            {
+                transport = new Car(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text);
+            }
+            if (truck_rad.Active)
+            {
+                transport = new Truck(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text, spinbutton5.Value);
+            }
+            if (loader_rad.Active)
+            {
+                transport = new Loader(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text, spinbutton5.Value);
+
+            }
+            if (bus_rad.Active)
+            {
+                transport = new Bus(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text);
+
+            }
+            if (troll_rad.Active)
+            {
+                transport = new Trolleybus(spinbutton3.Value, spinbutton4.Value, spinbutton6.ValueAsInt, entry1.Text);
+
+            }
+            if (moto_rad.Active)
+            {
+                transport = new Moto(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text);
+
+            }
+            if (horse_rad.Active)
+            {
+                transport = new Horse(spinbutton3.Value, spinbutton4.Value, entry1.Text, spinbutton5.Value);
+            }
+            if (tram_rad.Active)
+            {
+                transport = new Tram(spinbutton3.Value, spinbutton4.Value, spinbutton6.ValueAsInt, entry1.Text);
+            }
+            if (bike_rad.Active)
+            {
+                transport = new Bicycle(spinbutton3.Value, spinbutton4.Value, entry1.Text);
+            }
+            if (radiobutton19.Active)
+            {
+                transport = new Kscooter(spinbutton3.Value, spinbutton4.Value, entry1.Text);
+            }
+            if(radiobutton21.Active)
+            {
+                transport = new Panzer(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text);
             }
             if (!horse_rad.Active && !bike_rad.Active && !radiobutton19.Active )
             {
@@ -149,6 +195,7 @@ namespace Road111
             if (fOk && tOk)
             {
                 MainClass.getWin().addTsN();
+                MainClass.getSystem().getTransportList().Insert(road, transport);
                 MainClass.getSystem().getTransportList()[road].Fuel = fuel;
                 MainClass.getSystem().getTransportList()[road].Strip = strip;
                 if (!horse_rad.Active && !bike_rad.Active && !radiobutton19.Active)
@@ -194,6 +241,7 @@ namespace Road111
 
         protected void OnBikeRadClicked(object sender, EventArgs e)
         {
+            buttonOk.Sensitive = true;
             spinbutton1.Sensitive = false;
             spinbutton2.Sensitive = false;
             spinbutton5.Sensitive = false;
@@ -203,6 +251,14 @@ namespace Road111
 
         protected void OnCarRadClicked(object sender, EventArgs e)
         {
+            if(MainClass.getSystem().getFuelList().Count >0)
+            {
+                buttonOk.Sensitive = true;
+            }
+            else
+            {
+                buttonOk.Sensitive = false; 
+            }
             spinbutton1.Sensitive = true;
             spinbutton2.Sensitive = true;
             spinbutton6.Sensitive = true;
@@ -211,14 +267,17 @@ namespace Road111
         }
         protected void OnHorseRadClicked(object sender, EventArgs e)
         {
+            buttonOk.Sensitive = true;
             spinbutton1.Sensitive = false;
             spinbutton2.Sensitive = false;
             spinbutton6.Sensitive = false;
+            spinbutton5.Sensitive = true;
             QueueDraw();
         }
 
         protected void OnRadiobutton19Clicked(object sender, EventArgs e)
         {
+            buttonOk.Sensitive = true;
             spinbutton1.Sensitive = false;
             spinbutton2.Sensitive = false;
             spinbutton5.Sensitive = false;
@@ -228,6 +287,14 @@ namespace Road111
 
         protected void OnRadiobutton21Clicked(object sender, EventArgs e)
         {
+            if (MainClass.getSystem().getFuelList().Count > 0)
+            {
+                buttonOk.Sensitive = true;
+            }
+            else
+            {
+                buttonOk.Sensitive = false;
+            }
             spinbutton1.Sensitive = true;
             spinbutton2.Sensitive = true;
             spinbutton5.Sensitive = false;
@@ -236,7 +303,14 @@ namespace Road111
         }
 
         protected void OnTrollRadClicked(object sender, EventArgs e)
-        {
+        {if (MainClass.getSystem().getFuelList().Count > 0)
+            {
+                buttonOk.Sensitive = true;
+            }
+            else
+            {
+                buttonOk.Sensitive = false;
+            }
             spinbutton1.Sensitive = false;
             spinbutton2.Sensitive = false;
             spinbutton5.Sensitive = false;
@@ -247,7 +321,14 @@ namespace Road111
 
         protected void OnBusRadClicked(object sender, EventArgs e)
         {
- 
+            if (MainClass.getSystem().getFuelList().Count > 0)
+            {
+                buttonOk.Sensitive = true;
+            }
+            else
+            {
+                buttonOk.Sensitive = false;
+            }
             spinbutton1.Sensitive = true;
             spinbutton2.Sensitive = true;
             spinbutton5.Sensitive = false;
@@ -257,7 +338,14 @@ namespace Road111
         }
 
         protected void OnLoaderRadClicked(object sender, EventArgs e)
-        {
+        {if (MainClass.getSystem().getFuelList().Count > 0)
+            {
+                buttonOk.Sensitive = true;
+            }
+            else
+            {
+                buttonOk.Sensitive = false;
+            }
             spinbutton1.Sensitive = true;
             spinbutton2.Sensitive = true;
             spinbutton5.Sensitive = true;
@@ -266,7 +354,14 @@ namespace Road111
         }
 
         protected void OnTruckRadClicked(object sender, EventArgs e)
-        {
+        {if (MainClass.getSystem().getFuelList().Count > 0)
+            {
+                buttonOk.Sensitive = true;
+            }
+            else
+            {
+                buttonOk.Sensitive = false;
+            }
             spinbutton1.Sensitive = true;
             spinbutton2.Sensitive = true;
             spinbutton5.Sensitive = true;
@@ -276,7 +371,14 @@ namespace Road111
 
         protected void OnTramRadClicked(object sender, EventArgs e)
         {
-
+            if (MainClass.getSystem().getFuelList().Count > 0)
+            {
+                buttonOk.Sensitive = true;
+            }
+            else
+            {
+                buttonOk.Sensitive = false;
+            }
             spinbutton1.Sensitive = false;
             spinbutton2.Sensitive = false;
             spinbutton5.Sensitive = false;
@@ -286,6 +388,14 @@ namespace Road111
 
         protected void OnMotoRadClicked(object sender, EventArgs e)
         {
+            if (MainClass.getSystem().getFuelList().Count > 0)
+            {
+                buttonOk.Sensitive = true;
+            }
+            else
+            {
+                buttonOk.Sensitive = false;
+            }
             spinbutton1.Sensitive = true;
             spinbutton2.Sensitive = true;
             spinbutton6.Sensitive = false;
