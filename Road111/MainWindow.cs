@@ -20,7 +20,7 @@ public partial class MainWindow : Gtk.Window
 
 	protected List<ImageSurface> vehIm = new List<ImageSurface>();
 	protected int i = 0, imW, imH;
-	protected List<double> dist = new List<double>();
+	//protected List<double> dist = new List<double>();
 	//protected List<double> distIncr = new List<double>();
 	int width, height;
 	static uint time = 10, roadLength = 50;
@@ -29,10 +29,18 @@ public partial class MainWindow : Gtk.Window
     {
 		try
 		{
+			//vehIm.Insert(0, new ImageSurface("pictures/Car.png"));
+			//vehIm.Insert(1, new ImageSurface("pictures/Car.png"));
+			//vehIm.Insert(2, new ImageSurface("pictures/Truck.png"));
+			//vehIm.Insert(3, new ImageSurface("pictures/Tram.png"));
+			//vehIm.Insert(4, new ImageSurface("pictures/Bus.png"));
+			//vehIm.Insert(4, new ImageSurface("pictures/Bus.png"));
+
 			vehIm.Insert(0, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Car.png"));
 			vehIm.Insert(1, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Car.png"));
 			vehIm.Insert(2, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Truck.png"));
 			vehIm.Insert(3, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Tram.png"));
+			vehIm.Insert(4, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Bus.png"));
 			vehIm.Insert(4, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Bus.png"));
 		}
 		catch
@@ -42,8 +50,8 @@ public partial class MainWindow : Gtk.Window
 		}
 		Build();
 		width = drawingarea1.Allocation.Width;
-		for (int road = 0; road < 5; road++)
-			dist.Insert(road, 0);
+		//for (int road = 0; road < 5; road++)
+		//	dist.Insert(road, 0);
 
 	}
 
@@ -337,15 +345,15 @@ public partial class MainWindow : Gtk.Window
 		{
 			
 			cr.SetSourceSurface(vehIm[road], 
-			                    Convert.ToInt32((roadLength/width)*Road111.MainClass.getSystem().getTransportList()[road].Distance),
+			                    Convert.ToInt32((width / roadLength)*Road111.MainClass.getSystem().getTransportList()[road].Distance),
 			                    (height - imH) / 2);
 			cr.Paint();
-			if (timer && dist[road] < width - imW)
+			if (timer && (roadLength / width) * Road111.MainClass.getSystem().getTransportList()[road].Distance < width - imW)
 			{
 				double speed = Road111.MainClass.getSystem().getTransportList()[road].Speed;
 				//double incr = (width / roadLength) * (speed * time / 3600000);
 				//dist[road] += incr;
-				Road111.MainClass.getSystem().getTransportList()[road].Distance += speed * time / 3600000;
+				Road111.MainClass.getSystem().getTransportList()[road].Distance += 1 * speed * time / 3600000;
 			}
 		}
 	}
