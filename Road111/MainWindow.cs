@@ -336,15 +336,16 @@ public partial class MainWindow : Gtk.Window
 		if (Road111.MainClass.getSystem().getTransportList()[road] != null)
 		{
 			
-			cr.SetSourceSurface(vehIm[road], Convert.ToInt32(Road111.MainClass.getSystem().getTransportList()[road].Distance),
+			cr.SetSourceSurface(vehIm[road], 
+			                    Convert.ToInt32((roadLength/width)*Road111.MainClass.getSystem().getTransportList()[road].Distance),
 			                    (height - imH) / 2);
 			cr.Paint();
 			if (timer && dist[road] < width - imW)
 			{
 				double speed = Road111.MainClass.getSystem().getTransportList()[road].Speed;
-				double incr = (width / roadLength) * (speed * time / 3600000);
+				//double incr = (width / roadLength) * (speed * time / 3600000);
 				//dist[road] += incr;
-				Road111.MainClass.getSystem().getTransportList()[road].Distance += incr;
+				Road111.MainClass.getSystem().getTransportList()[road].Distance += speed * time / 3600000;
 			}
 		}
 	}
