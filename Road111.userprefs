@@ -5,17 +5,19 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Road111\TransportDialog1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Road111\Sys.cs">
     <Files>
-      <File FileName="Road111\MainWindow.cs" Line="352" Column="5" />
-      <File FileName="Road111\Vehicle.cs" Line="34" Column="34" />
-      <File FileName="Road111\TransportDialog1.cs" Line="227" Column="36" />
-      <File FileName="Road111\Strip.cs" Line="9" Column="10" />
+      <File FileName="Road111\MainWindow.cs" Line="303" Column="3" />
       <File FileName="Road111\FuelList.cs" Line="1" Column="1" />
+      <File FileName="Road111\Fuel.cs" Line="1" Column="1" />
       <File FileName="Road111\ExTWindow.cs" Line="1" Column="1" />
-      <File FileName="Road111\Sys.cs" Line="45" Column="30" NotebookId="1" />
-      <File FileName="Road111\Program.cs" Line="24" Column="10" NotebookId="1" />
+      <File FileName="Road111\ViewJournal.cs" Line="1" Column="1" />
+      <File FileName="Road111\Vehicle.cs" Line="1" Column="1" />
+      <File FileName="Road111\TransportDialog1.cs" Line="1" Column="1" />
+      <File FileName="Road111\Sys.cs" Line="50" Column="4" />
+      <File FileName="Road111\Strip.cs" Line="1" Column="1" />
+      <File FileName="Road111\PropertiWindow.cs" Line="1" Column="1" />
+      <File FileName="Road111\Program.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
 </Properties>
