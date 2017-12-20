@@ -14,7 +14,7 @@ namespace Road111
         protected double maxSpeed;
         protected double speed;
         protected double distance;
-
+        protected int stop_counter = 0;//количество записей в журнал
         //---------------------------Constructors---------------------------------------
         public Vehicle()
         { }
@@ -23,6 +23,11 @@ namespace Road111
         {
             get { return type; }
             set { type = value; }
+        }
+        public int Stop_C
+        {
+            get { return stop_counter; }
+            set { stop_counter = value; }
         }
         public String Brand
         {

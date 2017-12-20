@@ -4,6 +4,9 @@ using Gdk;
 using Cairo;
 using System.Collections.Generic;
 using System.Threading;
+using Gdk;
+using CairoWarp;
+using Glade;
 public partial class MainWindow : Gtk.Window
 {
     public String rname;//road name
@@ -12,12 +15,12 @@ public partial class MainWindow : Gtk.Window
     public bool startLabel = true;
     public static Road111.FuelList fuelDialog;//fuel dialog window
     public static Road111.TransportDialog1 tsDialog;//add transport dialog window
-    public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window       
+    public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window  
+    private bool timer = false;   
 
 	protected ImageSurface yellowCar;
 	protected int i = 0, imW, imH;
 	protected double j = 0.0;
-	private bool timer = false;
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
@@ -33,9 +36,8 @@ public partial class MainWindow : Gtk.Window
 		imW = yellowCar.Width;
 		imH = yellowCar.Height;
 
-		Build();
-
-    }
+		Build();    
+	}
     public void setTsLabel(Road111.Vehicle transport, Road111.Fuel fuel, int Road, double Speed)
     {
         switch (Road)
@@ -160,6 +162,7 @@ public partial class MainWindow : Gtk.Window
         Road111.Strip r5 = new Road111.Strip(rname);
         tsDialog = new Road111.TransportDialog1(roadNumb, r5);
         tsDialog.Show();
+
     }
 
     public void addTsN()
@@ -172,6 +175,7 @@ public partial class MainWindow : Gtk.Window
     {
 
     }
+
     protected void OnInfoBut1Clicked(object sender, EventArgs e)
     {
         if (info1 == null)
@@ -242,7 +246,12 @@ public partial class MainWindow : Gtk.Window
     }
     protected void OnJournalActionActivated(object sender, EventArgs e)
     {
-        Road111.MainClass.getSystem().writeJ();
+        for (int i = 0; i < Road111.MainClass.getSystem().getTransportList().Count;i++)//пример записи в журнал
+        {
+            Road111.MainClass.getSystem().writeJ(i, Road111.MainClass.getSystem().getTransportList()[i]);
+         
+        }
+        Road111.MainClass.getSystem().ViewJournal();//просмотр журнала 
     }
 
 	protected void ToggleProgress(object sender, EventArgs e)		//Start/Stop button action
