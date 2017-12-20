@@ -2503,6 +2503,7 @@
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Label" translatable="yes">Велосипед</property>
+                        <property name="Active">True</property>
                         <property name="DrawIndicator">True</property>
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>
@@ -3130,7 +3131,7 @@
               <widget class="Gtk.SpinButton" id="spinbutton4">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
-                <property name="Upper">100</property>
+                <property name="Upper">500</property>
                 <property name="PageIncrement">10</property>
                 <property name="StepIncrement">0.1</property>
                 <property name="ClimbRate">1</property>

@@ -1417,7 +1417,6 @@ public partial class MainWindow
 		this.common4 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common4.CanFocus = true;
 		this.common4.Name = "common4";
-		this.common4.Active = true;
 		this.common4.DrawIndicator = true;
 		this.common4.UseUnderline = true;
 		this.common4.Group = new global::GLib.SList(global::System.IntPtr.Zero);
@@ -1466,7 +1465,6 @@ public partial class MainWindow
 		this.common5 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Common"));
 		this.common5.CanFocus = true;
 		this.common5.Name = "common5";
-		this.common5.Active = true;
 		this.common5.DrawIndicator = true;
 		this.common5.UseUnderline = true;
 		this.common5.Group = new global::GLib.SList(global::System.IntPtr.Zero);

@@ -459,7 +459,7 @@ namespace Road111
 			w32.XOptions = ((global::Gtk.AttachOptions)(4));
 			w32.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table5.Gtk.Table+TableChild
-			this.spinbutton4 = new global::Gtk.SpinButton(0D, 100D, 0.1D);
+			this.spinbutton4 = new global::Gtk.SpinButton(0D, 500D, 0.1D);
 			this.spinbutton4.CanFocus = true;
 			this.spinbutton4.Name = "spinbutton4";
 			this.spinbutton4.Adjustment.PageIncrement = 10D;

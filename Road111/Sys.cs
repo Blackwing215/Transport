@@ -10,6 +10,7 @@ namespace Road111
     {
         private List<Fuel> listF;
         private List<Vehicle> listT;
+		private List<Strip> listS;
         private Excel.Application journal;
         private string file = "Journal.xls";
         private Workbook workbook;
@@ -26,11 +27,17 @@ namespace Road111
              workbook.Save(file);  
             listF = new List<Fuel>();
             listT = new List<Vehicle>(5);
-            /*for (int i = 0; i < 5;i++)
+			listS = new List<Strip>(5);
+            for (int i = 0; i < 5; i++)
             {
-                listT.Add(new Vehicle());
-            }*/
+				listS.Insert(i, new Strip());
+            }
+			for (int i = 0; i < 5; i++)
+			{
+				listT.Insert(i, null);
+			}
         }
+
         public List<Fuel> getFuelList()
         {
             return listF;
@@ -39,25 +46,33 @@ namespace Road111
         {
             return listT;
         }
-        public void writeJ(int road,Vehicle veh)//запись в журнал
+
+        public void writeJ(int road, Vehicle veh)//запись в журнал
         {
-            //создание файла
-            Workbook book = Workbook.Load(file);
-            Worksheet sheet = book.Worksheets[0];
-            if(veh.Stop_C == 0)
-            {
-                sheet.Cells[0, road] = new Cell(veh.Name);
-                veh.Stop_C++;
-            }
-            else
-            {
-                //sheet.Cells[veh.Stop_C, road] = new Cell(veh.Distance);
-				sheet.Cells[veh.Stop_C, road] = new Cell(veh.Stop_C*50);
-                veh.Stop_C++;
-            }
-            book.Worksheets.Add(sheet);  
-            book.Save(file);  
-            //чтение файла  
+			Workbook book = Workbook.Load(file);
+			Worksheet sheet = book.Worksheets[0];
+			if (Road111.MainClass.getSystem().getTransportList()[road] != null)
+			{
+				//создание файла
+
+				if (veh.Stop_C == 0)
+				{
+					sheet.Cells[0, road] = new Cell(veh.Name);
+					veh.Stop_C++;
+				}
+				else
+				{
+					if (veh.Distance % (MainWindow.RoadLength / 10) < (MainWindow.RoadLength / 50))
+					{
+						sheet.Cells[veh.Stop_C, road] = new Cell(veh.Distance);
+						//sheet.Cells[veh.Stop_C, road] = new Cell(veh.Stop_C*50);
+						veh.Stop_C++;
+					}
+				}
+				book.Worksheets.Add(sheet);
+				book.Save(file);
+				//чтение файла  
+			}
         }
         public void ViewJournal()
         {
@@ -92,9 +107,12 @@ namespace Road111
             Worksheet sheet = book.Worksheets[0];
             for (int i = 0; i < listT.Count;i++)
             {
-                iter = tsListStore.AppendValues(Convert.ToString(sheet.Cells[0, i]));
-                for (int j = 1; j < listT[i].Stop_C;j++)
-                    tsListStore.AppendValues(iter, " ",Convert.ToString(sheet.Cells[j, i]));
+				if (listT[i] != null)
+				{
+					iter = tsListStore.AppendValues(Convert.ToString(sheet.Cells[0, i]));
+					for (int j = 1; j < listT[i].Stop_C; j++)
+						tsListStore.AppendValues(iter, " ", Convert.ToString(sheet.Cells[j, i]));
+				}
             }
             tree.Model = tsListStore;
 
