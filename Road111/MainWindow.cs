@@ -29,19 +29,17 @@ public partial class MainWindow : Gtk.Window
     {
 		try
 		{
-			//vehIm.Insert(0, new ImageSurface("pictures/Car.png"));
-			//vehIm.Insert(1, new ImageSurface("pictures/Car.png"));
-			//vehIm.Insert(2, new ImageSurface("pictures/Truck.png"));
-			//vehIm.Insert(3, new ImageSurface("pictures/Tram.png"));
-			//vehIm.Insert(4, new ImageSurface("pictures/Bus.png"));
-			//vehIm.Insert(4, new ImageSurface("pictures/Bus.png"));
+			vehIm.Insert(0, new ImageSurface("pictures\\Car.png"));
+			vehIm.Insert(1, new ImageSurface("pictures\\Car.png"));
+			vehIm.Insert(2, new ImageSurface("pictures\\Truck.png"));
+			vehIm.Insert(3, new ImageSurface("pictures\\Tram.png"));
+			vehIm.Insert(4, new ImageSurface("pictures\\Bus.png"));
 
-			vehIm.Insert(0, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Car.png"));
-			vehIm.Insert(1, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Car.png"));
-			vehIm.Insert(2, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Truck.png"));
-			vehIm.Insert(3, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Tram.png"));
-			vehIm.Insert(4, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Bus.png"));
-			vehIm.Insert(4, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Bus.png"));
+			//vehIm.Insert(0, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Car.png"));
+			//vehIm.Insert(1, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Car.png"));
+			//vehIm.Insert(2, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Truck.png"));
+			//vehIm.Insert(3, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Tram.png"));
+			//vehIm.Insert(4, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Bus.png"));
 		}
 		catch
 		{
