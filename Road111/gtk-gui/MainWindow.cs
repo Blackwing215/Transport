@@ -290,7 +290,7 @@ public partial class MainWindow
 		this.UIManager.InsertActionGroup(w1, 0);
 		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.WidthRequest = 700;
-		this.HeightRequest = 600;
+		this.HeightRequest = 800;
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString("MainWindow");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));

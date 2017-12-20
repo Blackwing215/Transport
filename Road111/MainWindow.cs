@@ -282,18 +282,12 @@ public partial class MainWindow : Gtk.Window
 	bool OnTimer()													//timer for roads animation
 	{
 		if (!timer) return false;
-		//if (j >= drawingarea1.Allocation.Width - drawingarea1.Allocation.Height)
-		//{
-		//	j = 0; return false;
-		//}
 		QueueDraw();
-		//j += width/200;
 		return true;
 	}
 
 	protected void OnDrawingarea1ExposeEvent(object o, ExposeEventArgs args)
 	{
-		DrawingRoad(o, 1);
 		DrawingPicCar(o, 0);
 		width = drawingarea1.Allocation.Width;
 		height = drawingarea1.Allocation.Height;
@@ -301,25 +295,21 @@ public partial class MainWindow : Gtk.Window
 
 	protected void OnDrawingarea2ExposeEvent(object o, ExposeEventArgs args)
 	{
-		DrawingRoad(o, 1);
 		DrawingPicCar(o, 1);
 	}
 
 	protected void OnDrawingarea3ExposeEvent(object o, ExposeEventArgs args)
 	{
-		DrawingRoad(o, 1);
 		DrawingPicCar(o, 2);
 	}
 
 	protected void OnDrawingarea4ExposeEvent(object o, ExposeEventArgs args)
 	{
-		DrawingRoad(o, 1);
 		DrawingPicCar(o, 3);
 	}
 
 	protected void OnDrawingarea5ExposeEvent(object o, ExposeEventArgs args)
 	{
-		DrawingRoad(o, 1);
 		DrawingPicCar(o, 4);
 	}
 
@@ -335,7 +325,7 @@ public partial class MainWindow : Gtk.Window
 
 		cr.SetSourceRGB(0.3, 0.3, 0.3);
 		cr.Paint();
-		switch (road)
+		switch (road)														//Drawing railways, if needed
 		{
 			case 0:
 				if (railway1.Active)
@@ -439,7 +429,7 @@ public partial class MainWindow : Gtk.Window
 				break;
 		}
 
-		if (Road111.MainClass.getSystem().getTransportList()[road] != null)
+		if (Road111.MainClass.getSystem().getTransportList()[road] != null)						//Drawing vehicle, if it is on this strip
 		{
 
 			cr.SetSourceSurface(vehIm[road],
@@ -457,7 +447,7 @@ public partial class MainWindow : Gtk.Window
 				}
 			}
 		}
-		switch (road)
+		switch (road)																			//Drawing wires, if needed
 		{
 			case 0:
 				if (railway1.Active || electrified1.Active)
@@ -520,15 +510,6 @@ public partial class MainWindow : Gtk.Window
 				}
 				break;
 		}
-	}
-
-	protected void DrawingRoad(object o, int road)
-	{
-		DrawingArea area = (DrawingArea)o;
-		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
-
-		cr.SetSourceRGB(0.3, 0.3, 0.3);
-		cr.Paint();
 	}
 
 	protected void OnCommon1Toggled(object sender, EventArgs e)

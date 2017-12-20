@@ -10,7 +10,6 @@ namespace Road111
     {
         private List<Fuel> listF;
         private List<Vehicle> listT;
-		private List<Strip> listS;
         private Excel.Application journal;
         private string file = "Journal.xls";
         private Workbook workbook;
@@ -27,11 +26,6 @@ namespace Road111
              workbook.Save(file);  
             listF = new List<Fuel>();
             listT = new List<Vehicle>(5);
-			listS = new List<Strip>(5);
-            for (int i = 0; i < 5; i++)
-            {
-				listS.Insert(i, new Strip());
-            }
 			for (int i = 0; i < 5; i++)
 			{
 				listT.Insert(i, null);
@@ -46,10 +40,6 @@ namespace Road111
         {
             return listT;
         }
-		public List<Strip> getStripList()
-		{
-			return listS;
-		}
 
         public void writeJ(int road, Vehicle veh)//запись в журнал
         {

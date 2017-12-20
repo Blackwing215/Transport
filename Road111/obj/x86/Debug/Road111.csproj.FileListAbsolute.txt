@@ -65,3 +65,4 @@ C:\Users\Max\Documents\GitHub\Transport\Road111\bin\Debug\atk-sharp.pdb
 C:\Users\Max\Documents\GitHub\Transport\Road111\bin\Debug\FileHelpers.xml
 C:\Users\Max\Documents\GitHub\Transport\Road111\obj\x86\Debug\Road111.exe
 C:\Users\Max\Documents\GitHub\Transport\Road111\obj\x86\Debug\Road111.pdb
+C:\Users\Max\Documents\GitHub\Transport\Road111\obj\x86\Debug\Road111.csprojResolveAssemblyReference.cache

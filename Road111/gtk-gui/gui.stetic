@@ -44,7 +44,7 @@
     </action-group>
     <property name="MemberName" />
     <property name="WidthRequest">700</property>
-    <property name="HeightRequest">600</property>
+    <property name="HeightRequest">800</property>
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
@@ -2209,7 +2209,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
-                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
