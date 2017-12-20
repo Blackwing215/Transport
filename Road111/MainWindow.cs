@@ -262,7 +262,8 @@ public partial class MainWindow : Gtk.Window
     {
         for (int i = 0; i < Road111.MainClass.getSystem().getTransportList().Count;i++)//пример записи в журнал
         {
-            Road111.MainClass.getSystem().writeJ(i, Road111.MainClass.getSystem().getTransportList()[i]);
+			if (Road111.MainClass.getSystem().getTransportList()[i] != null)
+            	Road111.MainClass.getSystem().writeJ(i, Road111.MainClass.getSystem().getTransportList()[i]);
          
         }
         Road111.MainClass.getSystem().ViewJournal();//просмотр журнала 
