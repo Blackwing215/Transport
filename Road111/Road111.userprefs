@@ -1,18 +1,18 @@
-﻿<Properties StartupConfiguration="{A523A490-35A4-48D9-B758-65881247A7D0}|Default">
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Road111 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TransportDialog1.cs">
-    <Files>
-      <File FileName="Sys.cs" Line="91" Column="74" />
-      <File FileName="Vehicle.cs" Line="17" Column="39" />
-      <File FileName="MainWindow.cs" Line="212" Column="10" />
-      <File FileName="Program.cs" Line="11" Column="22" />
-      <File FileName="TransportDialog1.cs" Line="125" Column="33" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TransportDialog1.cs">
+    <Files>
+      <File FileName="Sys.cs" Line="91" Column="49" />
+      <File FileName="Vehicle.cs" Line="17" Column="39" />
+      <File FileName="MainWindow.cs" Line="212" Column="6" />
+      <File FileName="Program.cs" Line="11" Column="22" />
+      <File FileName="TransportDialog1.cs" Line="106" Column="14" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
 </Properties>
