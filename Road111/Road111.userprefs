@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{A523A490-35A4-48D9-B758-65881247A7D0}|Default">
   <MonoDevelop.Ide.ItemProperties.Road111 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TransportDialog1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ViewJournal.cs">
     <Files>
       <File FileName="Sys.cs" Line="42" Column="66" />
       <File FileName="Vehicle.cs" Line="53" Column="10" />
       <File FileName="MainWindow.cs" Line="295" Column="40" />
       <File FileName="Program.cs" Line="24" Column="10" />
-      <File FileName="TransportDialog1.cs" Line="13" Column="35" />
+      <File FileName="ViewJournal.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
