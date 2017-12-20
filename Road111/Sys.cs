@@ -51,7 +51,8 @@ namespace Road111
             }
             else
             {
-                sheet.Cells[veh.Stop_C, road] = new Cell(veh.Distance);
+                //sheet.Cells[veh.Stop_C, road] = new Cell(veh.Distance);
+				sheet.Cells[veh.Stop_C, road] = new Cell(veh.Stop_C*50);
                 veh.Stop_C++;
             }
             book.Worksheets.Add(sheet);  
