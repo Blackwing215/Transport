@@ -1906,10 +1906,12 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group1</property>
+                    <signal name="Toggled" handler="OnCommon1Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -1927,6 +1929,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group1</property>
+                    <signal name="Toggled" handler="OnRailway1Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -1944,6 +1947,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group1</property>
+                    <signal name="Toggled" handler="OnElectrified1Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -1978,10 +1982,12 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group2</property>
+                    <signal name="Toggled" handler="OnCommon2Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -1999,6 +2005,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group2</property>
+                    <signal name="Toggled" handler="OnRailway2Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2016,6 +2023,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group2</property>
+                    <signal name="Toggled" handler="OnElectrified2Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2050,10 +2058,12 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group3</property>
+                    <signal name="Toggled" handler="OnCommon3Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2071,6 +2081,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group3</property>
+                    <signal name="Toggled" handler="OnRailway3Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2088,6 +2099,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group3</property>
+                    <signal name="Toggled" handler="OnElectrified3Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2126,6 +2138,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group4</property>
+                    <signal name="Toggled" handler="OnCommon4Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2143,6 +2156,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group4</property>
+                    <signal name="Toggled" handler="OnRailway4Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2160,6 +2174,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group4</property>
+                    <signal name="Toggled" handler="OnElectrified4Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2194,10 +2209,12 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group5</property>
+                    <signal name="Toggled" handler="OnCommon5Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2215,6 +2232,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group5</property>
+                    <signal name="Toggled" handler="OnRailway5Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2232,6 +2250,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group5</property>
+                    <signal name="Toggled" handler="OnElectrified5Toggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -3130,7 +3149,7 @@
               <widget class="Gtk.SpinButton" id="spinbutton4">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
-                <property name="Upper">100</property>
+                <property name="Upper">500</property>
                 <property name="PageIncrement">10</property>
                 <property name="StepIncrement">0.1</property>
                 <property name="ClimbRate">1</property>
