@@ -76,113 +76,116 @@ namespace Road111
                     fuel = new Fuel("Газ");
                 }
             }
-            /*if (car_rad.Active)
-            {
-                MainClass.getSystem().getTransportList().Insert(road, new Car(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text));
-                transport = MainClass.getSystem().getTransportList()[road];
-            }
-            if (truck_rad.Active)
-            {
-                MainClass.getSystem().getTransportList().Insert(road, new Truck(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text, spinbutton5.Value));
-                transport = MainClass.getSystem().getTransportList()[road];
-            }
-            if (loader_rad.Active)
-            {
-                MainClass.getSystem().getTransportList().Insert(road, new Loader(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text, spinbutton5.Value));
-                transport = MainClass.getSystem().getTransportList()[road];
-
-            }
-            if (bus_rad.Active)
-            {
-                MainClass.getSystem().getTransportList().Insert(road, new Bus(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text));
-                transport = MainClass.getSystem().getTransportList()[road];
-
-            }
-            if (troll_rad.Active)
-            {
-                MainClass.getSystem().getTransportList().Insert(road, new Trolleybus(spinbutton3.Value, spinbutton4.Value, spinbutton6.ValueAsInt, entry1.Text));
-                transport = MainClass.getSystem().getTransportList()[road];
-
-            }
-            if (moto_rad.Active)
-            {
-                MainClass.getSystem().getTransportList().Insert(road, new Moto(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text));
-                transport = MainClass.getSystem().getTransportList()[road];
-
-            }
-            if (horse_rad.Active)
-            {
-                MainClass.getSystem().getTransportList().Insert(road, new Horse(spinbutton3.Value, spinbutton4.Value, entry1.Text, spinbutton5.Value));
-                transport = MainClass.getSystem().getTransportList()[road];
-            }
-            if (tram_rad.Active)
-            {
-                MainClass.getSystem().getTransportList().Insert(road, new Tram(spinbutton3.Value, spinbutton4.Value, spinbutton6.ValueAsInt, entry1.Text));
-                transport = MainClass.getSystem().getTransportList()[road];
-            }
-            if (bike_rad.Active)
-            {
-                MainClass.getSystem().getTransportList().Insert(road, new Bicycle(spinbutton3.Value, spinbutton4.Value, entry1.Text));
-                transport = MainClass.getSystem().getTransportList()[road];
-            }
-            if (radiobutton19.Active)
-            {
-                MainClass.getSystem().getTransportList().Insert(road, new Kscooter(spinbutton3.Value, spinbutton4.Value, entry1.Text));
-                transport = MainClass.getSystem().getTransportList()[road];
-            }
-            if(radiobutton21.Active)
-            {
-                MainClass.getSystem().getTransportList().Insert(road, new Panzer(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text));
-                transport = MainClass.getSystem().getTransportList()[road];
-            }*/
-            if (car_rad.Active)
+            if (car_rad.Active && car_rad.Sensitive== true)
             {
                 transport = new Car(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text);
+                Car car = (Car)transport;
+                if(car.MaxSpeed < car.Speed || car.amFuel < car.rasF)
+                {
+                    transport = null;
+                }
             }
-            if (truck_rad.Active)
+            if (truck_rad.Active && truck_rad.Sensitive == true)
             {
                 transport = new Truck(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text, spinbutton5.Value);
+                Truck truck = (Truck)transport;
+                if (truck.MaxSpeed < truck.Speed || truck.amFuel < truck.rasF)
+                {
+                    transport = null;
+                }
+
             }
-            if (loader_rad.Active)
+            if (loader_rad.Active && loader_rad.Sensitive == true)
             {
                 transport = new Loader(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text, spinbutton5.Value);
+                Loader loader = (Loader)transport;
+                if (loader.MaxSpeed < loader.Speed || loader.amFuel < loader.rasF)
+                {
+                    transport = null;
+                }
 
             }
-            if (bus_rad.Active)
+            if (bus_rad.Active && bus_rad.Sensitive == true)
             {
                 transport = new Bus(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text);
+                Bus bus = (Bus)transport;
+                if (bus.MaxSpeed < bus.Speed || bus.amFuel < bus.rasF)
+                {
+                    transport = null;
+                }
 
             }
-            if (troll_rad.Active)
+            if (troll_rad.Active && troll_rad.Sensitive == true)
             {
                 transport = new Trolleybus(spinbutton3.Value, spinbutton4.Value, spinbutton6.ValueAsInt, entry1.Text);
+                Trolleybus troll = (Trolleybus)transport;
+                if (troll.MaxSpeed < troll.Speed)
+                {
+                    transport = null;
+                }
 
             }
-            if (moto_rad.Active)
+            if (moto_rad.Active && moto_rad.Sensitive == true)
             {
                 transport = new Moto(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text);
+                Moto moto = (Moto)transport;
+                if (moto.MaxSpeed < moto.Speed || moto.amFuel < moto.rasF)
+                {
+                    transport = null;
+                }
 
             }
-            if (horse_rad.Active)
+            if (horse_rad.Active && horse_rad.Sensitive == true)
             {
                 transport = new Horse(spinbutton3.Value, spinbutton4.Value, entry1.Text, spinbutton5.Value);
+                Horse horse = (Horse)transport;
+                if (horse.MaxSpeed < horse.Speed)
+                {
+                    transport = null;
+                }
+
             }
-            if (tram_rad.Active)
+            if (tram_rad.Active && tram_rad.Sensitive == true)
             {
                 transport = new Tram(spinbutton3.Value, spinbutton4.Value, spinbutton6.ValueAsInt, entry1.Text);
+                Tram tram = (Tram)transport;
+                if (tram.MaxSpeed < tram.Speed)
+                {
+                    transport = null;
+                }
+
             }
-            if (bike_rad.Active)
+            if (bike_rad.Active && bike_rad.Sensitive == true)
             {
                 transport = new Bicycle(spinbutton3.Value, spinbutton4.Value, entry1.Text);
+                Bicycle bike = (Bicycle)transport;
+                if (bike.MaxSpeed < bike.Speed)
+                {
+                    transport = null;
+                }
+
             }
-            if (radiobutton19.Active)
+            if (radiobutton19.Active && radiobutton19.Sensitive == true) 
             {
                 transport = new Kscooter(spinbutton3.Value, spinbutton4.Value, entry1.Text);
+                Kscooter kscooter = (Kscooter)transport;
+                if (kscooter.MaxSpeed < kscooter.Speed)
+                {
+                    transport = null;
+                }
+
             }
-            if(radiobutton21.Active)
+            if(radiobutton21.Active && radiobutton21.Sensitive== true)
             {
                 transport = new Panzer(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text);
+                Panzer panzer = (Panzer)transport;
+                if (panzer.MaxSpeed < panzer.Speed || panzer.amFuel < panzer.rasF)
+                {
+                    transport = null;
+                }
+
             }
+            if(transport != null)
             if (!horse_rad.Active && !bike_rad.Active && !radiobutton19.Active )
             {
                 checkStrip();
@@ -192,7 +195,7 @@ namespace Road111
                 checkStrip();
                 fOk = true;
             }
-            if (fOk && tOk)
+            if (fOk && tOk && transport != null)
             {
                 MainClass.getWin().addTsN();
                 MainClass.getSystem().getTransportList().Insert(road, transport);
