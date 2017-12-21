@@ -12,7 +12,7 @@ namespace Road111
         }
         protected void OnButton266Clicked(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Destroy();
         }
         public void setParametrs(Vehicle ts)
         {
