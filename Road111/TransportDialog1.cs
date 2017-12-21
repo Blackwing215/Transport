@@ -199,6 +199,7 @@ namespace Road111
             if (fOk && tOk && transport != null)
             {
                 MainClass.getWin().addTsN();
+				MainClass.getSystem().getTransportList().RemoveAt(road);
                 MainClass.getSystem().getTransportList().Insert(road, transport);
                 MainClass.getSystem().getTransportList()[road].Fuel = fuel;
                 MainClass.getSystem().getTransportList()[road].Strip = strip;
