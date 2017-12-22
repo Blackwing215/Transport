@@ -1085,7 +1085,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label26">
                     <property name="MemberName">fuelLabel</property>
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -1106,7 +1105,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label31">
                     <property name="MemberName">fuelLabel</property>
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="LeftAttach">1</property>
@@ -1125,7 +1123,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label37">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
@@ -1367,7 +1364,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label27">
                     <property name="MemberName">fuelLabel</property>
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -1388,7 +1384,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label32">
                     <property name="MemberName">fuelLabel</property>
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="LeftAttach">1</property>
@@ -1407,7 +1402,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label36">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
@@ -1590,7 +1584,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label28">
                     <property name="MemberName">fuelLabel</property>
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -1611,7 +1604,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label33">
                     <property name="MemberName">fuelLabel</property>
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="LeftAttach">1</property>
@@ -1630,7 +1622,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label38">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
@@ -1813,7 +1804,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label29">
                     <property name="MemberName">fuelLabel</property>
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -1834,7 +1824,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label34">
                     <property name="MemberName">fuelLabel</property>
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="LeftAttach">1</property>
@@ -1853,7 +1842,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label39">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
@@ -2035,7 +2023,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label30">
                     <property name="MemberName">fuelLabel</property>
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -2056,7 +2043,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label35">
                     <property name="MemberName">fuelLabel</property>
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="LeftAttach">1</property>
@@ -2075,7 +2061,6 @@
                 <child>
                   <widget class="Gtk.Label" id="label40">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
@@ -2569,7 +2554,6 @@
             <child>
               <widget class="Gtk.Label" id="labelNTR">
                 <property name="MemberName">labelNTR</property>
-                <property name="LabelProp" translatable="yes" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -2590,7 +2574,6 @@
             <child>
               <widget class="Gtk.Label" id="labelTelapsed">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -2609,7 +2592,6 @@
             <child>
               <widget class="Gtk.Label" id="labelTmove">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -2630,7 +2612,6 @@
             <child>
               <widget class="Gtk.Label" id="labelTstop">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
