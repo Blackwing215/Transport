@@ -10,7 +10,7 @@ namespace Road111
     {
         private List<Fuel> listF;
         private List<Vehicle> listT;
-        private Excel.Application journal;
+       	//private Excel.Application journal;
         private string file = "Journal.xls";
         private Workbook workbook;
         private Worksheet worksheet;
@@ -48,21 +48,20 @@ namespace Road111
 			if (Road111.MainClass.getSystem().getTransportList()[road] != null)
 			{
 				//создание файла
-
 				if (veh.Stop_C == 0)
 				{
 					sheet.Cells[0, road] = new Cell(veh.Name);
+					veh.Stop_C++;
+					sheet.Cells[veh.Stop_C, road] = new Cell(veh.Distance);
 					veh.Stop_C++;
 				}
 				else
 				{
 					sheet.Cells[veh.Stop_C, road] = new Cell(veh.Distance);
-					//sheet.Cells[veh.Stop_C, road] = new Cell(veh.Stop_C*50);
 					veh.Stop_C++;
 				}
 				book.Worksheets.Add(sheet);
-				book.Save(file);
-				//чтение файла  
+				book.Save(file); 
 			}
         }
         public void ViewJournal()

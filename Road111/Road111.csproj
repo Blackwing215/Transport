@@ -75,7 +75,6 @@
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="MainWindow.cs" />
-    <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransportDialog1.cs" />
@@ -92,6 +91,7 @@
     <Compile Include="ViewJournal.cs" />
     <Compile Include="gtk-gui\Road111.ViewJournal.cs" />
     <Compile Include="Vehicle.cs" />
+    <Compile Include="gtk-gui\Road111.MainWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
