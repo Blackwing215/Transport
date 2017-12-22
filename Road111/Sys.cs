@@ -10,7 +10,6 @@ namespace Road111
     {
         private List<Fuel> listF;
         private List<Vehicle> listT;
-		private List<Strip> listS;
         private Excel.Application journal;
         private string file = "Journal.xls";
         private Workbook workbook;
@@ -27,11 +26,6 @@ namespace Road111
              workbook.Save(file);  
             listF = new List<Fuel>();
             listT = new List<Vehicle>(5);
-			listS = new List<Strip>(5);
-            for (int i = 0; i < 5; i++)
-            {
-				listS.Insert(i, new Strip());
-            }
 			for (int i = 0; i < 5; i++)
 			{
 				listT.Insert(i, null);
@@ -62,12 +56,9 @@ namespace Road111
 				}
 				else
 				{
-					if (veh.Distance % (MainWindow.RoadLength / 10) < (MainWindow.RoadLength / 50))
-					{
-						sheet.Cells[veh.Stop_C, road] = new Cell(veh.Distance);
-						//sheet.Cells[veh.Stop_C, road] = new Cell(veh.Stop_C*50);
-						veh.Stop_C++;
-					}
+					sheet.Cells[veh.Stop_C, road] = new Cell(veh.Distance);
+					//sheet.Cells[veh.Stop_C, road] = new Cell(veh.Stop_C*50);
+					veh.Stop_C++;
 				}
 				book.Worksheets.Add(sheet);
 				book.Save(file);

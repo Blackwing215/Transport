@@ -44,7 +44,7 @@
     </action-group>
     <property name="MemberName" />
     <property name="WidthRequest">700</property>
-    <property name="HeightRequest">600</property>
+    <property name="HeightRequest">800</property>
     <property name="Title" translatable="yes">MainWindow</property>
     <property name="WindowPosition">CenterOnParent</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
@@ -1079,10 +1079,16 @@
             <child>
               <widget class="Gtk.Table" id="table3">
                 <property name="MemberName" />
-                <property name="NRows">4</property>
+                <property name="NRows">5</property>
                 <property name="NColumns">2</property>
                 <property name="RowSpacing">6</property>
                 <property name="ColumnSpacing">6</property>
+                <child>
+                  <placeholder />
+                </child>
+                <child>
+                  <placeholder />
+                </child>
                 <child>
                   <placeholder />
                 </child>
@@ -1243,10 +1249,16 @@
             <child>
               <widget class="Gtk.Table" id="table4">
                 <property name="MemberName" />
-                <property name="NRows">4</property>
+                <property name="NRows">5</property>
                 <property name="NColumns">2</property>
                 <property name="RowSpacing">6</property>
                 <property name="ColumnSpacing">6</property>
+                <child>
+                  <placeholder />
+                </child>
+                <child>
+                  <placeholder />
+                </child>
                 <child>
                   <placeholder />
                 </child>
@@ -1408,10 +1420,16 @@
             <child>
               <widget class="Gtk.Table" id="table5">
                 <property name="MemberName" />
-                <property name="NRows">4</property>
+                <property name="NRows">5</property>
                 <property name="NColumns">2</property>
                 <property name="RowSpacing">6</property>
                 <property name="ColumnSpacing">6</property>
+                <child>
+                  <placeholder />
+                </child>
+                <child>
+                  <placeholder />
+                </child>
                 <child>
                   <placeholder />
                 </child>
@@ -1572,10 +1590,16 @@
             <child>
               <widget class="Gtk.Table" id="table6">
                 <property name="MemberName" />
-                <property name="NRows">4</property>
+                <property name="NRows">5</property>
                 <property name="NColumns">2</property>
                 <property name="RowSpacing">6</property>
                 <property name="ColumnSpacing">6</property>
+                <child>
+                  <placeholder />
+                </child>
+                <child>
+                  <placeholder />
+                </child>
                 <child>
                   <placeholder />
                 </child>
@@ -1736,10 +1760,16 @@
             <child>
               <widget class="Gtk.Table" id="table7">
                 <property name="MemberName" />
-                <property name="NRows">4</property>
+                <property name="NRows">5</property>
                 <property name="NColumns">2</property>
                 <property name="RowSpacing">6</property>
                 <property name="ColumnSpacing">6</property>
+                <child>
+                  <placeholder />
+                </child>
+                <child>
+                  <placeholder />
+                </child>
                 <child>
                   <placeholder />
                 </child>
@@ -1911,6 +1941,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group1</property>
+                    <signal name="Toggled" handler="StripTypeToggled" after="yes" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -1928,6 +1959,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group1</property>
+                    <signal name="Toggled" handler="StripTypeToggled" after="yes" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -1945,6 +1977,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group1</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -1984,6 +2017,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group2</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2001,6 +2035,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group2</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2018,6 +2053,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group2</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2057,6 +2093,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group3</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2074,6 +2111,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group3</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2091,6 +2129,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group3</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2125,10 +2164,12 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group4</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2146,6 +2187,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group4</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2163,6 +2205,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group4</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2202,6 +2245,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group5</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2219,6 +2263,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group5</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2236,6 +2281,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group5</property>
+                    <signal name="Toggled" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2291,14 +2337,72 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Label" id="label41">
-                <property name="MemberName">label41</property>
+              <widget class="Gtk.Label" id="labelNTR">
+                <property name="MemberName">labelNTR</property>
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
                 <property name="BottomAttach">2</property>
                 <property name="LeftAttach">3</property>
                 <property name="RightAttach">4</property>
+                <property name="AutoSize">True</property>
+                <property name="XOptions">Fill</property>
+                <property name="YOptions">Fill</property>
+                <property name="XExpand">False</property>
+                <property name="XFill">True</property>
+                <property name="XShrink">False</property>
+                <property name="YExpand">False</property>
+                <property name="YFill">True</property>
+                <property name="YShrink">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Label" id="labelTelapsed">
+                <property name="MemberName" />
+              </widget>
+              <packing>
+                <property name="TopAttach">1</property>
+                <property name="BottomAttach">2</property>
+                <property name="AutoSize">True</property>
+                <property name="XOptions">Fill</property>
+                <property name="YOptions">Fill</property>
+                <property name="XExpand">False</property>
+                <property name="XFill">True</property>
+                <property name="XShrink">False</property>
+                <property name="YExpand">False</property>
+                <property name="YFill">True</property>
+                <property name="YShrink">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Label" id="labelTmove">
+                <property name="MemberName" />
+              </widget>
+              <packing>
+                <property name="TopAttach">1</property>
+                <property name="BottomAttach">2</property>
+                <property name="LeftAttach">1</property>
+                <property name="RightAttach">2</property>
+                <property name="AutoSize">True</property>
+                <property name="XOptions">Fill</property>
+                <property name="YOptions">Fill</property>
+                <property name="XExpand">False</property>
+                <property name="XFill">True</property>
+                <property name="XShrink">False</property>
+                <property name="YExpand">False</property>
+                <property name="YFill">True</property>
+                <property name="YShrink">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Label" id="labelTstop">
+                <property name="MemberName" />
+              </widget>
+              <packing>
+                <property name="TopAttach">1</property>
+                <property name="BottomAttach">2</property>
+                <property name="LeftAttach">2</property>
+                <property name="RightAttach">3</property>
                 <property name="AutoSize">True</property>
                 <property name="XOptions">Fill</property>
                 <property name="YOptions">Fill</property>
@@ -2330,76 +2434,9 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Statusbar" id="statusbar2">
-                <property name="MemberName" />
-                <property name="Spacing">6</property>
-                <child>
-                  <placeholder />
-                </child>
-              </widget>
-              <packing>
-                <property name="TopAttach">1</property>
-                <property name="BottomAttach">2</property>
-                <property name="LeftAttach">2</property>
-                <property name="RightAttach">3</property>
-                <property name="AutoSize">False</property>
-                <property name="YOptions">Fill</property>
-                <property name="XExpand">True</property>
-                <property name="XFill">True</property>
-                <property name="XShrink">False</property>
-                <property name="YExpand">False</property>
-                <property name="YFill">True</property>
-                <property name="YShrink">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Statusbar" id="statusbar3">
-                <property name="MemberName" />
-                <property name="Spacing">6</property>
-                <child>
-                  <placeholder />
-                </child>
-              </widget>
-              <packing>
-                <property name="TopAttach">1</property>
-                <property name="BottomAttach">2</property>
-                <property name="LeftAttach">1</property>
-                <property name="RightAttach">2</property>
-                <property name="AutoSize">False</property>
-                <property name="YOptions">Fill</property>
-                <property name="XExpand">True</property>
-                <property name="XFill">True</property>
-                <property name="XShrink">False</property>
-                <property name="YExpand">False</property>
-                <property name="YFill">True</property>
-                <property name="YShrink">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Statusbar" id="statusbar4">
-                <property name="MemberName" />
-                <property name="Spacing">6</property>
-                <child>
-                  <placeholder />
-                </child>
-              </widget>
-              <packing>
-                <property name="TopAttach">1</property>
-                <property name="BottomAttach">2</property>
-                <property name="AutoSize">False</property>
-                <property name="YOptions">Fill</property>
-                <property name="XExpand">True</property>
-                <property name="XFill">True</property>
-                <property name="XShrink">False</property>
-                <property name="YExpand">False</property>
-                <property name="YFill">True</property>
-                <property name="YShrink">False</property>
-              </packing>
-            </child>
-            <child>
               <widget class="Gtk.Label" id="sumMoveTime">
                 <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">Total moveing time:</property>
+                <property name="LabelProp" translatable="yes">Total moving time:</property>
               </widget>
               <packing>
                 <property name="LeftAttach">1</property>

@@ -9,42 +9,24 @@ using Glade;
 
 public partial class MainWindow : Gtk.Window
 {
-    public String rname;//road name
-    public int amountTs;//amount of transports
-    private int roadNumb;// road number
-    public bool startLabel = true;
-    public static Road111.FuelList fuelDialog;//fuel dialog window
-    public static Road111.TransportDialog1 tsDialog;//add transport dialog window
-    public static Road111.PropertiWindow info1, info2, info3, info4, info5;//add transport dialog window  
-    private bool timer = false;   
+    String rname;//road name
+    int amountTs;//amount of transports
+    int roadNumb;// road number
+    static Road111.FuelList fuelDialog;//fuel dialog window
+    static Road111.TransportDialog1 tsDialog;//add transport dialog window
+    bool timer = false;   
 
-	protected List<ImageSurface> vehIm = new List<ImageSurface>();
-	protected int i = 0, imW, imH;
-	protected List<double> dist = new List<double>();
-	//protected List<double> distIncr = new List<double>();
+	List<ImageSurface> vehIm = new List<ImageSurface>();
+	int imW, imH;
 	int width, height;
-	static uint time = 10, roadLength = 50;
+	static uint roadLength = 50;
+	//static DateTime elapsed = new DateTime(2, 1, 1, 0, 0, 0, 0);
+	//static DateTime moving = new DateTime(2, 1, 1, 0, 0, 0, 0), stop = new DateTime(2, 1, 1, 0, 0, 0, 0);
+	static TimeSpan elapsed = new TimeSpan(0, 1, 1, 1, 250), moving = TimeSpan.Zero, stop = TimeSpan.Zero, clock = new TimeSpan(0, 0, 0, 0, 10);
 
     public MainWindow() : base(Gtk.WindowType.Toplevel)
     {
-		try
-		{
-			vehIm.Insert(0, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Car.png"));
-			vehIm.Insert(1, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Car.png"));
-			vehIm.Insert(2, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Truck.png"));
-			vehIm.Insert(3, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Tram.png"));
-			vehIm.Insert(4, new ImageSurface("C:\\Users\\Max\\Documents\\GitHub\\Transport\\Road111\\pictures\\Bus.png"));
-		}
-		catch
-		{
-			Console.WriteLine("File not found");
-			Environment.Exit(1);
-		}
 		Build();
-		width = drawingarea1.Allocation.Width;
-		for (int road = 0; road < 5; road++)
-			dist.Insert(road, 0);
-
 	}
 
 	public static uint RoadLength
@@ -176,89 +158,40 @@ public partial class MainWindow : Gtk.Window
         Road111.Strip r5 = new Road111.Strip(rname);
         tsDialog = new Road111.TransportDialog1(roadNumb, r5);
         tsDialog.Show();
-
     }
 
     public void addTsN()
     {
         amountTs++;
-        label41.Text = Convert.ToString(amountTs);
+		labelNTR.Text = Convert.ToString(amountTs);
         QueueDraw();
-    }
-    private void setStrip()
-    {
-
     }
 
     protected void OnInfoBut1Clicked(object sender, EventArgs e)
     {
-        if (info1 == null)
-        {
-            info1 = new Road111.PropertiWindow("Полоса №1");
-            info1.setParametrs(Road111.MainClass.getSystem().getTransportList()[0]);
-            info1.Show();
-        }
-        else
-        {
-            info1.Show();
-        }
+        ViewProperties(0);
     }
     protected void OnInfoBut2Clicked(object sender, EventArgs e)
     {
-        if (info2 == null)
-        {
-            info2 = new Road111.PropertiWindow("Полоса №2");
-            info2.setParametrs(Road111.MainClass.getSystem().getTransportList()[1]);
-            info2.Show();
-        }
-        else
-        {
-            info2.Show();
-        }
+        ViewProperties(1);
     }
 
     protected void OnInfoBut3Clicked(object sender, EventArgs e)
     {
-        if (info3 == null)
-        {
-            info3 = new Road111.PropertiWindow("Полоса №3");
-            info3.setParametrs(Road111.MainClass.getSystem().getTransportList()[2]);
-            info3.Show();
-        }
-        else
-        {
-            info3.Show();
-        }
+        ViewProperties(2);
     }
 
     protected void OnInfoBut4Clicked(object sender, EventArgs e)
     {
-        if (info4 == null)
-        {
-            info4 = new Road111.PropertiWindow("Полоса №4");
-            info4.setParametrs(Road111.MainClass.getSystem().getTransportList()[3]);
-            info4.Show();
-        }
-        else
-        {
-            info4.Show();
-        }
+        ViewProperties(3);
     }
 
-    protected void OnInfoBut5Clicked(object sender, EventArgs e)
+    void OnInfoBut5Clicked(object sender, EventArgs e)
     {
-        if (info5 == null)
-        {
-            info5 = new Road111.PropertiWindow("Полоса №5");
-            info5.setParametrs(Road111.MainClass.getSystem().getTransportList()[4]);
-            info5.Show();
-        }
-        else
-        {
-            info5.Show();
-        }
+        ViewProperties(4);
     }
-    protected void OnJournalActionActivated(object sender, EventArgs e)
+
+    void OnJournalActionActivated(object sender, EventArgs e)
     {
         for (int i = 0; i < Road111.MainClass.getSystem().getTransportList().Count;i++)//пример записи в журнал
         {
@@ -269,53 +202,54 @@ public partial class MainWindow : Gtk.Window
         Road111.MainClass.getSystem().ViewJournal();//просмотр журнала 
     }
 
-	protected void ToggleProgress(object sender, EventArgs e)		//Start/Stop button action
+	void ToggleProgress(object sender, EventArgs e)					//Start/Stop button action
 	{
 		timer = !timer;
-		GLib.Timeout.Add(time, new GLib.TimeoutHandler(OnTimer));
+		GLib.Timeout.Add((uint)clock.Milliseconds, new GLib.TimeoutHandler(OnTimer));
+		SwitchSensetivity();
 	}
-
 	bool OnTimer()													//timer for roads animation
 	{
-		if (!timer) return false;
-		//if (j >= drawingarea1.Allocation.Width - drawingarea1.Allocation.Height)
-		//{
-		//	j = 0; return false;
-		//}
+		elapsed += clock;
+		labelTelapsed.Text = elapsed.ToString();
+		if (timer)
+		{
+			moving += new TimeSpan(0, 0, 0, 0, amountTs * clock.Milliseconds);
+			labelTmove.Text = moving.ToString();
+		}
+		else
+		{
+			stop += new TimeSpan(0, 0, 0, 0, amountTs* clock.Milliseconds);
+			labelTstop.Text = stop.ToString();
+		}
 		QueueDraw();
-		//j += width/200;
 		return true;
 	}
 
 	protected void OnDrawingarea1ExposeEvent(object o, ExposeEventArgs args)
 	{
-		DrawingRoad(o, 1);
-		DrawingPicCar(o, 0);
 		width = drawingarea1.Allocation.Width;
 		height = drawingarea1.Allocation.Height;
+		DrawingPicCar(o, 0);
 	}
 
 	protected void OnDrawingarea2ExposeEvent(object o, ExposeEventArgs args)
 	{
-		DrawingRoad(o, 1);
 		DrawingPicCar(o, 1);
 	}
 
 	protected void OnDrawingarea3ExposeEvent(object o, ExposeEventArgs args)
 	{
-		DrawingRoad(o, 1);
 		DrawingPicCar(o, 2);
 	}
 
 	protected void OnDrawingarea4ExposeEvent(object o, ExposeEventArgs args)
 	{
-		DrawingRoad(o, 1);
 		DrawingPicCar(o, 3);
 	}
 
 	protected void OnDrawingarea5ExposeEvent(object o, ExposeEventArgs args)
 	{
-		DrawingRoad(o, 1);
 		DrawingPicCar(o, 4);
 	}
 
@@ -324,37 +258,383 @@ public partial class MainWindow : Gtk.Window
 		DrawingArea area = (DrawingArea)o;
 		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
 
-		//int width, height;
 		width = area.Allocation.Width;
 		height = area.Allocation.Height;
-		imW = vehIm[road].Width;
-		imH = vehIm[road].Height;
-
-		//cr.SetSourceRGB(0.3, 0.3, 0.3);
-		//cr.Paint();
-
-		if (Road111.MainClass.getSystem().getTransportList()[road] != null)
-		{
-			
-			cr.SetSourceSurface(vehIm[road], 
-			                    Convert.ToInt32((roadLength/width)*Road111.MainClass.getSystem().getTransportList()[road].Distance),
-			                    (height - imH) / 2);
-			cr.Paint();
-			if (timer && dist[road] < width - imW)
-			{
-				double speed = Road111.MainClass.getSystem().getTransportList()[road].Speed;
-				//double incr = (width / roadLength) * (speed * time / 3600000);
-				//dist[road] += incr;
-				Road111.MainClass.getSystem().getTransportList()[road].Distance += speed * time / 3600000;
-			}
-		}
-	}
-	protected void DrawingRoad(object o, int road)
-	{
-		DrawingArea area = (DrawingArea)o;
-		Cairo.Context cr = Gdk.CairoHelper.Create(area.GdkWindow);
 
 		cr.SetSourceRGB(0.3, 0.3, 0.3);
 		cr.Paint();
+		switch (road)														//Drawing railways, if needed
+		{
+			case 0:
+				if (railway1.Active)
+				{
+					for (int k = 0; k < width / (height / 8); k++)
+					{
+						cr.LineWidth = height / 30;
+						cr.SetSourceRGB(0.4, 0.3, 0.15);
+						cr.MoveTo(k * height / 8, 2 * height / 9);
+						cr.LineTo(k * height / 8, 7 * height / 9);
+						cr.Stroke();
+					}
+					cr.LineWidth = height / 20;
+					cr.SetSourceRGB(0.75, 0.75, 0.75);
+					cr.MoveTo(0, height / 3);
+					cr.LineTo(width, height / 3);
+					cr.MoveTo(0, 2 * height / 3);
+					cr.LineTo(width, 2 * height / 3);
+					cr.Stroke();
+				}
+				break;
+			case 1:
+				if (railway2.Active)
+				{
+					for (int k = 0; k < width / (height / 8); k++)
+					{
+						cr.LineWidth = height / 30;
+						cr.SetSourceRGB(0.4, 0.3, 0.15);
+						cr.MoveTo(k * height / 8, 2 * height / 9);
+						cr.LineTo(k * height / 8, 7 * height / 9);
+						cr.Stroke();
+					}
+					cr.LineWidth = height / 20;
+					cr.SetSourceRGB(0.75, 0.75, 0.75);
+					cr.MoveTo(0, height / 3);
+					cr.LineTo(width, height / 3);
+					cr.MoveTo(0, 2 * height / 3);
+					cr.LineTo(width, 2 * height / 3);
+					cr.Stroke();
+				}
+				break;
+			case 2:
+				if (railway3.Active)
+				{
+					for (int k = 0; k < width / (height / 8); k++)
+					{
+						cr.LineWidth = height / 30;
+						cr.SetSourceRGB(0.4, 0.3, 0.15);
+						cr.MoveTo(k * height / 8, 2 * height / 9);
+						cr.LineTo(k * height / 8, 7 * height / 9);
+						cr.Stroke();
+					}
+					cr.LineWidth = height / 20;
+					cr.SetSourceRGB(0.75, 0.75, 0.75);
+					cr.MoveTo(0, height / 3);
+					cr.LineTo(width, height / 3);
+					cr.MoveTo(0, 2 * height / 3);
+					cr.LineTo(width, 2 * height / 3);
+					cr.Stroke();
+				}
+				break;
+			case 3:
+				if (railway4.Active)
+				{
+					for (int k = 0; k < width / (height / 8); k++)
+					{
+						cr.LineWidth = height / 30;
+						cr.SetSourceRGB(0.4, 0.3, 0.15);
+						cr.MoveTo(k * height / 8, 2 * height / 9);
+						cr.LineTo(k * height / 8, 7 * height / 9);
+						cr.Stroke();
+					}
+					cr.LineWidth = height / 20;
+					cr.SetSourceRGB(0.75, 0.75, 0.75);
+					cr.MoveTo(0, height / 3);
+					cr.LineTo(width, height / 3);
+					cr.MoveTo(0, 2 * height / 3);
+					cr.LineTo(width, 2 * height / 3);
+					cr.Stroke();
+				}
+				break;
+			case 4:
+				if (railway5.Active)
+				{
+					for (int k = 0; k < width / (height / 8); k++)
+					{
+						cr.LineWidth = height / 30;
+						cr.SetSourceRGB(0.4, 0.3, 0.15);
+						cr.MoveTo(k * height / 8, 2 * height / 9);
+						cr.LineTo(k * height / 8, 7 * height / 9);
+						cr.Stroke();
+					}
+					cr.LineWidth = height / 20;
+					cr.SetSourceRGB(0.75, 0.75, 0.75);
+					cr.MoveTo(0, height / 3);
+					cr.LineTo(width, height / 3);
+					cr.MoveTo(0, 2 * height / 3);
+					cr.LineTo(width, 2 * height / 3);
+					cr.Stroke();
+				}
+				break;
+		}
+
+		if (Road111.MainClass.getSystem().getTransportList()[road] != null)						//Drawing vehicle, if it is on this strip
+		{
+			imW = Road111.MainClass.getSystem().getTransportList()[road].Image.Width;
+			imH = Road111.MainClass.getSystem().getTransportList()[road].Image.Height;
+			cr.SetSourceSurface(Road111.MainClass.getSystem().getTransportList()[road].Image,
+								Convert.ToInt32((width / roadLength) * Road111.MainClass.getSystem().getTransportList()[road].Distance),
+								(height - imH) / 2);
+			cr.Paint();
+			if (timer && (width / roadLength) * Road111.MainClass.getSystem().getTransportList()[road].Distance < width - imW)
+			{
+				double speed = Road111.MainClass.getSystem().getTransportList()[road].Speed;
+				Road111.MainClass.getSystem().getTransportList()[road].Distance += 1 * speed * clock.Milliseconds / 3600000;
+				if (Road111.MainClass.getSystem().getTransportList()[road].Distance
+					% (RoadLength / 10) < (RoadLength / 5000))
+				{
+					Road111.MainClass.getSystem().writeJ(road, Road111.MainClass.getSystem().getTransportList()[road]);
+				}
+			}
+		}
+		switch (road)																			//Drawing wires, if needed
+		{
+			case 0:
+				if (railway1.Active || electrified1.Active)
+				{
+					cr.LineWidth = height / 30;
+					cr.SetSourceRGB(0.1, 0.0, 0.0);
+					cr.MoveTo(0, 2 * height / 5);
+					cr.LineTo(width, 2 * height / 5);
+					cr.MoveTo(0, 3 * height / 5);
+					cr.LineTo(width, 3 * height / 5);
+					cr.Stroke();
+				}
+				break;
+			case 1:
+				if (railway2.Active || electrified2.Active)
+				{
+					cr.LineWidth = height / 30;
+					cr.SetSourceRGB(0.1, 0.0, 0.0);
+					cr.MoveTo(0, 2 * height / 5);
+					cr.LineTo(width, 2 * height / 5);
+					cr.MoveTo(0, 3 * height / 5);
+					cr.LineTo(width, 3 * height / 5);
+					cr.Stroke();
+				}
+				break;
+			case 2:
+				if (railway3.Active || electrified3.Active)
+				{
+					cr.LineWidth = height / 30;
+					cr.SetSourceRGB(0.1, 0.0, 0.0);
+					cr.MoveTo(0, 2 * height / 5);
+					cr.LineTo(width, 2 * height / 5);
+					cr.MoveTo(0, 3 * height / 5);
+					cr.LineTo(width, 3 * height / 5);
+					cr.Stroke();
+				}
+				break;
+			case 3:
+				if (railway4.Active || electrified4.Active)
+				{
+					cr.LineWidth = height / 30;
+					cr.SetSourceRGB(0.1, 0.0, 0.0);
+					cr.MoveTo(0, 2 * height / 5);
+					cr.LineTo(width, 2 * height / 5);
+					cr.MoveTo(0, 3 * height / 5);
+					cr.LineTo(width, 3 * height / 5);
+					cr.Stroke();
+				}
+				break;
+			case 4:
+				if (railway5.Active || electrified5.Active)
+				{
+					cr.LineWidth = height / 30;
+					cr.SetSourceRGB(0.1, 0.0, 0.0);
+					cr.MoveTo(0, 2 * height / 5);
+					cr.LineTo(width, 2 * height / 5);
+					cr.MoveTo(0, 3 * height / 5);
+					cr.LineTo(width, 3 * height / 5);
+					cr.Stroke();
+				}
+				break;
+		}
+		cr.Dispose();
+	}
+
+    public void ViewProperties(int road)
+	{
+		Gtk.Window window = new Gtk.Window("Параметры №" + road);
+		window.SetSizeRequest(500, 200);
+
+		Gtk.TreeView tree = new Gtk.TreeView();
+		window.Add(tree);
+
+		Gtk.TreeViewColumn tsColumn = new Gtk.TreeViewColumn();
+		tsColumn.Title = "Транспортное средство";
+
+		Gtk.CellRendererText tsNameCell = new Gtk.CellRendererText();
+
+		tsColumn.PackStart(tsNameCell, true);
+
+		Gtk.TreeViewColumn distanceColumn = new Gtk.TreeViewColumn();
+		distanceColumn.Title = "Запись";
+
+		Gtk.CellRendererText distanceTitleCell = new Gtk.CellRendererText();
+		distanceColumn.PackStart(distanceTitleCell, true);
+
+		tree.AppendColumn(tsColumn);
+		tree.AppendColumn(distanceColumn);
+
+		tsColumn.AddAttribute(tsNameCell, "text", 0);
+		distanceColumn.AddAttribute(distanceTitleCell, "text", 1);
+
+		Gtk.TreeStore tsListStore = new Gtk.TreeStore(typeof(string), typeof(string));
+		Gtk.TreeIter iter;
+		switch (Road111.MainClass.getSystem().getTransportList()[road].Name)
+		{
+			case "Автомобиль":
+				Road111.Car car = (Road111.Car)Road111.MainClass.getSystem().getTransportList()[road];
+				iter = tsListStore.AppendValues(car.Name);
+				tsListStore.AppendValues(iter, "Тип:", car.Type);
+				tsListStore.AppendValues(iter, "Марка:", car.Brand);
+				tsListStore.AppendValues(iter, "Тип топлива:", car.Fuel.GetFuel());
+				tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(car.AmountFuel));
+				tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(car.ConsFuel));
+				tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(car.MaxSpeed));
+				tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(car.Speed));
+				tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(car.MaxDist));
+				tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(car.Passengers));
+				break;
+			case "Мотоцикл":
+				Road111.Moto moto = (Road111.Moto)Road111.MainClass.getSystem().getTransportList()[road];
+				iter = tsListStore.AppendValues(moto.Name);
+				tsListStore.AppendValues(iter, "Тип:", moto.Type);
+				tsListStore.AppendValues(iter, "Марка:", moto.Brand);
+				tsListStore.AppendValues(iter, "Тип топлива:", moto.Fuel.GetFuel());
+				tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(moto.AmountFuel));
+				tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(moto.ConsFuel));
+				tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(moto.MaxSpeed));
+				tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(moto.Speed));
+				tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(moto.MaxDist));
+				break;
+			case "Грузовик":
+				Road111.Truck truck = (Road111.Truck)Road111.MainClass.getSystem().getTransportList()[road];
+				iter = tsListStore.AppendValues(truck.Name);
+				tsListStore.AppendValues(iter, "Тип:", truck.Type);
+				tsListStore.AppendValues(iter, "Марка:", truck.Brand);
+				tsListStore.AppendValues(iter, "Тип топлива:", truck.Fuel.GetFuel());
+				tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(truck.AmountFuel));
+				tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(truck.ConsFuel));
+				tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(truck.MaxSpeed));
+				tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(truck.Speed));
+				tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(truck.MaxDist));
+				tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(truck.Carrying));
+				break;
+			case "Погрузчик":
+				Road111.Loader loader = (Road111.Loader)Road111.MainClass.getSystem().getTransportList()[road];
+				iter = tsListStore.AppendValues(loader.Name);
+				tsListStore.AppendValues(iter, "Тип:", loader.Type);
+				tsListStore.AppendValues(iter, "Марка:", loader.Brand);
+				tsListStore.AppendValues(iter, "Тип топлива:", loader.Fuel.GetFuel());
+				tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(loader.AmountFuel));
+				tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(loader.ConsFuel));
+				tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(loader.MaxSpeed));
+				tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(loader.Speed));
+				tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(loader.MaxDist));
+				tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(loader.Carrying));
+				break;
+			case "Автобус":
+				Road111.Bus bus = (Road111.Bus)Road111.MainClass.getSystem().getTransportList()[road];
+				iter = tsListStore.AppendValues(bus.Name);
+				tsListStore.AppendValues(iter, "Тип:", bus.Type);
+				tsListStore.AppendValues(iter, "Марка:", bus.Brand);
+				tsListStore.AppendValues(iter, "Тип топлива:", bus.Fuel.GetFuel());
+				tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(bus.AmountFuel));
+				tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(bus.ConsFuel));
+				tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(bus.MaxSpeed));
+				tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(bus.Speed));
+				tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(bus.MaxDist));
+				tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(bus.Passengers));
+				break;
+			case "Троллейбус":
+				Road111.Trolleybus troll = (Road111.Trolleybus)Road111.MainClass.getSystem().getTransportList()[road];
+				iter = tsListStore.AppendValues(troll.Name);
+				tsListStore.AppendValues(iter, "Тип:", troll.Type);
+				tsListStore.AppendValues(iter, "Марка:", troll.Brand);
+				tsListStore.AppendValues(iter, "Тип топлива:", troll.Fuel.GetFuel());
+				tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(troll.MaxSpeed));
+				tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(troll.Speed));
+				tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(troll.Passengers));
+				break;
+			case "Трамвай":
+				Road111.Tram tram = (Road111.Tram)Road111.MainClass.getSystem().getTransportList()[road];
+				iter = tsListStore.AppendValues(tram.Name);
+				tsListStore.AppendValues(iter, "Тип:", tram.Type);
+				tsListStore.AppendValues(iter, "Марка:", tram.Brand);
+				tsListStore.AppendValues(iter, "Тип топлива:", tram.Fuel.GetFuel());
+				tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(tram.MaxSpeed));
+				tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(tram.Speed));
+				tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(tram.Passengers));
+				break;
+			case "Гужевая повозка":
+				Road111.Horse horse = (Road111.Horse)Road111.MainClass.getSystem().getTransportList()[road];
+				iter = tsListStore.AppendValues(horse.Name);
+				tsListStore.AppendValues(iter, "Тип:", horse.Type);
+				tsListStore.AppendValues(iter, "Марка:", horse.Brand);
+				tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(horse.MaxSpeed));
+				tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(horse.Speed));
+				tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(horse.Carrying));
+				break;
+			case "Велосипед":
+				Road111.Bike bike = (Road111.Bike)Road111.MainClass.getSystem().getTransportList()[road];
+				iter = tsListStore.AppendValues(bike.Name);
+				tsListStore.AppendValues(iter, "Тип:", bike.Type);
+				tsListStore.AppendValues(iter, "Марка:", bike.Brand);
+				tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(bike.MaxSpeed));
+				tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(bike.Speed));
+				break;
+			case "Самокат":
+				Road111.Kscooter ks = (Road111.Kscooter)Road111.MainClass.getSystem().getTransportList()[road];
+				iter = tsListStore.AppendValues(ks.Name);
+				tsListStore.AppendValues(iter, "Тип:", ks.Type);
+				tsListStore.AppendValues(iter, "Марка:", ks.Brand);
+				tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(ks.MaxSpeed));
+				tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(ks.Speed));
+				break;
+			case "Танк":
+				Road111.Tank panzer = (Road111.Tank)Road111.MainClass.getSystem().getTransportList()[road];
+				iter = tsListStore.AppendValues(panzer.Name);
+				tsListStore.AppendValues(iter, "Тип:", panzer.Type);
+				tsListStore.AppendValues(iter, "Марка:", panzer.Brand);
+				tsListStore.AppendValues(iter, "Тип топлива:", panzer.Fuel.GetFuel());
+				tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(panzer.AmountFuel));
+				tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(panzer.ConsFuel));
+				tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(panzer.MaxSpeed));
+				tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(panzer.Speed));
+				tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(panzer.MaxDist));
+				break;
+		}
+
+		tree.Model = tsListStore;
+
+		window.ShowAll();
+	}
+
+	void StripTypeToggled(object sender, EventArgs e)
+	{ QueueDraw(); }
+
+	void SwitchSensetivity()
+	{
+		common1.Sensitive = !common1.Sensitive;
+		common2.Sensitive = !common2.Sensitive;
+		common3.Sensitive = !common3.Sensitive;
+		common4.Sensitive = !common4.Sensitive;
+		common5.Sensitive = !common5.Sensitive;
+		railway1.Sensitive = !railway1.Sensitive;
+		railway2.Sensitive = !railway2.Sensitive;
+		railway3.Sensitive = !railway3.Sensitive;
+		railway4.Sensitive = !railway4.Sensitive;
+		railway5.Sensitive = !railway5.Sensitive;
+		electrified1.Sensitive = !electrified1.Sensitive;
+		electrified2.Sensitive = !electrified2.Sensitive;
+		electrified3.Sensitive = !electrified3.Sensitive;
+		electrified4.Sensitive = !electrified4.Sensitive;
+		electrified5.Sensitive = !electrified5.Sensitive;
+		button1.Sensitive = !button1.Sensitive;
+		button2.Sensitive = !button2.Sensitive;
+		button3.Sensitive = !button3.Sensitive;
+		button4.Sensitive = !button4.Sensitive;
+		button5.Sensitive = !button5.Sensitive;
 	}
 }

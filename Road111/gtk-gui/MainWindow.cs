@@ -249,15 +249,15 @@ public partial class MainWindow
 
 	private global::Gtk.Label elTime;
 
-	private global::Gtk.Label label41;
+	private global::Gtk.Label labelNTR;
+
+	private global::Gtk.Label labelTelapsed;
+
+	private global::Gtk.Label labelTmove;
+
+	private global::Gtk.Label labelTstop;
 
 	private global::Gtk.Label numTransport;
-
-	private global::Gtk.Statusbar statusbar2;
-
-	private global::Gtk.Statusbar statusbar3;
-
-	private global::Gtk.Statusbar statusbar4;
 
 	private global::Gtk.Label sumMoveTime;
 
@@ -290,7 +290,7 @@ public partial class MainWindow
 		this.UIManager.InsertActionGroup(w1, 0);
 		this.AddAccelGroup(this.UIManager.AccelGroup);
 		this.WidthRequest = 700;
-		this.HeightRequest = 600;
+		this.HeightRequest = 800;
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString("MainWindow");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
@@ -840,7 +840,7 @@ public partial class MainWindow
 		w53.BottomAttach = ((uint)(10));
 		w53.XOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table1.Gtk.Table+TableChild
-		this.table3 = new global::Gtk.Table(((uint)(4)), ((uint)(2)), false);
+		this.table3 = new global::Gtk.Table(((uint)(5)), ((uint)(2)), false);
 		this.table3.Name = "table3";
 		this.table3.RowSpacing = ((uint)(6));
 		this.table3.ColumnSpacing = ((uint)(6));
@@ -925,7 +925,7 @@ public partial class MainWindow
 		w61.XOptions = ((global::Gtk.AttachOptions)(4));
 		w61.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table1.Gtk.Table+TableChild
-		this.table4 = new global::Gtk.Table(((uint)(4)), ((uint)(2)), false);
+		this.table4 = new global::Gtk.Table(((uint)(5)), ((uint)(2)), false);
 		this.table4.Name = "table4";
 		this.table4.RowSpacing = ((uint)(6));
 		this.table4.ColumnSpacing = ((uint)(6));
@@ -1011,7 +1011,7 @@ public partial class MainWindow
 		w69.XOptions = ((global::Gtk.AttachOptions)(4));
 		w69.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table1.Gtk.Table+TableChild
-		this.table5 = new global::Gtk.Table(((uint)(4)), ((uint)(2)), false);
+		this.table5 = new global::Gtk.Table(((uint)(5)), ((uint)(2)), false);
 		this.table5.Name = "table5";
 		this.table5.RowSpacing = ((uint)(6));
 		this.table5.ColumnSpacing = ((uint)(6));
@@ -1096,7 +1096,7 @@ public partial class MainWindow
 		w77.XOptions = ((global::Gtk.AttachOptions)(4));
 		w77.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table1.Gtk.Table+TableChild
-		this.table6 = new global::Gtk.Table(((uint)(4)), ((uint)(2)), false);
+		this.table6 = new global::Gtk.Table(((uint)(5)), ((uint)(2)), false);
 		this.table6.Name = "table6";
 		this.table6.RowSpacing = ((uint)(6));
 		this.table6.ColumnSpacing = ((uint)(6));
@@ -1181,7 +1181,7 @@ public partial class MainWindow
 		w85.XOptions = ((global::Gtk.AttachOptions)(4));
 		w85.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table1.Gtk.Table+TableChild
-		this.table7 = new global::Gtk.Table(((uint)(4)), ((uint)(2)), false);
+		this.table7 = new global::Gtk.Table(((uint)(5)), ((uint)(2)), false);
 		this.table7.Name = "table7";
 		this.table7.RowSpacing = ((uint)(6));
 		this.table7.ColumnSpacing = ((uint)(6));
@@ -1521,10 +1521,10 @@ public partial class MainWindow
 		global::Gtk.Table.TableChild w115 = ((global::Gtk.Table.TableChild)(this.table2[this.elTime]));
 		w115.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
-		this.label41 = new global::Gtk.Label();
-		this.label41.Name = "label41";
-		this.table2.Add(this.label41);
-		global::Gtk.Table.TableChild w116 = ((global::Gtk.Table.TableChild)(this.table2[this.label41]));
+		this.labelNTR = new global::Gtk.Label();
+		this.labelNTR.Name = "labelNTR";
+		this.table2.Add(this.labelNTR);
+		global::Gtk.Table.TableChild w116 = ((global::Gtk.Table.TableChild)(this.table2[this.labelNTR]));
 		w116.TopAttach = ((uint)(1));
 		w116.BottomAttach = ((uint)(2));
 		w116.LeftAttach = ((uint)(3));
@@ -1532,50 +1532,50 @@ public partial class MainWindow
 		w116.XOptions = ((global::Gtk.AttachOptions)(4));
 		w116.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
+		this.labelTelapsed = new global::Gtk.Label();
+		this.labelTelapsed.Name = "labelTelapsed";
+		this.table2.Add(this.labelTelapsed);
+		global::Gtk.Table.TableChild w117 = ((global::Gtk.Table.TableChild)(this.table2[this.labelTelapsed]));
+		w117.TopAttach = ((uint)(1));
+		w117.BottomAttach = ((uint)(2));
+		w117.XOptions = ((global::Gtk.AttachOptions)(4));
+		w117.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child table2.Gtk.Table+TableChild
+		this.labelTmove = new global::Gtk.Label();
+		this.labelTmove.Name = "labelTmove";
+		this.table2.Add(this.labelTmove);
+		global::Gtk.Table.TableChild w118 = ((global::Gtk.Table.TableChild)(this.table2[this.labelTmove]));
+		w118.TopAttach = ((uint)(1));
+		w118.BottomAttach = ((uint)(2));
+		w118.LeftAttach = ((uint)(1));
+		w118.RightAttach = ((uint)(2));
+		w118.XOptions = ((global::Gtk.AttachOptions)(4));
+		w118.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child table2.Gtk.Table+TableChild
+		this.labelTstop = new global::Gtk.Label();
+		this.labelTstop.Name = "labelTstop";
+		this.table2.Add(this.labelTstop);
+		global::Gtk.Table.TableChild w119 = ((global::Gtk.Table.TableChild)(this.table2[this.labelTstop]));
+		w119.TopAttach = ((uint)(1));
+		w119.BottomAttach = ((uint)(2));
+		w119.LeftAttach = ((uint)(2));
+		w119.RightAttach = ((uint)(3));
+		w119.XOptions = ((global::Gtk.AttachOptions)(4));
+		w119.YOptions = ((global::Gtk.AttachOptions)(4));
+		// Container child table2.Gtk.Table+TableChild
 		this.numTransport = new global::Gtk.Label();
 		this.numTransport.Name = "numTransport";
 		this.numTransport.LabelProp = global::Mono.Unix.Catalog.GetString("Number of transport:");
 		this.table2.Add(this.numTransport);
-		global::Gtk.Table.TableChild w117 = ((global::Gtk.Table.TableChild)(this.table2[this.numTransport]));
-		w117.LeftAttach = ((uint)(3));
-		w117.RightAttach = ((uint)(4));
-		w117.XOptions = ((global::Gtk.AttachOptions)(4));
-		w117.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table2.Gtk.Table+TableChild
-		this.statusbar2 = new global::Gtk.Statusbar();
-		this.statusbar2.Name = "statusbar2";
-		this.statusbar2.Spacing = 6;
-		this.table2.Add(this.statusbar2);
-		global::Gtk.Table.TableChild w118 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar2]));
-		w118.TopAttach = ((uint)(1));
-		w118.BottomAttach = ((uint)(2));
-		w118.LeftAttach = ((uint)(2));
-		w118.RightAttach = ((uint)(3));
-		w118.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table2.Gtk.Table+TableChild
-		this.statusbar3 = new global::Gtk.Statusbar();
-		this.statusbar3.Name = "statusbar3";
-		this.statusbar3.Spacing = 6;
-		this.table2.Add(this.statusbar3);
-		global::Gtk.Table.TableChild w119 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar3]));
-		w119.TopAttach = ((uint)(1));
-		w119.BottomAttach = ((uint)(2));
-		w119.LeftAttach = ((uint)(1));
-		w119.RightAttach = ((uint)(2));
-		w119.YOptions = ((global::Gtk.AttachOptions)(4));
-		// Container child table2.Gtk.Table+TableChild
-		this.statusbar4 = new global::Gtk.Statusbar();
-		this.statusbar4.Name = "statusbar4";
-		this.statusbar4.Spacing = 6;
-		this.table2.Add(this.statusbar4);
-		global::Gtk.Table.TableChild w120 = ((global::Gtk.Table.TableChild)(this.table2[this.statusbar4]));
-		w120.TopAttach = ((uint)(1));
-		w120.BottomAttach = ((uint)(2));
+		global::Gtk.Table.TableChild w120 = ((global::Gtk.Table.TableChild)(this.table2[this.numTransport]));
+		w120.LeftAttach = ((uint)(3));
+		w120.RightAttach = ((uint)(4));
+		w120.XOptions = ((global::Gtk.AttachOptions)(4));
 		w120.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table2.Gtk.Table+TableChild
 		this.sumMoveTime = new global::Gtk.Label();
 		this.sumMoveTime.Name = "sumMoveTime";
-		this.sumMoveTime.LabelProp = global::Mono.Unix.Catalog.GetString("Total moveing time:");
+		this.sumMoveTime.LabelProp = global::Mono.Unix.Catalog.GetString("Total moving time:");
 		this.table2.Add(this.sumMoveTime);
 		global::Gtk.Table.TableChild w121 = ((global::Gtk.Table.TableChild)(this.table2[this.sumMoveTime]));
 		w121.LeftAttach = ((uint)(1));
@@ -1606,6 +1606,21 @@ public partial class MainWindow
 		this.AddFuelListAction.Activated += new global::System.EventHandler(this.OnAddFuelListActionActivated);
 		this.JournalAction.Activated += new global::System.EventHandler(this.OnJournalActionActivated);
 		this.start_stop.Clicked += new global::System.EventHandler(this.ToggleProgress);
+		this.common5.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.railway5.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.electrified5.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.common4.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.railway4.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.electrified4.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.common3.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.railway3.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.electrified3.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.common2.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.railway2.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.electrified2.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.common1.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.railway1.Toggled += new global::System.EventHandler(this.StripTypeToggled);
+		this.electrified1.Toggled += new global::System.EventHandler(this.StripTypeToggled);
 		this.info_but5.Clicked += new global::System.EventHandler(this.OnInfoBut5Clicked);
 		this.info_but4.Clicked += new global::System.EventHandler(this.OnInfoBut4Clicked);
 		this.info_but3.Clicked += new global::System.EventHandler(this.OnInfoBut3Clicked);
