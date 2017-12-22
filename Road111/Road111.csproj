@@ -84,7 +84,6 @@
     <Compile Include="gtk-gui\Road111.FuelList.cs" />
     <Compile Include="Fuel.cs" />
     <Compile Include="Sys.cs" />
-    <Compile Include="Vehicle.cs" />
     <Compile Include="Strip.cs" />
     <Compile Include="ExTWindow.cs" />
     <Compile Include="gtk-gui\Road111.ExTWindow.cs" />
@@ -92,6 +91,7 @@
     <Compile Include="PropertiWindow.cs" />
     <Compile Include="ViewJournal.cs" />
     <Compile Include="gtk-gui\Road111.ViewJournal.cs" />
+    <Compile Include="Vehicle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

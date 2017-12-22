@@ -81,7 +81,7 @@ namespace Road111
 			{
 				transport = new Car(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text);
 				Car car = (Car)transport;
-				if (car.MaxSpeed < car.Speed || car.amFuel < car.rasF)
+				if (car.MaxSpeed < car.Speed)
 				{
 					transport = null;
 				}
@@ -90,7 +90,7 @@ namespace Road111
 			{
 				transport = new Truck(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text, spinbutton5.Value);
 				Truck truck = (Truck)transport;
-				if (truck.MaxSpeed < truck.Speed || truck.amFuel < truck.rasF)
+				if (truck.MaxSpeed < truck.Speed)
 				{
 					transport = null;
 				}
@@ -100,7 +100,7 @@ namespace Road111
 			{
 				transport = new Loader(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text, spinbutton5.Value);
 				Loader loader = (Loader)transport;
-				if (loader.MaxSpeed < loader.Speed || loader.amFuel < loader.rasF)
+				if (loader.MaxSpeed < loader.Speed)
 				{
 					transport = null;
 				}
@@ -110,7 +110,7 @@ namespace Road111
 			{
 				transport = new Bus(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text);
 				Bus bus = (Bus)transport;
-				if (bus.MaxSpeed < bus.Speed || bus.amFuel < bus.rasF)
+				if (bus.MaxSpeed < bus.Speed)
 				{
 					transport = null;
 				}
@@ -130,7 +130,7 @@ namespace Road111
 			{
 				transport = new Moto(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, entry1.Text);
 				Moto moto = (Moto)transport;
-				if (moto.MaxSpeed < moto.Speed || moto.amFuel < moto.rasF)
+				if (moto.MaxSpeed < moto.Speed)
 				{
 					transport = null;
 				}
@@ -158,8 +158,8 @@ namespace Road111
 			}
 			if (bike_rad.Active && bike_rad.Sensitive == true)
 			{
-				transport = new Bicycle(spinbutton3.Value, spinbutton4.Value, entry1.Text);
-				Bicycle bike = (Bicycle)transport;
+				transport = new Bike(spinbutton3.Value, spinbutton4.Value, entry1.Text);
+				Bike bike = (Bike)transport;
 				if (bike.MaxSpeed < bike.Speed)
 				{
 					transport = null;
@@ -178,9 +178,9 @@ namespace Road111
 			}
 			if (radiobutton21.Active && radiobutton21.Sensitive == true)
 			{
-				transport = new Panzer(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text);
-				Panzer panzer = (Panzer)transport;
-				if (panzer.MaxSpeed < panzer.Speed || panzer.amFuel < panzer.rasF)
+				transport = new Tank(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text);
+				Tank panzer = (Tank)transport;
+				if (panzer.MaxSpeed < panzer.Speed || panzer.AmountFuel < panzer.ConsFuel)
 				{
 					transport = null;
 				}
@@ -240,7 +240,7 @@ namespace Road111
             {
                 if (value.Equals(fuel))
                 {
-                    fOk = true;//совместимость топлила транспорта и топлива
+                    fOk = true;//совместимость топлива транспорта и топлива
                 }
             }
         }
