@@ -3762,7 +3762,7 @@
         <child>
           <widget class="Gtk.Label" id="label1">
             <property name="MemberName" />
-            <property name="LabelProp" translatable="yes">Несовместимость типа полосы или топлива с транспорта.</property>
+            <property name="LabelProp" translatable="yes">Несовместимость параметров.</property>
           </widget>
           <packing>
             <property name="TopAttach">1</property>
