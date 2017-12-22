@@ -92,6 +92,7 @@
     <Compile Include="gtk-gui\Road111.ViewJournal.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="gtk-gui\Road111.MainWindow.cs" />
+    <Compile Include="gtk-gui\MainWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

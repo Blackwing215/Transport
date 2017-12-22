@@ -205,7 +205,7 @@ namespace Road111
                 MainClass.getSystem().getTransportList()[road].Fuel = fuel;
                 MainClass.getSystem().getTransportList()[road].Strip = strip;
                 if (!horse_rad.Active && !bike_rad.Active && !radiobutton19.Active)
-                MainClass.getWin().setTsLabel(transport, fuel, road, transport.MaxSpeed);
+                	MainClass.getWin().setTsLabel(transport, fuel, road, transport.MaxSpeed);
                 else
                     MainClass.getWin().setTsLabel(transport, new Fuel("-"), road, transport.MaxSpeed);
 				MainClass.getSystem().writeJ(road, MainClass.getSystem().getTransportList()[road]);

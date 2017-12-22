@@ -8,40 +8,6 @@
     <widget-library name="../bin/Debug/Road111.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="Road111.MainWindow" design-size="1096 885">
-    <action-group name="Default">
-      <action id="FileAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes">File</property>
-        <property name="ShortLabel" translatable="yes">File</property>
-      </action>
-      <action id="SaveAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Save</property>
-        <property name="ShortLabel" translatable="yes">Save</property>
-      </action>
-      <action id="SaveAsAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Save as...</property>
-        <property name="ShortLabel" translatable="yes">Save as...</property>
-      </action>
-      <action id="OpenAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Open</property>
-        <property name="ShortLabel" translatable="yes">Open</property>
-      </action>
-      <action id="AddFuelListAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes">AddFuelList</property>
-        <property name="ShortLabel" translatable="yes">AddFuelList</property>
-        <signal name="Activated" handler="OnAddFuelListActionActivated" />
-      </action>
-      <action id="JournalAction">
-        <property name="Type">Action</property>
-        <property name="Label" translatable="yes">Journal</property>
-        <property name="ShortLabel" translatable="yes">Journal</property>
-        <signal name="Activated" handler="OnJournalActionActivated" />
-      </action>
-    </action-group>
     <property name="MemberName" />
     <property name="WidthRequest">700</property>
     <property name="HeightRequest">800</property>
@@ -1079,7 +1045,7 @@
             <child>
               <widget class="Gtk.Table" id="table3">
                 <property name="MemberName" />
-                <property name="NRows">5</property>
+                <property name="NRows">6</property>
                 <property name="NColumns">2</property>
                 <property name="RowSpacing">6</property>
                 <property name="ColumnSpacing">6</property>
@@ -1103,8 +1069,8 @@
                     <signal name="Clicked" handler="OnInfoBut1Clicked" />
                   </widget>
                   <packing>
-                    <property name="TopAttach">3</property>
-                    <property name="BottomAttach">4</property>
+                    <property name="TopAttach">4</property>
+                    <property name="BottomAttach">5</property>
                     <property name="AutoSize">True</property>
                     <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
@@ -1119,6 +1085,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label26">
                     <property name="MemberName">fuelLabel</property>
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -1139,6 +1106,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label31">
                     <property name="MemberName">fuelLabel</property>
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="LeftAttach">1</property>
@@ -1157,6 +1125,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label37">
                     <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
@@ -1177,6 +1146,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label6">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Тип Транспорта:</property>
                   </widget>
                   <packing>
@@ -1194,6 +1164,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label7">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Тип топлива:</property>
                   </widget>
                   <packing>
@@ -1213,11 +1184,59 @@
                 <child>
                   <widget class="Gtk.Label" id="label8">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Макс. скорость:</property>
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
                     <property name="BottomAttach">3</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
+                    <property name="YOptions">Fill</property>
+                    <property name="XExpand">False</property>
+                    <property name="XFill">True</property>
+                    <property name="XShrink">False</property>
+                    <property name="YExpand">False</property>
+                    <property name="YFill">True</property>
+                    <property name="YShrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="lights9">
+                    <property name="MemberName" />
+                    <property name="Xalign">0</property>
+                    <property name="LabelProp" translatable="yes">Свет</property>
+                  </widget>
+                  <packing>
+                    <property name="TopAttach">3</property>
+                    <property name="BottomAttach">4</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
+                    <property name="YOptions">Fill</property>
+                    <property name="XExpand">False</property>
+                    <property name="XFill">True</property>
+                    <property name="XShrink">False</property>
+                    <property name="YExpand">False</property>
+                    <property name="YFill">True</property>
+                    <property name="YShrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.CheckButton" id="lightsbutton1">
+                    <property name="MemberName" />
+                    <property name="Sensitive">False</property>
+                    <property name="CanFocus">True</property>
+                    <property name="Label" translatable="yes" />
+                    <property name="DrawIndicator">True</property>
+                    <property name="HasLabel">False</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="StripTypeToggled" />
+                  </widget>
+                  <packing>
+                    <property name="TopAttach">3</property>
+                    <property name="BottomAttach">4</property>
+                    <property name="LeftAttach">1</property>
+                    <property name="RightAttach">2</property>
                     <property name="AutoSize">True</property>
                     <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
@@ -1249,7 +1268,7 @@
             <child>
               <widget class="Gtk.Table" id="table4">
                 <property name="MemberName" />
-                <property name="NRows">5</property>
+                <property name="NRows">6</property>
                 <property name="NColumns">2</property>
                 <property name="RowSpacing">6</property>
                 <property name="ColumnSpacing">6</property>
@@ -1274,8 +1293,8 @@
                     <signal name="Clicked" handler="OnInfoBut2Clicked" />
                   </widget>
                   <packing>
-                    <property name="TopAttach">3</property>
-                    <property name="BottomAttach">4</property>
+                    <property name="TopAttach">4</property>
+                    <property name="BottomAttach">5</property>
                     <property name="AutoSize">True</property>
                     <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
@@ -1290,6 +1309,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label10">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Тип транспорта:</property>
                   </widget>
                   <packing>
@@ -1307,6 +1327,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label11">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Тип топлива:</property>
                   </widget>
                   <packing>
@@ -1326,6 +1347,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label12">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Макс. скорость:</property>
                   </widget>
                   <packing>
@@ -1345,6 +1367,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label27">
                     <property name="MemberName">fuelLabel</property>
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -1365,6 +1388,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label32">
                     <property name="MemberName">fuelLabel</property>
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="LeftAttach">1</property>
@@ -1383,10 +1407,58 @@
                 <child>
                   <widget class="Gtk.Label" id="label36">
                     <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
                     <property name="BottomAttach">3</property>
+                    <property name="LeftAttach">1</property>
+                    <property name="RightAttach">2</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
+                    <property name="YOptions">Fill</property>
+                    <property name="XExpand">False</property>
+                    <property name="XFill">True</property>
+                    <property name="XShrink">False</property>
+                    <property name="YExpand">False</property>
+                    <property name="YFill">True</property>
+                    <property name="YShrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="lights10">
+                    <property name="MemberName" />
+                    <property name="Xalign">0</property>
+                    <property name="LabelProp" translatable="yes">Свет</property>
+                  </widget>
+                  <packing>
+                    <property name="TopAttach">3</property>
+                    <property name="BottomAttach">4</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
+                    <property name="YOptions">Fill</property>
+                    <property name="XExpand">False</property>
+                    <property name="XFill">True</property>
+                    <property name="XShrink">False</property>
+                    <property name="YExpand">False</property>
+                    <property name="YFill">True</property>
+                    <property name="YShrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.CheckButton" id="lightsbutton2">
+                    <property name="MemberName" />
+                    <property name="Sensitive">False</property>
+                    <property name="CanFocus">True</property>
+                    <property name="Label" translatable="yes" />
+                    <property name="DrawIndicator">True</property>
+                    <property name="HasLabel">False</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="StripTypeToggled" />
+                  </widget>
+                  <packing>
+                    <property name="TopAttach">3</property>
+                    <property name="BottomAttach">4</property>
                     <property name="LeftAttach">1</property>
                     <property name="RightAttach">2</property>
                     <property name="AutoSize">True</property>
@@ -1420,7 +1492,7 @@
             <child>
               <widget class="Gtk.Table" id="table5">
                 <property name="MemberName" />
-                <property name="NRows">5</property>
+                <property name="NRows">6</property>
                 <property name="NColumns">2</property>
                 <property name="RowSpacing">6</property>
                 <property name="ColumnSpacing">6</property>
@@ -1444,8 +1516,8 @@
                     <signal name="Clicked" handler="OnInfoBut3Clicked" />
                   </widget>
                   <packing>
-                    <property name="TopAttach">3</property>
-                    <property name="BottomAttach">4</property>
+                    <property name="TopAttach">4</property>
+                    <property name="BottomAttach">5</property>
                     <property name="AutoSize">True</property>
                     <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
@@ -1460,6 +1532,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label14">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Тип транспорта:</property>
                   </widget>
                   <packing>
@@ -1477,6 +1550,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label15">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Тип топлива:</property>
                   </widget>
                   <packing>
@@ -1496,6 +1570,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label16">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Макс. скорость:</property>
                   </widget>
                   <packing>
@@ -1515,6 +1590,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label28">
                     <property name="MemberName">fuelLabel</property>
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -1535,6 +1611,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label33">
                     <property name="MemberName">fuelLabel</property>
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="LeftAttach">1</property>
@@ -1553,10 +1630,58 @@
                 <child>
                   <widget class="Gtk.Label" id="label38">
                     <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
                     <property name="BottomAttach">3</property>
+                    <property name="LeftAttach">1</property>
+                    <property name="RightAttach">2</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
+                    <property name="YOptions">Fill</property>
+                    <property name="XExpand">False</property>
+                    <property name="XFill">True</property>
+                    <property name="XShrink">False</property>
+                    <property name="YExpand">False</property>
+                    <property name="YFill">True</property>
+                    <property name="YShrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="lights11">
+                    <property name="MemberName" />
+                    <property name="Xalign">0</property>
+                    <property name="LabelProp" translatable="yes">Свет</property>
+                  </widget>
+                  <packing>
+                    <property name="TopAttach">3</property>
+                    <property name="BottomAttach">4</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
+                    <property name="YOptions">Fill</property>
+                    <property name="XExpand">False</property>
+                    <property name="XFill">True</property>
+                    <property name="XShrink">False</property>
+                    <property name="YExpand">False</property>
+                    <property name="YFill">True</property>
+                    <property name="YShrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.CheckButton" id="lightsbutton3">
+                    <property name="MemberName" />
+                    <property name="Sensitive">False</property>
+                    <property name="CanFocus">True</property>
+                    <property name="Label" translatable="yes" />
+                    <property name="DrawIndicator">True</property>
+                    <property name="HasLabel">False</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="StripTypeToggled" />
+                  </widget>
+                  <packing>
+                    <property name="TopAttach">3</property>
+                    <property name="BottomAttach">4</property>
                     <property name="LeftAttach">1</property>
                     <property name="RightAttach">2</property>
                     <property name="AutoSize">True</property>
@@ -1590,7 +1715,7 @@
             <child>
               <widget class="Gtk.Table" id="table6">
                 <property name="MemberName" />
-                <property name="NRows">5</property>
+                <property name="NRows">6</property>
                 <property name="NColumns">2</property>
                 <property name="RowSpacing">6</property>
                 <property name="ColumnSpacing">6</property>
@@ -1614,8 +1739,8 @@
                     <signal name="Clicked" handler="OnInfoBut4Clicked" />
                   </widget>
                   <packing>
-                    <property name="TopAttach">3</property>
-                    <property name="BottomAttach">4</property>
+                    <property name="TopAttach">4</property>
+                    <property name="BottomAttach">5</property>
                     <property name="AutoSize">True</property>
                     <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
@@ -1630,6 +1755,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label18">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Тип транспорта:</property>
                   </widget>
                   <packing>
@@ -1647,6 +1773,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label19">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Тип топлива:</property>
                   </widget>
                   <packing>
@@ -1666,6 +1793,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label20">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Макс. скорость:</property>
                   </widget>
                   <packing>
@@ -1685,6 +1813,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label29">
                     <property name="MemberName">fuelLabel</property>
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -1705,6 +1834,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label34">
                     <property name="MemberName">fuelLabel</property>
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="LeftAttach">1</property>
@@ -1723,10 +1853,58 @@
                 <child>
                   <widget class="Gtk.Label" id="label39">
                     <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
                     <property name="BottomAttach">3</property>
+                    <property name="LeftAttach">1</property>
+                    <property name="RightAttach">2</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
+                    <property name="YOptions">Fill</property>
+                    <property name="XExpand">False</property>
+                    <property name="XFill">True</property>
+                    <property name="XShrink">False</property>
+                    <property name="YExpand">False</property>
+                    <property name="YFill">True</property>
+                    <property name="YShrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="lights13">
+                    <property name="MemberName" />
+                    <property name="Xalign">0</property>
+                    <property name="LabelProp" translatable="yes">Свет</property>
+                  </widget>
+                  <packing>
+                    <property name="TopAttach">3</property>
+                    <property name="BottomAttach">4</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
+                    <property name="YOptions">Fill</property>
+                    <property name="XExpand">False</property>
+                    <property name="XFill">True</property>
+                    <property name="XShrink">False</property>
+                    <property name="YExpand">False</property>
+                    <property name="YFill">True</property>
+                    <property name="YShrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.CheckButton" id="lightsbutton4">
+                    <property name="MemberName" />
+                    <property name="Sensitive">False</property>
+                    <property name="CanFocus">True</property>
+                    <property name="Label" translatable="yes" />
+                    <property name="DrawIndicator">True</property>
+                    <property name="HasLabel">False</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="StripTypeToggled" />
+                  </widget>
+                  <packing>
+                    <property name="TopAttach">3</property>
+                    <property name="BottomAttach">4</property>
                     <property name="LeftAttach">1</property>
                     <property name="RightAttach">2</property>
                     <property name="AutoSize">True</property>
@@ -1760,7 +1938,7 @@
             <child>
               <widget class="Gtk.Table" id="table7">
                 <property name="MemberName" />
-                <property name="NRows">5</property>
+                <property name="NRows">6</property>
                 <property name="NColumns">2</property>
                 <property name="RowSpacing">6</property>
                 <property name="ColumnSpacing">6</property>
@@ -1784,8 +1962,8 @@
                     <signal name="Clicked" handler="OnInfoBut5Clicked" />
                   </widget>
                   <packing>
-                    <property name="TopAttach">3</property>
-                    <property name="BottomAttach">4</property>
+                    <property name="TopAttach">4</property>
+                    <property name="BottomAttach">5</property>
                     <property name="AutoSize">True</property>
                     <property name="XOptions">Fill</property>
                     <property name="YOptions">Fill</property>
@@ -1800,7 +1978,8 @@
                 <child>
                   <widget class="Gtk.Label" id="label22">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">Тип топлива:</property>
+                    <property name="Xalign">0</property>
+                    <property name="LabelProp" translatable="yes">Тип транспорта:</property>
                   </widget>
                   <packing>
                     <property name="AutoSize">True</property>
@@ -1817,6 +1996,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label23">
                     <property name="MemberName" />
+                    <property name="Xalign">0</property>
                     <property name="LabelProp" translatable="yes">Тип топлива:</property>
                   </widget>
                   <packing>
@@ -1855,6 +2035,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label30">
                     <property name="MemberName">fuelLabel</property>
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">1</property>
@@ -1875,6 +2056,7 @@
                 <child>
                   <widget class="Gtk.Label" id="label35">
                     <property name="MemberName">fuelLabel</property>
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="LeftAttach">1</property>
@@ -1893,10 +2075,58 @@
                 <child>
                   <widget class="Gtk.Label" id="label40">
                     <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes" />
                   </widget>
                   <packing>
                     <property name="TopAttach">2</property>
                     <property name="BottomAttach">3</property>
+                    <property name="LeftAttach">1</property>
+                    <property name="RightAttach">2</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
+                    <property name="YOptions">Fill</property>
+                    <property name="XExpand">False</property>
+                    <property name="XFill">True</property>
+                    <property name="XShrink">False</property>
+                    <property name="YExpand">False</property>
+                    <property name="YFill">True</property>
+                    <property name="YShrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="lights12">
+                    <property name="MemberName" />
+                    <property name="Xalign">0</property>
+                    <property name="LabelProp" translatable="yes">Свет</property>
+                  </widget>
+                  <packing>
+                    <property name="TopAttach">3</property>
+                    <property name="BottomAttach">4</property>
+                    <property name="AutoSize">True</property>
+                    <property name="XOptions">Fill</property>
+                    <property name="YOptions">Fill</property>
+                    <property name="XExpand">False</property>
+                    <property name="XFill">True</property>
+                    <property name="XShrink">False</property>
+                    <property name="YExpand">False</property>
+                    <property name="YFill">True</property>
+                    <property name="YShrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.CheckButton" id="lightsbutton5">
+                    <property name="MemberName" />
+                    <property name="Sensitive">False</property>
+                    <property name="CanFocus">True</property>
+                    <property name="Label" translatable="yes" />
+                    <property name="DrawIndicator">True</property>
+                    <property name="HasLabel">False</property>
+                    <property name="UseUnderline">True</property>
+                    <signal name="Clicked" handler="StripTypeToggled" />
+                  </widget>
+                  <packing>
+                    <property name="TopAttach">3</property>
+                    <property name="BottomAttach">4</property>
                     <property name="LeftAttach">1</property>
                     <property name="RightAttach">2</property>
                     <property name="AutoSize">True</property>
@@ -1936,11 +2166,12 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group1</property>
-                    <signal name="Toggled" handler="StripTypeToggled" after="yes" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -1958,7 +2189,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group1</property>
-                    <signal name="Toggled" handler="StripTypeToggled" after="yes" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -1976,7 +2207,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group1</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2011,11 +2242,12 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group2</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2033,7 +2265,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group2</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2051,7 +2283,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group2</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2086,11 +2318,12 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group3</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2108,7 +2341,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group3</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2126,7 +2359,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group3</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2161,11 +2394,12 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group4</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2183,7 +2417,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group4</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2201,7 +2435,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group4</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2236,11 +2470,12 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group5</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">0</property>
@@ -2258,7 +2493,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group5</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">1</property>
@@ -2276,7 +2511,7 @@
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
                     <property name="Group">group5</property>
-                    <signal name="Toggled" handler="StripTypeToggled" />
+                    <signal name="Clicked" handler="StripTypeToggled" />
                   </widget>
                   <packing>
                     <property name="Position">2</property>
@@ -2334,6 +2569,7 @@
             <child>
               <widget class="Gtk.Label" id="labelNTR">
                 <property name="MemberName">labelNTR</property>
+                <property name="LabelProp" translatable="yes" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -2354,6 +2590,7 @@
             <child>
               <widget class="Gtk.Label" id="labelTelapsed">
                 <property name="MemberName" />
+                <property name="LabelProp" translatable="yes" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -2372,6 +2609,7 @@
             <child>
               <widget class="Gtk.Label" id="labelTmove">
                 <property name="MemberName" />
+                <property name="LabelProp" translatable="yes" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -2392,6 +2630,7 @@
             <child>
               <widget class="Gtk.Label" id="labelTstop">
                 <property name="MemberName" />
+                <property name="LabelProp" translatable="yes" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -6369,7 +6608,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
-                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -6445,7 +6683,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
-                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -6521,7 +6758,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
-                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -6597,7 +6833,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
-                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -6672,7 +6907,6 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
-                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
