@@ -208,6 +208,7 @@ namespace Road111
                 MainClass.getWin().setTsLabel(transport, fuel, road, transport.MaxSpeed);
                 else
                     MainClass.getWin().setTsLabel(transport, new Fuel("-"), road, transport.MaxSpeed);
+				MainClass.getSystem().writeJ(road, MainClass.getSystem().getTransportList()[road]);
                 MainClass.getWin().QueueDraw();
                 this.QueueDraw();
                 this.Destroy();
