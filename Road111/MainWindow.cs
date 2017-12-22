@@ -4,7 +4,6 @@ using Gdk;
 using Cairo;
 using System.Collections.Generic;
 using System.Threading;
-using CairoWarp;
 using Glade;
 
 
@@ -225,27 +224,27 @@ namespace Road111
 		{
 			width = drawingarea1.Allocation.Width;
 			height = drawingarea1.Allocation.Height;
-			DrawingPicCar(o, 0);
+		//DrawingPicCar(o, 0);
 		}
 
 		protected void OnDrawingarea2ExposeEvent(object o, ExposeEventArgs args)
 		{
-			DrawingPicCar(o, 1);
+			//DrawingPicCar(o, 1);
 		}
 
 		protected void OnDrawingarea3ExposeEvent(object o, ExposeEventArgs args)
 		{
-			DrawingPicCar(o, 2);
+			//DrawingPicCar(o, 2);
 		}
 
 		protected void OnDrawingarea4ExposeEvent(object o, ExposeEventArgs args)
 		{
-			DrawingPicCar(o, 3);
+			//DrawingPicCar(o, 3);
 		}
 
 		protected void OnDrawingarea5ExposeEvent(object o, ExposeEventArgs args)
 		{
-			DrawingPicCar(o, 4);
+			//DrawingPicCar(o, 4);
 		}
 
 		protected void DrawingPicCar(object o, int road)
@@ -453,7 +452,7 @@ namespace Road111
 
 		public void ViewProperties(int road)
 		{
-			Gtk.Window window = new Gtk.Window("Параметры №" + road);
+            Gtk.Window window = new Gtk.Window("Транспортное средство №" + (road+1));
 			window.SetSizeRequest(500, 200);
 
 			Gtk.TreeView tree = new Gtk.TreeView();
