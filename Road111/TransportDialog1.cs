@@ -14,6 +14,7 @@ namespace Road111
         public TransportDialog1(int r,Strip st)
         {
             this.road = r;
+            Title = "Транспорт №"+(r+1);
             this.strip = new Strip(st.Type);
             Build();
             if(road == 0 || road ==4)
