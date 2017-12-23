@@ -41,7 +41,7 @@ namespace Road111
 			{
 				case 0:
 					label31.Text = transport.Name;
-					label37.Text = Convert.ToString(speed);
+					speedlabel1.Text = Convert.ToString(speed);
 					label26.Text = fuel.GetFuel();
 					distlabel1.Text = "0";
 					info_but1.Sensitive = true;
@@ -50,7 +50,7 @@ namespace Road111
 					break;
 				case 1:
 					label32.Text = transport.Name;
-					label36.Text = Convert.ToString(speed);
+					speedlabel2.Text = Convert.ToString(speed);
 					label27.Text = fuel.GetFuel();
 					distlabel2.Text = "0";
 					info_but2.Sensitive = true;
@@ -59,7 +59,7 @@ namespace Road111
 					break;
 				case 2:
 					label33.Text = transport.Name;
-					label38.Text = Convert.ToString(speed);
+					speedlabel3.Text = Convert.ToString(speed);
 					label28.Text = fuel.GetFuel();
 					distlabel3.Text = "0";
 					info_but3.Sensitive = true;
@@ -68,7 +68,7 @@ namespace Road111
 					break;
 				case 3:
 					label34.Text = transport.Name;
-					label39.Text = Convert.ToString(speed);
+					speedlabel4.Text = Convert.ToString(speed);
 					label29.Text = fuel.GetFuel();
 					distlabel4.Text = "0";
 					info_but4.Sensitive = true;
@@ -77,7 +77,7 @@ namespace Road111
 					break;
 				case 4:
 					label35.Text = transport.Name;
-					label40.Text = Convert.ToString(speed);
+					speedlabel5.Text = Convert.ToString(speed);
 					label30.Text = fuel.GetFuel();
 					distlabel5.Text = "0";
 					info_but5.Sensitive = true;
@@ -400,50 +400,93 @@ namespace Road111
 				imW = MainClass.getSystem().getTransportList()[road].Image.Width;
 				imH = MainClass.getSystem().getTransportList()[road].Image.Height;
 				double scale = (width - imW) / roadLength;
-				int dist = Convert.ToInt32(scale * MainClass.getSystem().getTransportList()[road].Distance);
+				double dist = MainClass.getSystem().getTransportList()[road].Distance;
+				int scaledDist = Convert.ToInt32(scale * dist);
 
 				if (lights)
 				{
-					LinearGradient lg = new LinearGradient(dist + 3*imH/5, height / 2, dist + 5 * imW / 3, height / 2);
+					LinearGradient lg = new LinearGradient(scaledDist + 3*imH/5, height / 2, scaledDist + 5 * imW / 3, height / 2);
 					lg.AddColorStop(0, new Cairo.Color(1, 1, 0, 1));
 					lg.AddColorStop(1, new Cairo.Color(1, 1, 0, 0));
 					cr.SetSource(lg);
 					if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Moto) 
 					    || MainClass.getSystem().getTransportList()[road].GetType() == typeof(Bike))
 					{
-						cr.MoveTo(dist + imW - 50, height / 2);
-						cr.LineTo(dist + 5 * imW / 3, height / 2 - 2 * imH / 3);
-						cr.LineTo(dist + 5 * imW / 3, height / 2 + 2 * imH / 3);
+						cr.MoveTo(scaledDist + imW - 50, height / 2);
+						cr.LineTo(scaledDist + 5 * imW / 3, height / 2 - 2 * imH / 3);
+						cr.LineTo(scaledDist + 5 * imW / 3, height / 2 + 2 * imH / 3);
 						cr.ClosePath();
 					}
 					else
 					{
-						cr.MoveTo(dist + imW - 50, height / 2 - imH/6);
-						cr.LineTo(dist + 5 * imW / 3, height / 2 - 2 * imH / 3 - imH/6);
-						cr.LineTo(dist + 5 * imW / 3, height / 2 + 2 * imH / 3 - imH/6);
-						cr.ClosePath();
-						cr.Fill();
-						cr.MoveTo(dist + imW - 50, height / 2 + imH/6);
-						cr.LineTo(dist + 5 * imW / 3, height / 2 - 2 * imH / 3 + imH/6);
-						cr.LineTo(dist + 5 * imW / 3, height / 2 + 2 * imH / 3 + imH/6);
-						cr.ClosePath();
+						if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Tank)
+						   || MainClass.getSystem().getTransportList()[road].GetType() == typeof(Loader))
+						{
+							cr.MoveTo(scaledDist + imW - 100, height / 2 - imH / 4);
+							cr.LineTo(scaledDist + 5 * imW / 3, height / 2 - 2 * imH / 3 - imH / 4);
+							cr.LineTo(scaledDist + 5 * imW / 3, height / 2 + 2 * imH / 3 - imH / 4);
+							cr.ClosePath();
+							cr.Fill();
+							cr.MoveTo(scaledDist + imW - 100, height / 2 + imH / 4);
+							cr.LineTo(scaledDist + 5 * imW / 3, height / 2 - 2 * imH / 3 + imH / 4);
+							cr.LineTo(scaledDist + 5 * imW / 3, height / 2 + 2 * imH / 3 + imH / 4);
+							cr.ClosePath();
+						}
+						else
+						{
+							cr.MoveTo(scaledDist + imW - 50, height / 2 - imH / 6);
+							cr.LineTo(scaledDist + 5 * imW / 3, height / 2 - 2 * imH / 3 - imH / 6);
+							cr.LineTo(scaledDist + 5 * imW / 3, height / 2 + 2 * imH / 3 - imH / 6);
+							cr.ClosePath();
+							cr.Fill();
+							cr.MoveTo(scaledDist + imW - 50, height / 2 + imH / 6);
+							cr.LineTo(scaledDist + 5 * imW / 3, height / 2 - 2 * imH / 3 + imH / 6);
+							cr.LineTo(scaledDist + 5 * imW / 3, height / 2 + 2 * imH / 3 + imH / 6);
+							cr.ClosePath();
+						}
 					}
 					cr.Fill();
 				}
 
 
-				cr.SetSourceSurface(MainClass.getSystem().getTransportList()[road].Image, dist,	(height - imH) / 2);
+				cr.SetSourceSurface(MainClass.getSystem().getTransportList()[road].Image, scaledDist,	(height - imH) / 2);
 				cr.Paint();
 
-				if (timer && dist < width - imW)
+				if (timer && scaledDist < width - imW)
 				{
-					double speed = MainClass.getSystem().getTransportList()[road].Speed;
-					MainClass.getSystem().getTransportList()[road].Distance += 20 * speed * clock / 3600000;
+					double speed = MainClass.getSystem().getTransportList()[road].StartSpeed + 
+					                        (MainClass.getSystem().getTransportList()[road].MaxSpeed - 
+					                         MainClass.getSystem().getTransportList()[road].StartSpeed) 
+					                        * (dist/(2*roadLength));
+					MainClass.getSystem().getTransportList()[road].Speed = speed;
+					dist += 20 * speed * clock / 3600000;
+					switch (road)
+					{
+						case 0:
+							distlabel1.Text = Convert.ToString(Convert.ToInt32(dist));
+							speedlabel1.Text = Convert.ToString(Convert.ToInt32(speed));
+							break;
+						case 1:
+							distlabel2.Text = Convert.ToString(Convert.ToInt32(dist));
+							speedlabel2.Text = Convert.ToString(Convert.ToInt32(speed));
+							break;
+						case 2:
+							distlabel3.Text = Convert.ToString(Convert.ToInt32(dist));
+							speedlabel3.Text = Convert.ToString(Convert.ToInt32(speed));
+							break;
+						case 3:
+							distlabel4.Text = Convert.ToString(Convert.ToInt32(dist));
+							speedlabel4.Text = Convert.ToString(Convert.ToInt32(speed));
+							break;
+						case 4:
+							distlabel5.Text = Convert.ToString(Convert.ToInt32(dist));
+							speedlabel5.Text = Convert.ToString(Convert.ToInt32(speed));
+							break;
+					}
+					MainClass.getSystem().getTransportList()[road].Distance = dist;
 																									//Writing in journal
-					if (MainClass.getSystem().getTransportList()[road].Distance > 0
-						&& MainClass.getSystem().getTransportList()[road].Distance % (roadLength / 10) <= fault
-						&& Convert.ToInt32(MainClass.getSystem().getTransportList()[road].Distance / (roadLength / 10)) !=
-					    MainClass.getSystem().getTransportList()[road].Stop_C - 2)
+					if (dist > 0 && dist % (roadLength / 10) <= fault && Convert.ToInt32(scale * dist / (roadLength / 10)) 
+					    != MainClass.getSystem().getTransportList()[road].Stop_C - 2)
 							MainClass.getSystem().writeJ(road, MainClass.getSystem().getTransportList()[road]);
 				}
 			}

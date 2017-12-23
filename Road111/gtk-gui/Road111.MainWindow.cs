@@ -124,8 +124,6 @@ namespace Road111
 
 		private global::Gtk.Label label31;
 
-		private global::Gtk.Label label37;
-
 		private global::Gtk.Label label6;
 
 		private global::Gtk.Label label7;
@@ -137,6 +135,8 @@ namespace Road111
 		private global::Gtk.Label lights9;
 
 		private global::Gtk.CheckButton lightsbutton1;
+
+		private global::Gtk.Label speedlabel1;
 
 		private global::Gtk.Table table4;
 
@@ -156,11 +156,11 @@ namespace Road111
 
 		private global::Gtk.Label label32;
 
-		private global::Gtk.Label label36;
-
 		private global::Gtk.Label lights10;
 
 		private global::Gtk.CheckButton lightsbutton2;
+
+		private global::Gtk.Label speedlabel2;
 
 		private global::Gtk.Table table5;
 
@@ -180,11 +180,11 @@ namespace Road111
 
 		private global::Gtk.Label label33;
 
-		private global::Gtk.Label label38;
-
 		private global::Gtk.Label lights11;
 
 		private global::Gtk.CheckButton lightsbutton3;
+
+		private global::Gtk.Label speedlabel3;
 
 		private global::Gtk.Table table6;
 
@@ -204,11 +204,11 @@ namespace Road111
 
 		private global::Gtk.Label label34;
 
-		private global::Gtk.Label label39;
-
 		private global::Gtk.Label lights13;
 
 		private global::Gtk.CheckButton lightsbutton4;
+
+		private global::Gtk.Label speedlabel4;
 
 		private global::Gtk.Table table7;
 
@@ -228,11 +228,11 @@ namespace Road111
 
 		private global::Gtk.Label label35;
 
-		private global::Gtk.Label label40;
-
 		private global::Gtk.Label lights12;
 
 		private global::Gtk.CheckButton lightsbutton5;
+
+		private global::Gtk.Label speedlabel5;
 
 		private global::Gtk.VBox vbox3;
 
@@ -904,70 +904,58 @@ namespace Road111
 			w57.XOptions = ((global::Gtk.AttachOptions)(4));
 			w57.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table3.Gtk.Table+TableChild
-			this.label37 = new global::Gtk.Label();
-			this.label37.Name = "label37";
-			this.label37.Xalign = 1F;
-			this.table3.Add(this.label37);
-			global::Gtk.Table.TableChild w58 = ((global::Gtk.Table.TableChild)(this.table3[this.label37]));
-			w58.TopAttach = ((uint)(2));
-			w58.BottomAttach = ((uint)(3));
-			w58.LeftAttach = ((uint)(1));
-			w58.RightAttach = ((uint)(2));
-			w58.XOptions = ((global::Gtk.AttachOptions)(4));
-			w58.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table3.Gtk.Table+TableChild
 			this.label6 = new global::Gtk.Label();
 			this.label6.Name = "label6";
 			this.label6.Xalign = 0F;
 			this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("Тип Транспорта:");
 			this.table3.Add(this.label6);
-			global::Gtk.Table.TableChild w59 = ((global::Gtk.Table.TableChild)(this.table3[this.label6]));
-			w59.XOptions = ((global::Gtk.AttachOptions)(4));
-			w59.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w58 = ((global::Gtk.Table.TableChild)(this.table3[this.label6]));
+			w58.XOptions = ((global::Gtk.AttachOptions)(4));
+			w58.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table3.Gtk.Table+TableChild
 			this.label7 = new global::Gtk.Label();
 			this.label7.Name = "label7";
 			this.label7.Xalign = 0F;
 			this.label7.LabelProp = global::Mono.Unix.Catalog.GetString("Тип топлива:");
 			this.table3.Add(this.label7);
-			global::Gtk.Table.TableChild w60 = ((global::Gtk.Table.TableChild)(this.table3[this.label7]));
-			w60.TopAttach = ((uint)(1));
-			w60.BottomAttach = ((uint)(2));
-			w60.XOptions = ((global::Gtk.AttachOptions)(4));
-			w60.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w59 = ((global::Gtk.Table.TableChild)(this.table3[this.label7]));
+			w59.TopAttach = ((uint)(1));
+			w59.BottomAttach = ((uint)(2));
+			w59.XOptions = ((global::Gtk.AttachOptions)(4));
+			w59.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table3.Gtk.Table+TableChild
 			this.label8 = new global::Gtk.Label();
 			this.label8.Name = "label8";
 			this.label8.Xalign = 0F;
-			this.label8.LabelProp = global::Mono.Unix.Catalog.GetString("Скорость:");
+			this.label8.LabelProp = global::Mono.Unix.Catalog.GetString("Скорость (км/ч):");
 			this.table3.Add(this.label8);
-			global::Gtk.Table.TableChild w61 = ((global::Gtk.Table.TableChild)(this.table3[this.label8]));
-			w61.TopAttach = ((uint)(2));
-			w61.BottomAttach = ((uint)(3));
-			w61.XOptions = ((global::Gtk.AttachOptions)(4));
-			w61.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w60 = ((global::Gtk.Table.TableChild)(this.table3[this.label8]));
+			w60.TopAttach = ((uint)(2));
+			w60.BottomAttach = ((uint)(3));
+			w60.XOptions = ((global::Gtk.AttachOptions)(4));
+			w60.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table3.Gtk.Table+TableChild
 			this.label9 = new global::Gtk.Label();
 			this.label9.Name = "label9";
 			this.label9.Xalign = 0F;
-			this.label9.LabelProp = global::Mono.Unix.Catalog.GetString("Пройдено");
+			this.label9.LabelProp = global::Mono.Unix.Catalog.GetString("Пройдено (км):");
 			this.table3.Add(this.label9);
-			global::Gtk.Table.TableChild w62 = ((global::Gtk.Table.TableChild)(this.table3[this.label9]));
-			w62.TopAttach = ((uint)(3));
-			w62.BottomAttach = ((uint)(4));
-			w62.XOptions = ((global::Gtk.AttachOptions)(4));
-			w62.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w61 = ((global::Gtk.Table.TableChild)(this.table3[this.label9]));
+			w61.TopAttach = ((uint)(3));
+			w61.BottomAttach = ((uint)(4));
+			w61.XOptions = ((global::Gtk.AttachOptions)(4));
+			w61.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table3.Gtk.Table+TableChild
 			this.lights9 = new global::Gtk.Label();
 			this.lights9.Name = "lights9";
 			this.lights9.Xalign = 0F;
 			this.lights9.LabelProp = global::Mono.Unix.Catalog.GetString("Свет");
 			this.table3.Add(this.lights9);
-			global::Gtk.Table.TableChild w63 = ((global::Gtk.Table.TableChild)(this.table3[this.lights9]));
-			w63.TopAttach = ((uint)(4));
-			w63.BottomAttach = ((uint)(5));
-			w63.XOptions = ((global::Gtk.AttachOptions)(4));
-			w63.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w62 = ((global::Gtk.Table.TableChild)(this.table3[this.lights9]));
+			w62.TopAttach = ((uint)(4));
+			w62.BottomAttach = ((uint)(5));
+			w62.XOptions = ((global::Gtk.AttachOptions)(4));
+			w62.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table3.Gtk.Table+TableChild
 			this.lightsbutton1 = new global::Gtk.CheckButton();
 			this.lightsbutton1.Sensitive = false;
@@ -977,9 +965,21 @@ namespace Road111
 			this.lightsbutton1.DrawIndicator = true;
 			this.lightsbutton1.UseUnderline = true;
 			this.table3.Add(this.lightsbutton1);
-			global::Gtk.Table.TableChild w64 = ((global::Gtk.Table.TableChild)(this.table3[this.lightsbutton1]));
-			w64.TopAttach = ((uint)(4));
-			w64.BottomAttach = ((uint)(5));
+			global::Gtk.Table.TableChild w63 = ((global::Gtk.Table.TableChild)(this.table3[this.lightsbutton1]));
+			w63.TopAttach = ((uint)(4));
+			w63.BottomAttach = ((uint)(5));
+			w63.LeftAttach = ((uint)(1));
+			w63.RightAttach = ((uint)(2));
+			w63.XOptions = ((global::Gtk.AttachOptions)(4));
+			w63.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table3.Gtk.Table+TableChild
+			this.speedlabel1 = new global::Gtk.Label();
+			this.speedlabel1.Name = "speedlabel1";
+			this.speedlabel1.Xalign = 1F;
+			this.table3.Add(this.speedlabel1);
+			global::Gtk.Table.TableChild w64 = ((global::Gtk.Table.TableChild)(this.table3[this.speedlabel1]));
+			w64.TopAttach = ((uint)(2));
+			w64.BottomAttach = ((uint)(3));
 			w64.LeftAttach = ((uint)(1));
 			w64.RightAttach = ((uint)(2));
 			w64.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -1047,7 +1047,7 @@ namespace Road111
 			this.label12 = new global::Gtk.Label();
 			this.label12.Name = "label12";
 			this.label12.Xalign = 0F;
-			this.label12.LabelProp = global::Mono.Unix.Catalog.GetString("Скорость:");
+			this.label12.LabelProp = global::Mono.Unix.Catalog.GetString("Скорость (км/ч):");
 			this.table4.Add(this.label12);
 			global::Gtk.Table.TableChild w70 = ((global::Gtk.Table.TableChild)(this.table4[this.label12]));
 			w70.TopAttach = ((uint)(2));
@@ -1058,7 +1058,7 @@ namespace Road111
 			this.label13 = new global::Gtk.Label();
 			this.label13.Name = "label13";
 			this.label13.Xalign = 0F;
-			this.label13.LabelProp = global::Mono.Unix.Catalog.GetString("Пройдено");
+			this.label13.LabelProp = global::Mono.Unix.Catalog.GetString("Пройдено (км)");
 			this.table4.Add(this.label13);
 			global::Gtk.Table.TableChild w71 = ((global::Gtk.Table.TableChild)(this.table4[this.label13]));
 			w71.TopAttach = ((uint)(3));
@@ -1088,28 +1088,16 @@ namespace Road111
 			w73.XOptions = ((global::Gtk.AttachOptions)(4));
 			w73.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table4.Gtk.Table+TableChild
-			this.label36 = new global::Gtk.Label();
-			this.label36.Name = "label36";
-			this.label36.Xalign = 1F;
-			this.table4.Add(this.label36);
-			global::Gtk.Table.TableChild w74 = ((global::Gtk.Table.TableChild)(this.table4[this.label36]));
-			w74.TopAttach = ((uint)(2));
-			w74.BottomAttach = ((uint)(3));
-			w74.LeftAttach = ((uint)(1));
-			w74.RightAttach = ((uint)(2));
-			w74.XOptions = ((global::Gtk.AttachOptions)(4));
-			w74.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table4.Gtk.Table+TableChild
 			this.lights10 = new global::Gtk.Label();
 			this.lights10.Name = "lights10";
 			this.lights10.Xalign = 0F;
 			this.lights10.LabelProp = global::Mono.Unix.Catalog.GetString("Свет");
 			this.table4.Add(this.lights10);
-			global::Gtk.Table.TableChild w75 = ((global::Gtk.Table.TableChild)(this.table4[this.lights10]));
-			w75.TopAttach = ((uint)(4));
-			w75.BottomAttach = ((uint)(5));
-			w75.XOptions = ((global::Gtk.AttachOptions)(4));
-			w75.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w74 = ((global::Gtk.Table.TableChild)(this.table4[this.lights10]));
+			w74.TopAttach = ((uint)(4));
+			w74.BottomAttach = ((uint)(5));
+			w74.XOptions = ((global::Gtk.AttachOptions)(4));
+			w74.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table4.Gtk.Table+TableChild
 			this.lightsbutton2 = new global::Gtk.CheckButton();
 			this.lightsbutton2.Sensitive = false;
@@ -1119,9 +1107,21 @@ namespace Road111
 			this.lightsbutton2.DrawIndicator = true;
 			this.lightsbutton2.UseUnderline = true;
 			this.table4.Add(this.lightsbutton2);
-			global::Gtk.Table.TableChild w76 = ((global::Gtk.Table.TableChild)(this.table4[this.lightsbutton2]));
-			w76.TopAttach = ((uint)(4));
-			w76.BottomAttach = ((uint)(5));
+			global::Gtk.Table.TableChild w75 = ((global::Gtk.Table.TableChild)(this.table4[this.lightsbutton2]));
+			w75.TopAttach = ((uint)(4));
+			w75.BottomAttach = ((uint)(5));
+			w75.LeftAttach = ((uint)(1));
+			w75.RightAttach = ((uint)(2));
+			w75.XOptions = ((global::Gtk.AttachOptions)(4));
+			w75.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table4.Gtk.Table+TableChild
+			this.speedlabel2 = new global::Gtk.Label();
+			this.speedlabel2.Name = "speedlabel2";
+			this.speedlabel2.Xalign = 1F;
+			this.table4.Add(this.speedlabel2);
+			global::Gtk.Table.TableChild w76 = ((global::Gtk.Table.TableChild)(this.table4[this.speedlabel2]));
+			w76.TopAttach = ((uint)(2));
+			w76.BottomAttach = ((uint)(3));
 			w76.LeftAttach = ((uint)(1));
 			w76.RightAttach = ((uint)(2));
 			w76.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -1188,7 +1188,7 @@ namespace Road111
 			this.label16 = new global::Gtk.Label();
 			this.label16.Name = "label16";
 			this.label16.Xalign = 0F;
-			this.label16.LabelProp = global::Mono.Unix.Catalog.GetString("Скорость:");
+			this.label16.LabelProp = global::Mono.Unix.Catalog.GetString("Скорость (км/ч):");
 			this.table5.Add(this.label16);
 			global::Gtk.Table.TableChild w82 = ((global::Gtk.Table.TableChild)(this.table5[this.label16]));
 			w82.TopAttach = ((uint)(2));
@@ -1199,7 +1199,7 @@ namespace Road111
 			this.label17 = new global::Gtk.Label();
 			this.label17.Name = "label17";
 			this.label17.Xalign = 0F;
-			this.label17.LabelProp = global::Mono.Unix.Catalog.GetString("Пройдено");
+			this.label17.LabelProp = global::Mono.Unix.Catalog.GetString("Пройдено (км):");
 			this.table5.Add(this.label17);
 			global::Gtk.Table.TableChild w83 = ((global::Gtk.Table.TableChild)(this.table5[this.label17]));
 			w83.TopAttach = ((uint)(3));
@@ -1229,28 +1229,16 @@ namespace Road111
 			w85.XOptions = ((global::Gtk.AttachOptions)(4));
 			w85.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table5.Gtk.Table+TableChild
-			this.label38 = new global::Gtk.Label();
-			this.label38.Name = "label38";
-			this.label38.Xalign = 1F;
-			this.table5.Add(this.label38);
-			global::Gtk.Table.TableChild w86 = ((global::Gtk.Table.TableChild)(this.table5[this.label38]));
-			w86.TopAttach = ((uint)(2));
-			w86.BottomAttach = ((uint)(3));
-			w86.LeftAttach = ((uint)(1));
-			w86.RightAttach = ((uint)(2));
-			w86.XOptions = ((global::Gtk.AttachOptions)(4));
-			w86.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table5.Gtk.Table+TableChild
 			this.lights11 = new global::Gtk.Label();
 			this.lights11.Name = "lights11";
 			this.lights11.Xalign = 0F;
 			this.lights11.LabelProp = global::Mono.Unix.Catalog.GetString("Свет");
 			this.table5.Add(this.lights11);
-			global::Gtk.Table.TableChild w87 = ((global::Gtk.Table.TableChild)(this.table5[this.lights11]));
-			w87.TopAttach = ((uint)(4));
-			w87.BottomAttach = ((uint)(5));
-			w87.XOptions = ((global::Gtk.AttachOptions)(4));
-			w87.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w86 = ((global::Gtk.Table.TableChild)(this.table5[this.lights11]));
+			w86.TopAttach = ((uint)(4));
+			w86.BottomAttach = ((uint)(5));
+			w86.XOptions = ((global::Gtk.AttachOptions)(4));
+			w86.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table5.Gtk.Table+TableChild
 			this.lightsbutton3 = new global::Gtk.CheckButton();
 			this.lightsbutton3.Sensitive = false;
@@ -1260,9 +1248,21 @@ namespace Road111
 			this.lightsbutton3.DrawIndicator = true;
 			this.lightsbutton3.UseUnderline = true;
 			this.table5.Add(this.lightsbutton3);
-			global::Gtk.Table.TableChild w88 = ((global::Gtk.Table.TableChild)(this.table5[this.lightsbutton3]));
-			w88.TopAttach = ((uint)(4));
-			w88.BottomAttach = ((uint)(5));
+			global::Gtk.Table.TableChild w87 = ((global::Gtk.Table.TableChild)(this.table5[this.lightsbutton3]));
+			w87.TopAttach = ((uint)(4));
+			w87.BottomAttach = ((uint)(5));
+			w87.LeftAttach = ((uint)(1));
+			w87.RightAttach = ((uint)(2));
+			w87.XOptions = ((global::Gtk.AttachOptions)(4));
+			w87.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table5.Gtk.Table+TableChild
+			this.speedlabel3 = new global::Gtk.Label();
+			this.speedlabel3.Name = "speedlabel3";
+			this.speedlabel3.Xalign = 1F;
+			this.table5.Add(this.speedlabel3);
+			global::Gtk.Table.TableChild w88 = ((global::Gtk.Table.TableChild)(this.table5[this.speedlabel3]));
+			w88.TopAttach = ((uint)(2));
+			w88.BottomAttach = ((uint)(3));
 			w88.LeftAttach = ((uint)(1));
 			w88.RightAttach = ((uint)(2));
 			w88.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -1329,7 +1329,7 @@ namespace Road111
 			this.label20 = new global::Gtk.Label();
 			this.label20.Name = "label20";
 			this.label20.Xalign = 0F;
-			this.label20.LabelProp = global::Mono.Unix.Catalog.GetString("Скорость:");
+			this.label20.LabelProp = global::Mono.Unix.Catalog.GetString("Скорость (км/ч):");
 			this.table6.Add(this.label20);
 			global::Gtk.Table.TableChild w94 = ((global::Gtk.Table.TableChild)(this.table6[this.label20]));
 			w94.TopAttach = ((uint)(2));
@@ -1340,7 +1340,7 @@ namespace Road111
 			this.label21 = new global::Gtk.Label();
 			this.label21.Name = "label21";
 			this.label21.Xalign = 0F;
-			this.label21.LabelProp = global::Mono.Unix.Catalog.GetString("Пройдено");
+			this.label21.LabelProp = global::Mono.Unix.Catalog.GetString("Пройдено (км):");
 			this.table6.Add(this.label21);
 			global::Gtk.Table.TableChild w95 = ((global::Gtk.Table.TableChild)(this.table6[this.label21]));
 			w95.TopAttach = ((uint)(3));
@@ -1370,28 +1370,16 @@ namespace Road111
 			w97.XOptions = ((global::Gtk.AttachOptions)(4));
 			w97.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table6.Gtk.Table+TableChild
-			this.label39 = new global::Gtk.Label();
-			this.label39.Name = "label39";
-			this.label39.Xalign = 1F;
-			this.table6.Add(this.label39);
-			global::Gtk.Table.TableChild w98 = ((global::Gtk.Table.TableChild)(this.table6[this.label39]));
-			w98.TopAttach = ((uint)(2));
-			w98.BottomAttach = ((uint)(3));
-			w98.LeftAttach = ((uint)(1));
-			w98.RightAttach = ((uint)(2));
-			w98.XOptions = ((global::Gtk.AttachOptions)(4));
-			w98.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table6.Gtk.Table+TableChild
 			this.lights13 = new global::Gtk.Label();
 			this.lights13.Name = "lights13";
 			this.lights13.Xalign = 0F;
 			this.lights13.LabelProp = global::Mono.Unix.Catalog.GetString("Свет");
 			this.table6.Add(this.lights13);
-			global::Gtk.Table.TableChild w99 = ((global::Gtk.Table.TableChild)(this.table6[this.lights13]));
-			w99.TopAttach = ((uint)(4));
-			w99.BottomAttach = ((uint)(5));
-			w99.XOptions = ((global::Gtk.AttachOptions)(4));
-			w99.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w98 = ((global::Gtk.Table.TableChild)(this.table6[this.lights13]));
+			w98.TopAttach = ((uint)(4));
+			w98.BottomAttach = ((uint)(5));
+			w98.XOptions = ((global::Gtk.AttachOptions)(4));
+			w98.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table6.Gtk.Table+TableChild
 			this.lightsbutton4 = new global::Gtk.CheckButton();
 			this.lightsbutton4.Sensitive = false;
@@ -1401,9 +1389,21 @@ namespace Road111
 			this.lightsbutton4.DrawIndicator = true;
 			this.lightsbutton4.UseUnderline = true;
 			this.table6.Add(this.lightsbutton4);
-			global::Gtk.Table.TableChild w100 = ((global::Gtk.Table.TableChild)(this.table6[this.lightsbutton4]));
-			w100.TopAttach = ((uint)(4));
-			w100.BottomAttach = ((uint)(5));
+			global::Gtk.Table.TableChild w99 = ((global::Gtk.Table.TableChild)(this.table6[this.lightsbutton4]));
+			w99.TopAttach = ((uint)(4));
+			w99.BottomAttach = ((uint)(5));
+			w99.LeftAttach = ((uint)(1));
+			w99.RightAttach = ((uint)(2));
+			w99.XOptions = ((global::Gtk.AttachOptions)(4));
+			w99.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table6.Gtk.Table+TableChild
+			this.speedlabel4 = new global::Gtk.Label();
+			this.speedlabel4.Name = "speedlabel4";
+			this.speedlabel4.Xalign = 1F;
+			this.table6.Add(this.speedlabel4);
+			global::Gtk.Table.TableChild w100 = ((global::Gtk.Table.TableChild)(this.table6[this.speedlabel4]));
+			w100.TopAttach = ((uint)(2));
+			w100.BottomAttach = ((uint)(3));
 			w100.LeftAttach = ((uint)(1));
 			w100.RightAttach = ((uint)(2));
 			w100.XOptions = ((global::Gtk.AttachOptions)(4));
@@ -1470,7 +1470,7 @@ namespace Road111
 			this.label24 = new global::Gtk.Label();
 			this.label24.Name = "label24";
 			this.label24.Xalign = 0F;
-			this.label24.LabelProp = global::Mono.Unix.Catalog.GetString("Скорость:");
+			this.label24.LabelProp = global::Mono.Unix.Catalog.GetString("Скорость (км/ч):");
 			this.table7.Add(this.label24);
 			global::Gtk.Table.TableChild w106 = ((global::Gtk.Table.TableChild)(this.table7[this.label24]));
 			w106.TopAttach = ((uint)(2));
@@ -1481,7 +1481,7 @@ namespace Road111
 			this.label25 = new global::Gtk.Label();
 			this.label25.Name = "label25";
 			this.label25.Xalign = 0F;
-			this.label25.LabelProp = global::Mono.Unix.Catalog.GetString("Пройдено");
+			this.label25.LabelProp = global::Mono.Unix.Catalog.GetString("Пройдено (км):");
 			this.table7.Add(this.label25);
 			global::Gtk.Table.TableChild w107 = ((global::Gtk.Table.TableChild)(this.table7[this.label25]));
 			w107.TopAttach = ((uint)(3));
@@ -1511,28 +1511,16 @@ namespace Road111
 			w109.XOptions = ((global::Gtk.AttachOptions)(4));
 			w109.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table7.Gtk.Table+TableChild
-			this.label40 = new global::Gtk.Label();
-			this.label40.Name = "label40";
-			this.label40.Xalign = 1F;
-			this.table7.Add(this.label40);
-			global::Gtk.Table.TableChild w110 = ((global::Gtk.Table.TableChild)(this.table7[this.label40]));
-			w110.TopAttach = ((uint)(2));
-			w110.BottomAttach = ((uint)(3));
-			w110.LeftAttach = ((uint)(1));
-			w110.RightAttach = ((uint)(2));
-			w110.XOptions = ((global::Gtk.AttachOptions)(4));
-			w110.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table7.Gtk.Table+TableChild
 			this.lights12 = new global::Gtk.Label();
 			this.lights12.Name = "lights12";
 			this.lights12.Xalign = 0F;
 			this.lights12.LabelProp = global::Mono.Unix.Catalog.GetString("Свет");
 			this.table7.Add(this.lights12);
-			global::Gtk.Table.TableChild w111 = ((global::Gtk.Table.TableChild)(this.table7[this.lights12]));
-			w111.TopAttach = ((uint)(4));
-			w111.BottomAttach = ((uint)(5));
-			w111.XOptions = ((global::Gtk.AttachOptions)(4));
-			w111.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w110 = ((global::Gtk.Table.TableChild)(this.table7[this.lights12]));
+			w110.TopAttach = ((uint)(4));
+			w110.BottomAttach = ((uint)(5));
+			w110.XOptions = ((global::Gtk.AttachOptions)(4));
+			w110.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table7.Gtk.Table+TableChild
 			this.lightsbutton5 = new global::Gtk.CheckButton();
 			this.lightsbutton5.Sensitive = false;
@@ -1542,9 +1530,21 @@ namespace Road111
 			this.lightsbutton5.DrawIndicator = true;
 			this.lightsbutton5.UseUnderline = true;
 			this.table7.Add(this.lightsbutton5);
-			global::Gtk.Table.TableChild w112 = ((global::Gtk.Table.TableChild)(this.table7[this.lightsbutton5]));
-			w112.TopAttach = ((uint)(4));
-			w112.BottomAttach = ((uint)(5));
+			global::Gtk.Table.TableChild w111 = ((global::Gtk.Table.TableChild)(this.table7[this.lightsbutton5]));
+			w111.TopAttach = ((uint)(4));
+			w111.BottomAttach = ((uint)(5));
+			w111.LeftAttach = ((uint)(1));
+			w111.RightAttach = ((uint)(2));
+			w111.XOptions = ((global::Gtk.AttachOptions)(4));
+			w111.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table7.Gtk.Table+TableChild
+			this.speedlabel5 = new global::Gtk.Label();
+			this.speedlabel5.Name = "speedlabel5";
+			this.speedlabel5.Xalign = 1F;
+			this.table7.Add(this.speedlabel5);
+			global::Gtk.Table.TableChild w112 = ((global::Gtk.Table.TableChild)(this.table7[this.speedlabel5]));
+			w112.TopAttach = ((uint)(2));
+			w112.BottomAttach = ((uint)(3));
 			w112.LeftAttach = ((uint)(1));
 			w112.RightAttach = ((uint)(2));
 			w112.XOptions = ((global::Gtk.AttachOptions)(4));

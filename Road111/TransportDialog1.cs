@@ -20,14 +20,14 @@ namespace Road111
             if(road == 0 || road ==4)
             {
                 bike_rad.Sensitive = true;
-                radiobutton19.Sensitive = true;
+                kick_rad.Sensitive = true;
                 horse_rad.Sensitive = true;
                 this.QueueDraw();
             }
             else
             {
                 bike_rad.Sensitive = false;
-                radiobutton19.Sensitive = false;
+                kick_rad.Sensitive = false;
                 horse_rad.Sensitive = false; 
                 this.QueueDraw();
             }
@@ -167,7 +167,7 @@ namespace Road111
 				}
 
 			}
-            if (radiobutton19.Active && radiobutton19.Sensitive == true)
+            if (kick_rad.Active && kick_rad.Sensitive == true)
 			{
 				transport = new Kscooter(spinbutton3.Value, spinbutton4.Value, entry1.Text);
 				Kscooter kscooter = (Kscooter)transport;
@@ -177,36 +177,35 @@ namespace Road111
 				}
 
 			}
-			if (radiobutton21.Active && radiobutton21.Sensitive == true)
+			if (tank_rad.Active && tank_rad.Sensitive == true)
 			{
 				transport = new Tank(spinbutton3.Value, spinbutton4.Value, spinbutton1.Value, spinbutton2.Value, spinbutton6.ValueAsInt, entry1.Text);
 				Tank panzer = (Tank)transport;
-				if (panzer.MaxSpeed < panzer.Speed || panzer.AmountFuel < panzer.ConsFuel)
+				if (panzer.MaxSpeed < panzer.Speed)
 				{
 					transport = null;
 				}
 
 			}
 			if (transport != null)
-            if (!horse_rad.Active && !bike_rad.Active && !radiobutton19.Active )
+            if (!horse_rad.Active && !bike_rad.Active && !kick_rad.Active )
             {
                 checkStrip();
             }
             else
-            {
-                checkStrip();
-                fOk = true;
-            }
-            if (fOk && tOk && transport != null)
+				{
+					checkStrip();
+					fOk = true;
+				}
+			if (fOk && tOk && transport != null)
             {
 				if (MainClass.getSystem().getTransportList()[road] == null)
-                	MainClass.getWin().addTsN();
-				MainClass.getSystem().getTransportList().RemoveAt(road);
-                MainClass.getSystem().getTransportList().Insert(road, transport);
-                MainClass.getSystem().getTransportList()[road].Fuel = fuel;
-                MainClass.getSystem().getTransportList()[road].Strip = strip;
-                if (!horse_rad.Active && !bike_rad.Active && !radiobutton19.Active)
-                	MainClass.getWin().setTsLabel(transport, fuel, road, transport.Speed);
+					MainClass.getWin().addTsN();
+				MainClass.getSystem().getTransportList()[road] = transport;
+				MainClass.getSystem().getTransportList()[road].Fuel = fuel;
+				MainClass.getSystem().getTransportList()[road].Strip = strip;
+				if (!horse_rad.Active && !bike_rad.Active && !kick_rad.Active)
+					MainClass.getWin().setTsLabel(transport, fuel, road, transport.Speed);
                 else
 					MainClass.getWin().setTsLabel(transport, new Fuel("-"), road, transport.Speed);
 				MainClass.getSystem().writeJ(road, MainClass.getSystem().getTransportList()[road]);
@@ -283,7 +282,7 @@ namespace Road111
             QueueDraw();
         }
 
-        protected void OnRadiobutton19Clicked(object sender, EventArgs e)
+        protected void OnKickRadClicked(object sender, EventArgs e)
         {
             buttonOk.Sensitive = true;
             spinbutton1.Sensitive = false;
@@ -293,7 +292,7 @@ namespace Road111
             QueueDraw();
         }
 
-        protected void OnRadiobutton21Clicked(object sender, EventArgs e)
+        protected void OnTankRadClicked(object sender, EventArgs e)
         {
             if (MainClass.getSystem().getFuelList().Count > 0)
             {
@@ -380,17 +379,17 @@ namespace Road111
         protected void OnTramRadClicked(object sender, EventArgs e)
         {
             if (MainClass.getSystem().getFuelList().Count > 0)
-            {
+			{
                 buttonOk.Sensitive = true;
             }
             else
-            {
-                buttonOk.Sensitive = false;
+			{
+				buttonOk.Sensitive = false;
             }
-            spinbutton1.Sensitive = false;
-            spinbutton2.Sensitive = false;
-            spinbutton5.Sensitive = false;
-            spinbutton6.Sensitive = true;
+			spinbutton1.Sensitive = false;
+			spinbutton2.Sensitive = false;
+			spinbutton5.Sensitive = false;
+			spinbutton6.Sensitive = true;
 
         }
 
@@ -410,5 +409,5 @@ namespace Road111
             spinbutton5.Sensitive = false;
             QueueDraw();
         }
-    }
+	}
 }

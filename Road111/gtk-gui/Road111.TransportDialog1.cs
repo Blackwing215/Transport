@@ -20,13 +20,13 @@ namespace Road111
 
 		private global::Gtk.RadioButton horse_rad;
 
+		private global::Gtk.RadioButton kick_rad;
+
 		private global::Gtk.RadioButton loader_rad;
 
 		private global::Gtk.RadioButton moto_rad;
 
-		private global::Gtk.RadioButton radiobutton19;
-
-		private global::Gtk.RadioButton radiobutton21;
+		private global::Gtk.RadioButton tank_rad;
 
 		private global::Gtk.RadioButton tram_rad;
 
@@ -168,6 +168,18 @@ namespace Road111
 			w6.RightAttach = ((uint)(2));
 			w6.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
+			this.kick_rad = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Самокат"));
+			this.kick_rad.CanFocus = true;
+			this.kick_rad.Name = "kick_rad";
+			this.kick_rad.DrawIndicator = true;
+			this.kick_rad.UseUnderline = true;
+			this.kick_rad.Group = this.bike_rad.Group;
+			this.table1.Add(this.kick_rad);
+			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.table1[this.kick_rad]));
+			w7.TopAttach = ((uint)(3));
+			w7.BottomAttach = ((uint)(4));
+			w7.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table1.Gtk.Table+TableChild
 			this.loader_rad = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Погрузчик"));
 			this.loader_rad.CanFocus = true;
 			this.loader_rad.Name = "loader_rad";
@@ -175,10 +187,10 @@ namespace Road111
 			this.loader_rad.UseUnderline = true;
 			this.loader_rad.Group = this.bike_rad.Group;
 			this.table1.Add(this.loader_rad);
-			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.table1[this.loader_rad]));
-			w7.LeftAttach = ((uint)(2));
-			w7.RightAttach = ((uint)(3));
-			w7.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table1[this.loader_rad]));
+			w8.LeftAttach = ((uint)(2));
+			w8.RightAttach = ((uint)(3));
+			w8.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
 			this.moto_rad = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Мотоцикл"));
 			this.moto_rad.CanFocus = true;
@@ -187,31 +199,19 @@ namespace Road111
 			this.moto_rad.UseUnderline = true;
 			this.moto_rad.Group = this.bike_rad.Group;
 			this.table1.Add(this.moto_rad);
-			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table1[this.moto_rad]));
-			w8.TopAttach = ((uint)(2));
-			w8.BottomAttach = ((uint)(3));
-			w8.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table1.Gtk.Table+TableChild
-			this.radiobutton19 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Самокат"));
-			this.radiobutton19.CanFocus = true;
-			this.radiobutton19.Name = "radiobutton19";
-			this.radiobutton19.DrawIndicator = true;
-			this.radiobutton19.UseUnderline = true;
-			this.radiobutton19.Group = this.bike_rad.Group;
-			this.table1.Add(this.radiobutton19);
-			global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.table1[this.radiobutton19]));
-			w9.TopAttach = ((uint)(3));
-			w9.BottomAttach = ((uint)(4));
+			global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.table1[this.moto_rad]));
+			w9.TopAttach = ((uint)(2));
+			w9.BottomAttach = ((uint)(3));
 			w9.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
-			this.radiobutton21 = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Танк"));
-			this.radiobutton21.CanFocus = true;
-			this.radiobutton21.Name = "radiobutton21";
-			this.radiobutton21.DrawIndicator = true;
-			this.radiobutton21.UseUnderline = true;
-			this.radiobutton21.Group = this.bike_rad.Group;
-			this.table1.Add(this.radiobutton21);
-			global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.table1[this.radiobutton21]));
+			this.tank_rad = new global::Gtk.RadioButton(global::Mono.Unix.Catalog.GetString("Танк"));
+			this.tank_rad.CanFocus = true;
+			this.tank_rad.Name = "tank_rad";
+			this.tank_rad.DrawIndicator = true;
+			this.tank_rad.UseUnderline = true;
+			this.tank_rad.Group = this.bike_rad.Group;
+			this.table1.Add(this.tank_rad);
+			global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.table1[this.tank_rad]));
 			w10.TopAttach = ((uint)(3));
 			w10.BottomAttach = ((uint)(4));
 			w10.LeftAttach = ((uint)(1));
@@ -325,7 +325,7 @@ namespace Road111
 			// Container child table5.Gtk.Table+TableChild
 			this.label1 = new global::Gtk.Label();
 			this.label1.Name = "label1";
-			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("Объем бака:");
+			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("Объем бака (л):");
 			this.table5.Add(this.label1);
 			global::Gtk.Table.TableChild w21 = ((global::Gtk.Table.TableChild)(this.table5[this.label1]));
 			w21.TopAttach = ((uint)(3));
@@ -335,7 +335,7 @@ namespace Road111
 			// Container child table5.Gtk.Table+TableChild
 			this.label2 = new global::Gtk.Label();
 			this.label2.Name = "label2";
-			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString("Расход топлива:");
+			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString("Расход топлива (л/100км):");
 			this.table5.Add(this.label2);
 			global::Gtk.Table.TableChild w22 = ((global::Gtk.Table.TableChild)(this.table5[this.label2]));
 			w22.TopAttach = ((uint)(4));
@@ -345,7 +345,7 @@ namespace Road111
 			// Container child table5.Gtk.Table+TableChild
 			this.label3 = new global::Gtk.Label();
 			this.label3.Name = "label3";
-			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString("Максимальная скорость:");
+			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString("Максимальная скорость (км/ч):");
 			this.table5.Add(this.label3);
 			global::Gtk.Table.TableChild w23 = ((global::Gtk.Table.TableChild)(this.table5[this.label3]));
 			w23.TopAttach = ((uint)(5));
@@ -355,7 +355,7 @@ namespace Road111
 			// Container child table5.Gtk.Table+TableChild
 			this.label4 = new global::Gtk.Label();
 			this.label4.Name = "label4";
-			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString("Текущая скорость:");
+			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString("Текущая скорость (км/ч):");
 			this.table5.Add(this.label4);
 			global::Gtk.Table.TableChild w24 = ((global::Gtk.Table.TableChild)(this.table5[this.label4]));
 			w24.TopAttach = ((uint)(6));
@@ -375,7 +375,7 @@ namespace Road111
 			// Container child table5.Gtk.Table+TableChild
 			this.label6 = new global::Gtk.Label();
 			this.label6.Name = "label6";
-			this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("Грузоподъемность:");
+			this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("Грузоподъемность (кг)");
 			this.table5.Add(this.label6);
 			global::Gtk.Table.TableChild w26 = ((global::Gtk.Table.TableChild)(this.table5[this.label6]));
 			w26.TopAttach = ((uint)(8));
@@ -411,7 +411,7 @@ namespace Road111
 			w29.XOptions = ((global::Gtk.AttachOptions)(4));
 			w29.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table5.Gtk.Table+TableChild
-			this.spinbutton1 = new global::Gtk.SpinButton(0D, 100D, 0.1D);
+			this.spinbutton1 = new global::Gtk.SpinButton(0D, 500D, 1D);
 			this.spinbutton1.CanFocus = true;
 			this.spinbutton1.Name = "spinbutton1";
 			this.spinbutton1.Adjustment.PageIncrement = 10D;
@@ -443,7 +443,7 @@ namespace Road111
 			w31.XOptions = ((global::Gtk.AttachOptions)(4));
 			w31.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table5.Gtk.Table+TableChild
-			this.spinbutton3 = new global::Gtk.SpinButton(0D, 500D, 0.1D);
+			this.spinbutton3 = new global::Gtk.SpinButton(0D, 500D, 1D);
 			this.spinbutton3.CanFocus = true;
 			this.spinbutton3.Name = "spinbutton3";
 			this.spinbutton3.Adjustment.PageIncrement = 10D;
@@ -459,7 +459,7 @@ namespace Road111
 			w32.XOptions = ((global::Gtk.AttachOptions)(4));
 			w32.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table5.Gtk.Table+TableChild
-			this.spinbutton4 = new global::Gtk.SpinButton(0D, 500D, 0.1D);
+			this.spinbutton4 = new global::Gtk.SpinButton(0D, 500D, 1D);
 			this.spinbutton4.CanFocus = true;
 			this.spinbutton4.Name = "spinbutton4";
 			this.spinbutton4.Adjustment.PageIncrement = 10D;
@@ -475,7 +475,7 @@ namespace Road111
 			w33.XOptions = ((global::Gtk.AttachOptions)(4));
 			w33.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table5.Gtk.Table+TableChild
-			this.spinbutton5 = new global::Gtk.SpinButton(0D, 100D, 0.1D);
+			this.spinbutton5 = new global::Gtk.SpinButton(0D, 100000D, 10D);
 			this.spinbutton5.CanFocus = true;
 			this.spinbutton5.Name = "spinbutton5";
 			this.spinbutton5.Adjustment.PageIncrement = 10D;
@@ -549,10 +549,10 @@ namespace Road111
 			this.truck_rad.Clicked += new global::System.EventHandler(this.OnTruckRadClicked);
 			this.troll_rad.Clicked += new global::System.EventHandler(this.OnTrollRadClicked);
 			this.tram_rad.Clicked += new global::System.EventHandler(this.OnTramRadClicked);
-			this.radiobutton21.Clicked += new global::System.EventHandler(this.OnRadiobutton21Clicked);
-			this.radiobutton19.Clicked += new global::System.EventHandler(this.OnRadiobutton19Clicked);
+			this.tank_rad.Clicked += new global::System.EventHandler(this.OnTankRadClicked);
 			this.moto_rad.Clicked += new global::System.EventHandler(this.OnMotoRadClicked);
 			this.loader_rad.Clicked += new global::System.EventHandler(this.OnLoaderRadClicked);
+			this.kick_rad.Clicked += new global::System.EventHandler(this.OnKickRadClicked);
 			this.horse_rad.Clicked += new global::System.EventHandler(this.OnHorseRadClicked);
 			this.car_rad.Clicked += new global::System.EventHandler(this.OnCarRadClicked);
 			this.bus_rad.Clicked += new global::System.EventHandler(this.OnBusRadClicked);
