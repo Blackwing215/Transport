@@ -4,7 +4,6 @@ using Gdk;
 using Cairo;
 using System.Collections.Generic;
 using System.Threading;
-using CairoWarp;
 using Glade;
 
 
@@ -225,27 +224,27 @@ namespace Road111
 		{
 			width = drawingarea1.Allocation.Width;
 			height = drawingarea1.Allocation.Height;
-			DrawingPicCar(o, 0);
+		//DrawingPicCar(o, 0);
 		}
 
 		protected void OnDrawingarea2ExposeEvent(object o, ExposeEventArgs args)
 		{
-			DrawingPicCar(o, 1);
+			//DrawingPicCar(o, 1);
 		}
 
 		protected void OnDrawingarea3ExposeEvent(object o, ExposeEventArgs args)
 		{
-			DrawingPicCar(o, 2);
+			//DrawingPicCar(o, 2);
 		}
 
 		protected void OnDrawingarea4ExposeEvent(object o, ExposeEventArgs args)
 		{
-			DrawingPicCar(o, 3);
+			//DrawingPicCar(o, 3);
 		}
 
 		protected void OnDrawingarea5ExposeEvent(object o, ExposeEventArgs args)
 		{
-			DrawingPicCar(o, 4);
+			//DrawingPicCar(o, 4);
 		}
 
 		protected void DrawingPicCar(object o, int road)
@@ -453,7 +452,7 @@ namespace Road111
 
 		public void ViewProperties(int road)
 		{
-			Gtk.Window window = new Gtk.Window("Параметры №" + road);
+            Gtk.Window window = new Gtk.Window("Транспортное средство №" + (road+1));
 			window.SetSizeRequest(500, 200);
 
 			Gtk.TreeView tree = new Gtk.TreeView();
@@ -480,130 +479,138 @@ namespace Road111
 
 			Gtk.TreeStore tsListStore = new Gtk.TreeStore(typeof(string), typeof(string));
 			Gtk.TreeIter iter;
-			switch (MainClass.getSystem().getTransportList()[road].Name)
-			{
-				case "Автомобиль":
-					Car car = (Car)MainClass.getSystem().getTransportList()[road];
-					iter = tsListStore.AppendValues(car.Name);
-					tsListStore.AppendValues(iter, "Тип:", car.Type);
-					tsListStore.AppendValues(iter, "Марка:", car.Brand);
-					tsListStore.AppendValues(iter, "Тип топлива:", car.Fuel.GetFuel());
-					tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(car.AmountFuel));
-					tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(car.ConsFuel));
-					tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(car.MaxSpeed));
-					tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(car.Speed));
-					tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(car.MaxDist));
-					tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(car.Passengers));
-					break;
-				case "Мотоцикл":
-					Moto moto = (Moto)MainClass.getSystem().getTransportList()[road];
-					iter = tsListStore.AppendValues(moto.Name);
-					tsListStore.AppendValues(iter, "Тип:", moto.Type);
-					tsListStore.AppendValues(iter, "Марка:", moto.Brand);
-					tsListStore.AppendValues(iter, "Тип топлива:", moto.Fuel.GetFuel());
-					tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(moto.AmountFuel));
-					tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(moto.ConsFuel));
-					tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(moto.MaxSpeed));
-					tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(moto.Speed));
-					tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(moto.MaxDist));
-					break;
-				case "Грузовик":
-					Truck truck = (Truck)MainClass.getSystem().getTransportList()[road];
-					iter = tsListStore.AppendValues(truck.Name);
-					tsListStore.AppendValues(iter, "Тип:", truck.Type);
-					tsListStore.AppendValues(iter, "Марка:", truck.Brand);
-					tsListStore.AppendValues(iter, "Тип топлива:", truck.Fuel.GetFuel());
-					tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(truck.AmountFuel));
-					tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(truck.ConsFuel));
-					tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(truck.MaxSpeed));
-					tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(truck.Speed));
-					tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(truck.MaxDist));
-					tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(truck.Carrying));
-					break;
-				case "Погрузчик":
-					Loader loader = (Loader)MainClass.getSystem().getTransportList()[road];
-					iter = tsListStore.AppendValues(loader.Name);
-					tsListStore.AppendValues(iter, "Тип:", loader.Type);
-					tsListStore.AppendValues(iter, "Марка:", loader.Brand);
-					tsListStore.AppendValues(iter, "Тип топлива:", loader.Fuel.GetFuel());
-					tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(loader.AmountFuel));
-					tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(loader.ConsFuel));
-					tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(loader.MaxSpeed));
-					tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(loader.Speed));
-					tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(loader.MaxDist));
-					tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(loader.Carrying));
-					break;
-				case "Автобус":
-					Bus bus = (Bus)MainClass.getSystem().getTransportList()[road];
-					iter = tsListStore.AppendValues(bus.Name);
-					tsListStore.AppendValues(iter, "Тип:", bus.Type);
-					tsListStore.AppendValues(iter, "Марка:", bus.Brand);
-					tsListStore.AppendValues(iter, "Тип топлива:", bus.Fuel.GetFuel());
-					tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(bus.AmountFuel));
-					tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(bus.ConsFuel));
-					tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(bus.MaxSpeed));
-					tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(bus.Speed));
-					tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(bus.MaxDist));
-					tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(bus.Passengers));
-					break;
-				case "Троллейбус":
-					Trolleybus troll = (Trolleybus)MainClass.getSystem().getTransportList()[road];
-					iter = tsListStore.AppendValues(troll.Name);
-					tsListStore.AppendValues(iter, "Тип:", troll.Type);
-					tsListStore.AppendValues(iter, "Марка:", troll.Brand);
-					tsListStore.AppendValues(iter, "Тип топлива:", troll.Fuel.GetFuel());
-					tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(troll.MaxSpeed));
-					tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(troll.Speed));
-					tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(troll.Passengers));
-					break;
-				case "Трамвай":
-					Tram tram = (Tram)MainClass.getSystem().getTransportList()[road];
-					iter = tsListStore.AppendValues(tram.Name);
-					tsListStore.AppendValues(iter, "Тип:", tram.Type);
-					tsListStore.AppendValues(iter, "Марка:", tram.Brand);
-					tsListStore.AppendValues(iter, "Тип топлива:", tram.Fuel.GetFuel());
-					tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(tram.MaxSpeed));
-					tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(tram.Speed));
-					tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(tram.Passengers));
-					break;
-				case "Гужевая повозка":
-					Horse horse = (Horse)MainClass.getSystem().getTransportList()[road];
-					iter = tsListStore.AppendValues(horse.Name);
-					tsListStore.AppendValues(iter, "Тип:", horse.Type);
-					tsListStore.AppendValues(iter, "Марка:", horse.Brand);
-					tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(horse.MaxSpeed));
-					tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(horse.Speed));
-					tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(horse.Carrying));
-					break;
-				case "Велосипед":
-					Bike bike = (Bike)MainClass.getSystem().getTransportList()[road];
-					iter = tsListStore.AppendValues(bike.Name);
-					tsListStore.AppendValues(iter, "Тип:", bike.Type);
-					tsListStore.AppendValues(iter, "Марка:", bike.Brand);
-					tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(bike.MaxSpeed));
-					tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(bike.Speed));
-					break;
-				case "Самокат":
-					Kscooter ks = (Kscooter)MainClass.getSystem().getTransportList()[road];
-					iter = tsListStore.AppendValues(ks.Name);
-					tsListStore.AppendValues(iter, "Тип:", ks.Type);
-					tsListStore.AppendValues(iter, "Марка:", ks.Brand);
-					tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(ks.MaxSpeed));
-					tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(ks.Speed));
-					break;
-				case "Танк":
-					Tank panzer = (Tank)MainClass.getSystem().getTransportList()[road];
-					iter = tsListStore.AppendValues(panzer.Name);
-					tsListStore.AppendValues(iter, "Тип:", panzer.Type);
-					tsListStore.AppendValues(iter, "Марка:", panzer.Brand);
-					tsListStore.AppendValues(iter, "Тип топлива:", panzer.Fuel.GetFuel());
-					tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(panzer.AmountFuel));
-					tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(panzer.ConsFuel));
-					tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(panzer.MaxSpeed));
-					tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(panzer.Speed));
-					tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(panzer.MaxDist));
-					break;
-			}
+            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Car))
+            {
+                Road111.Car car = (Road111.Car)Road111.MainClass.getSystem().getTransportList()[road];
+                iter = tsListStore.AppendValues(car.Name);
+                tsListStore.AppendValues(iter, "Тип:", car.Type);
+                tsListStore.AppendValues(iter, "Марка:", car.Brand);
+                tsListStore.AppendValues(iter, "Тип топлива:", car.Fuel.GetFuel());
+                tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(car.AmountFuel));
+                tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(car.ConsFuel));
+                tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(car.MaxSpeed));
+                tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(car.Speed));
+                tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(car.MaxDist));
+                tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(car.Passengers));
+            }
+            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Moto))
+            {
+                Road111.Moto moto = (Road111.Moto)Road111.MainClass.getSystem().getTransportList()[road];
+                iter = tsListStore.AppendValues(moto.Name);
+                tsListStore.AppendValues(iter, "Тип:", moto.Type);
+                tsListStore.AppendValues(iter, "Марка:", moto.Brand);
+                tsListStore.AppendValues(iter, "Тип топлива:", moto.Fuel.GetFuel());
+                tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(moto.AmountFuel));
+                tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(moto.ConsFuel));
+                tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(moto.MaxSpeed));
+                tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(moto.Speed));
+                tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(moto.MaxDist));
+            }
+            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Truck))
+            {
+                Road111.Truck truck = (Road111.Truck)Road111.MainClass.getSystem().getTransportList()[road];
+                iter = tsListStore.AppendValues(truck.Name);
+                tsListStore.AppendValues(iter, "Тип:", truck.Type);
+                tsListStore.AppendValues(iter, "Марка:", truck.Brand);
+                tsListStore.AppendValues(iter, "Тип топлива:", truck.Fuel.GetFuel());
+                tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(truck.AmountFuel));
+                tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(truck.ConsFuel));
+                tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(truck.MaxSpeed));
+                tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(truck.Speed));
+                tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(truck.MaxDist));
+                tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(truck.Carrying));
+            }
+            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Loader))
+            {
+                Road111.Loader loader = (Road111.Loader)Road111.MainClass.getSystem().getTransportList()[road];
+                iter = tsListStore.AppendValues(loader.Name);
+                tsListStore.AppendValues(iter, "Тип:", loader.Type);
+                tsListStore.AppendValues(iter, "Марка:", loader.Brand);
+                tsListStore.AppendValues(iter, "Тип топлива:", loader.Fuel.GetFuel());
+                tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(loader.AmountFuel));
+                tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(loader.ConsFuel));
+                tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(loader.MaxSpeed));
+                tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(loader.Speed));
+                tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(loader.MaxDist));
+                tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(loader.Carrying));
+            }
+            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Bus))
+            {
+                Road111.Bus bus = (Road111.Bus)Road111.MainClass.getSystem().getTransportList()[road];
+                iter = tsListStore.AppendValues(bus.Name);
+                tsListStore.AppendValues(iter, "Тип:", bus.Type);
+                tsListStore.AppendValues(iter, "Марка:", bus.Brand);
+                tsListStore.AppendValues(iter, "Тип топлива:", bus.Fuel.GetFuel());
+                tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(bus.AmountFuel));
+                tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(bus.ConsFuel));
+                tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(bus.MaxSpeed));
+                tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(bus.Speed));
+                tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(bus.MaxDist));
+                tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(bus.Passengers));
+            }
+            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Trolleybus))
+            {
+                Road111.Trolleybus troll = (Road111.Trolleybus)Road111.MainClass.getSystem().getTransportList()[road];
+                iter = tsListStore.AppendValues(troll.Name);
+                tsListStore.AppendValues(iter, "Тип:", troll.Type);
+                tsListStore.AppendValues(iter, "Марка:", troll.Brand);
+                tsListStore.AppendValues(iter, "Тип топлива:", troll.Fuel.GetFuel());
+                tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(troll.MaxSpeed));
+                tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(troll.Speed));
+                tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(troll.Passengers));
+            }
+            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Tram))
+            {
+                Road111.Tram tram = (Road111.Tram)Road111.MainClass.getSystem().getTransportList()[road];
+                iter = tsListStore.AppendValues(tram.Name);
+                tsListStore.AppendValues(iter, "Тип:", tram.Type);
+                tsListStore.AppendValues(iter, "Марка:", tram.Brand);
+                tsListStore.AppendValues(iter, "Тип топлива:", tram.Fuel.GetFuel());
+                tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(tram.MaxSpeed));
+                tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(tram.Speed));
+                tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(tram.Passengers));
+            }
+            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Horse))
+            {
+                Road111.Horse horse = (Road111.Horse)Road111.MainClass.getSystem().getTransportList()[road];
+                iter = tsListStore.AppendValues(horse.Name);
+                tsListStore.AppendValues(iter, "Тип:", horse.Type);
+                tsListStore.AppendValues(iter, "Марка:", horse.Brand);
+                tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(horse.MaxSpeed));
+                tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(horse.Speed));
+                tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(horse.Carrying));
+            }
+            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Bike))
+            {
+                Road111.Bike bike = (Road111.Bike)Road111.MainClass.getSystem().getTransportList()[road];
+                iter = tsListStore.AppendValues(bike.Name);
+                tsListStore.AppendValues(iter, "Тип:", bike.Type);
+                tsListStore.AppendValues(iter, "Марка:", bike.Brand);
+                tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(bike.MaxSpeed));
+                tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(bike.Speed));
+            }
+            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Kscooter))
+            {
+                Road111.Kscooter ks = (Road111.Kscooter)Road111.MainClass.getSystem().getTransportList()[road];
+                iter = tsListStore.AppendValues(ks.Name);
+                tsListStore.AppendValues(iter, "Тип:", ks.Type);
+                tsListStore.AppendValues(iter, "Марка:", ks.Brand);
+                tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(ks.MaxSpeed));
+                tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(ks.Speed));
+            }
+            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Tank))
+            {
+                Road111.Tank panzer = (Road111.Tank)Road111.MainClass.getSystem().getTransportList()[road];
+                iter = tsListStore.AppendValues(panzer.Name);
+                tsListStore.AppendValues(iter, "Тип:", panzer.Type);
+                tsListStore.AppendValues(iter, "Марка:", panzer.Brand);
+                tsListStore.AppendValues(iter, "Тип топлива:", panzer.Fuel.GetFuel());
+                tsListStore.AppendValues(iter, "Объем бака: ", Convert.ToString(panzer.AmountFuel));
+                tsListStore.AppendValues(iter, "Расход топлива: ", Convert.ToString(panzer.ConsFuel));
+                tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(panzer.MaxSpeed));
+                tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(panzer.Speed));
+                tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(panzer.MaxDist));
+            }
 
 			tree.Model = tsListStore;
 

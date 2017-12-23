@@ -65,7 +65,7 @@ namespace Road111
 			// Container child table1.Gtk.Table+TableChild
 			this.label1 = new global::Gtk.Label();
 			this.label1.Name = "label1";
-			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("Несовместимость типа полосы или топлива с транспорта.");
+			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("Несовместимость параметров.");
 			this.table1.Add(this.label1);
 			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table1[this.label1]));
 			w4.TopAttach = ((uint)(1));

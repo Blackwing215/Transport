@@ -2,7 +2,6 @@
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
-using Excel = Microsoft.Office.Interop.Excel;
 using ExcelLibrary.SpreadSheet;
 namespace Road111
 {
@@ -10,7 +9,6 @@ namespace Road111
     {
         private List<Fuel> listF;
         private List<Vehicle> listT;
-       	//private Excel.Application journal;
         private string file = "Journal.xls";
         private Workbook workbook;
         private Worksheet worksheet;
