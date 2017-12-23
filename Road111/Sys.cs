@@ -23,6 +23,10 @@ namespace Road111
             workbook.Worksheets.Add(worksheet);  
              workbook.Save(file);  
             listF = new List<Fuel>();
+			listF.Add(new Fuel("Бензин"));
+			listF.Add(new Fuel("Газ"));
+			listF.Add(new Fuel("Дизель"));
+			listF.Add(new Fuel("Электричество"));
             listT = new List<Vehicle>(5);
 			for (int i = 0; i < 5; i++)
 			{
@@ -43,7 +47,7 @@ namespace Road111
         {
 			Workbook book = Workbook.Load(file);
 			Worksheet sheet = book.Worksheets[0];
-			if (Road111.MainClass.getSystem().getTransportList()[road] != null)
+			if (MainClass.getSystem().getTransportList()[road] != null)
 			{
 				//создание файла
 				if (veh.Stop_C == 0)

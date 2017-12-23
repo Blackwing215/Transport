@@ -35,39 +35,54 @@ namespace Road111
 			get { return roadLength; }
 		}
 
-		public void setTsLabel(Vehicle transport, Fuel fuel, int Road, double Speed)
+		public void setTsLabel(Vehicle transport, Fuel fuel, int road, double speed)
 		{
-			switch (Road)
+			switch (road)
 			{
 				case 0:
 					label31.Text = transport.Name;
-					label37.Text = Convert.ToString(Speed);
+					label37.Text = Convert.ToString(speed);
 					label26.Text = fuel.GetFuel();
+					distlabel1.Text = "0";
 					info_but1.Sensitive = true;
+					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
+						lightsbutton1.Sensitive = true;
 					break;
 				case 1:
 					label32.Text = transport.Name;
-					label36.Text = Convert.ToString(Speed);
+					label36.Text = Convert.ToString(speed);
 					label27.Text = fuel.GetFuel();
+					distlabel2.Text = "0";
 					info_but2.Sensitive = true;
+					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
+						lightsbutton1.Sensitive = true;
 					break;
 				case 2:
 					label33.Text = transport.Name;
-					label38.Text = Convert.ToString(Speed);
+					label38.Text = Convert.ToString(speed);
 					label28.Text = fuel.GetFuel();
+					distlabel3.Text = "0";
 					info_but3.Sensitive = true;
+					if (transport.GetType() != typeof(Horse)  && transport.GetType() != typeof(Kscooter))
+						lightsbutton1.Sensitive = true;
 					break;
 				case 3:
 					label34.Text = transport.Name;
-					label39.Text = Convert.ToString(Speed);
+					label39.Text = Convert.ToString(speed);
 					label29.Text = fuel.GetFuel();
+					distlabel4.Text = "0";
 					info_but4.Sensitive = true;
+					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
+						lightsbutton1.Sensitive = true;
 					break;
 				case 4:
 					label35.Text = transport.Name;
-					label40.Text = Convert.ToString(Speed);
+					label40.Text = Convert.ToString(speed);
 					label30.Text = fuel.GetFuel();
+					distlabel5.Text = "0";
 					info_but5.Sensitive = true;
+					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
+						lightsbutton1.Sensitive = true;
 					break;
 			}
 			QueueDraw();
@@ -224,27 +239,27 @@ namespace Road111
 		{
 			width = drawingarea1.Allocation.Width;
 			height = drawingarea1.Allocation.Height;
-		//DrawingPicCar(o, 0);
+			DrawingPicCar(o, 0);
 		}
 
 		protected void OnDrawingarea2ExposeEvent(object o, ExposeEventArgs args)
 		{
-			//DrawingPicCar(o, 1);
+			DrawingPicCar(o, 1);
 		}
 
 		protected void OnDrawingarea3ExposeEvent(object o, ExposeEventArgs args)
 		{
-			//DrawingPicCar(o, 2);
+			DrawingPicCar(o, 2);
 		}
 
 		protected void OnDrawingarea4ExposeEvent(object o, ExposeEventArgs args)
 		{
-			//DrawingPicCar(o, 3);
+			DrawingPicCar(o, 3);
 		}
 
 		protected void OnDrawingarea5ExposeEvent(object o, ExposeEventArgs args)
 		{
-			//DrawingPicCar(o, 4);
+			DrawingPicCar(o, 4);
 		}
 
 		protected void DrawingPicCar(object o, int road)
@@ -254,6 +269,7 @@ namespace Road111
 
 			width = area.Allocation.Width;
 			height = area.Allocation.Height;
+			bool lights = false;
 
 			cr.SetSourceRGB(0.3, 0.3, 0.3);
 			cr.Paint();
@@ -361,18 +377,65 @@ namespace Road111
 					break;
 			}
 
+			switch (road)
+			{
+				case 0:
+					lights = lightsbutton1.Active;
+					break;
+				case 1:
+					lights = lightsbutton2.Active;
+					break;
+				case 2:
+					lights = lightsbutton3.Active;
+					break;
+				case 3:
+					lights = lightsbutton4.Active;
+					break;
+				case 4:
+					lights = lightsbutton5.Active;
+					break;
+			}
 			if (MainClass.getSystem().getTransportList()[road] != null)                     //Drawing vehicle, if it is on this strip
 			{
 				imW = MainClass.getSystem().getTransportList()[road].Image.Width;
 				imH = MainClass.getSystem().getTransportList()[road].Image.Height;
 				double scale = (width - imW) / roadLength;
+				int dist = Convert.ToInt32(scale * MainClass.getSystem().getTransportList()[road].Distance);
 
-				cr.SetSourceSurface(MainClass.getSystem().getTransportList()[road].Image,
-				                    Convert.ToInt32(scale * MainClass.getSystem().getTransportList()[road].Distance),
-									(height - imH) / 2);
+				if (lights)
+				{
+					LinearGradient lg = new LinearGradient(dist + 3*imH/5, height / 2, dist + 5 * imW / 3, height / 2);
+					lg.AddColorStop(0, new Cairo.Color(1, 1, 0, 1));
+					lg.AddColorStop(1, new Cairo.Color(1, 1, 0, 0));
+					cr.SetSource(lg);
+					if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Moto) 
+					    || MainClass.getSystem().getTransportList()[road].GetType() == typeof(Bike))
+					{
+						cr.MoveTo(dist + imW - 50, height / 2);
+						cr.LineTo(dist + 5 * imW / 3, height / 2 - 2 * imH / 3);
+						cr.LineTo(dist + 5 * imW / 3, height / 2 + 2 * imH / 3);
+						cr.ClosePath();
+					}
+					else
+					{
+						cr.MoveTo(dist + imW - 50, height / 2 - imH/6);
+						cr.LineTo(dist + 5 * imW / 3, height / 2 - 2 * imH / 3 - imH/6);
+						cr.LineTo(dist + 5 * imW / 3, height / 2 + 2 * imH / 3 - imH/6);
+						cr.ClosePath();
+						cr.Fill();
+						cr.MoveTo(dist + imW - 50, height / 2 + imH/6);
+						cr.LineTo(dist + 5 * imW / 3, height / 2 - 2 * imH / 3 + imH/6);
+						cr.LineTo(dist + 5 * imW / 3, height / 2 + 2 * imH / 3 + imH/6);
+						cr.ClosePath();
+					}
+					cr.Fill();
+				}
+
+
+				cr.SetSourceSurface(MainClass.getSystem().getTransportList()[road].Image, dist,	(height - imH) / 2);
 				cr.Paint();
 
-				if (timer && scale * MainClass.getSystem().getTransportList()[road].Distance < width - imW)
+				if (timer && dist < width - imW)
 				{
 					double speed = MainClass.getSystem().getTransportList()[road].Speed;
 					MainClass.getSystem().getTransportList()[road].Distance += 20 * speed * clock / 3600000;
@@ -479,9 +542,9 @@ namespace Road111
 
 			Gtk.TreeStore tsListStore = new Gtk.TreeStore(typeof(string), typeof(string));
 			Gtk.TreeIter iter;
-            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Car))
+            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Car))
             {
-                Road111.Car car = (Road111.Car)Road111.MainClass.getSystem().getTransportList()[road];
+				Car car = MainClass.getSystem().getTransportList()[road] as Car;
                 iter = tsListStore.AppendValues(car.Name);
                 tsListStore.AppendValues(iter, "Тип:", car.Type);
                 tsListStore.AppendValues(iter, "Марка:", car.Brand);
@@ -493,9 +556,9 @@ namespace Road111
                 tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(car.MaxDist));
                 tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(car.Passengers));
             }
-            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Moto))
+            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Moto))
             {
-                Road111.Moto moto = (Road111.Moto)Road111.MainClass.getSystem().getTransportList()[road];
+                Moto moto = (Moto)MainClass.getSystem().getTransportList()[road];
                 iter = tsListStore.AppendValues(moto.Name);
                 tsListStore.AppendValues(iter, "Тип:", moto.Type);
                 tsListStore.AppendValues(iter, "Марка:", moto.Brand);
@@ -506,9 +569,9 @@ namespace Road111
                 tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(moto.Speed));
                 tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(moto.MaxDist));
             }
-            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Truck))
+            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Truck))
             {
-                Road111.Truck truck = (Road111.Truck)Road111.MainClass.getSystem().getTransportList()[road];
+                Truck truck = (Truck)MainClass.getSystem().getTransportList()[road];
                 iter = tsListStore.AppendValues(truck.Name);
                 tsListStore.AppendValues(iter, "Тип:", truck.Type);
                 tsListStore.AppendValues(iter, "Марка:", truck.Brand);
@@ -520,9 +583,9 @@ namespace Road111
                 tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(truck.MaxDist));
                 tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(truck.Carrying));
             }
-            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Loader))
+            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Loader))
             {
-                Road111.Loader loader = (Road111.Loader)Road111.MainClass.getSystem().getTransportList()[road];
+                Loader loader = (Loader)MainClass.getSystem().getTransportList()[road];
                 iter = tsListStore.AppendValues(loader.Name);
                 tsListStore.AppendValues(iter, "Тип:", loader.Type);
                 tsListStore.AppendValues(iter, "Марка:", loader.Brand);
@@ -534,9 +597,9 @@ namespace Road111
                 tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(loader.MaxDist));
                 tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(loader.Carrying));
             }
-            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Bus))
+            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Bus))
             {
-                Road111.Bus bus = (Road111.Bus)Road111.MainClass.getSystem().getTransportList()[road];
+                Bus bus = (Bus)MainClass.getSystem().getTransportList()[road];
                 iter = tsListStore.AppendValues(bus.Name);
                 tsListStore.AppendValues(iter, "Тип:", bus.Type);
                 tsListStore.AppendValues(iter, "Марка:", bus.Brand);
@@ -548,9 +611,9 @@ namespace Road111
                 tsListStore.AppendValues(iter, "Максимальное расстояние: ", Convert.ToString(bus.MaxDist));
                 tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(bus.Passengers));
             }
-            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Trolleybus))
+            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Trolleybus))
             {
-                Road111.Trolleybus troll = (Road111.Trolleybus)Road111.MainClass.getSystem().getTransportList()[road];
+                Trolleybus troll = (Trolleybus)MainClass.getSystem().getTransportList()[road];
                 iter = tsListStore.AppendValues(troll.Name);
                 tsListStore.AppendValues(iter, "Тип:", troll.Type);
                 tsListStore.AppendValues(iter, "Марка:", troll.Brand);
@@ -559,9 +622,9 @@ namespace Road111
                 tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(troll.Speed));
                 tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(troll.Passengers));
             }
-            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Tram))
+            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Tram))
             {
-                Road111.Tram tram = (Road111.Tram)Road111.MainClass.getSystem().getTransportList()[road];
+                Tram tram = (Tram)MainClass.getSystem().getTransportList()[road];
                 iter = tsListStore.AppendValues(tram.Name);
                 tsListStore.AppendValues(iter, "Тип:", tram.Type);
                 tsListStore.AppendValues(iter, "Марка:", tram.Brand);
@@ -570,9 +633,9 @@ namespace Road111
                 tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(tram.Speed));
                 tsListStore.AppendValues(iter, "Количество пассажиров: ", Convert.ToString(tram.Passengers));
             }
-            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Horse))
+            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Horse))
             {
-                Road111.Horse horse = (Road111.Horse)Road111.MainClass.getSystem().getTransportList()[road];
+                Horse horse = (Horse)MainClass.getSystem().getTransportList()[road];
                 iter = tsListStore.AppendValues(horse.Name);
                 tsListStore.AppendValues(iter, "Тип:", horse.Type);
                 tsListStore.AppendValues(iter, "Марка:", horse.Brand);
@@ -580,27 +643,27 @@ namespace Road111
                 tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(horse.Speed));
                 tsListStore.AppendValues(iter, "Грузоподъемность: ", Convert.ToString(horse.Carrying));
             }
-            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Bike))
+            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Bike))
             {
-                Road111.Bike bike = (Road111.Bike)Road111.MainClass.getSystem().getTransportList()[road];
+                Bike bike = (Bike)MainClass.getSystem().getTransportList()[road];
                 iter = tsListStore.AppendValues(bike.Name);
                 tsListStore.AppendValues(iter, "Тип:", bike.Type);
                 tsListStore.AppendValues(iter, "Марка:", bike.Brand);
                 tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(bike.MaxSpeed));
                 tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(bike.Speed));
             }
-            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Kscooter))
+			if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Kscooter))
             {
-                Road111.Kscooter ks = (Road111.Kscooter)Road111.MainClass.getSystem().getTransportList()[road];
+                Kscooter ks = (Kscooter)MainClass.getSystem().getTransportList()[road];
                 iter = tsListStore.AppendValues(ks.Name);
                 tsListStore.AppendValues(iter, "Тип:", ks.Type);
                 tsListStore.AppendValues(iter, "Марка:", ks.Brand);
                 tsListStore.AppendValues(iter, "Максимальная скорость: ", Convert.ToString(ks.MaxSpeed));
                 tsListStore.AppendValues(iter, "Текущая скорость: ", Convert.ToString(ks.Speed));
             }
-            if (Road111.MainClass.getSystem().getTransportList()[road].GetType() == typeof(Road111.Tank))
+            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Tank))
             {
-                Road111.Tank panzer = (Road111.Tank)Road111.MainClass.getSystem().getTransportList()[road];
+                Tank panzer = (Tank)MainClass.getSystem().getTransportList()[road];
                 iter = tsListStore.AppendValues(panzer.Name);
                 tsListStore.AppendValues(iter, "Тип:", panzer.Type);
                 tsListStore.AppendValues(iter, "Марка:", panzer.Brand);
