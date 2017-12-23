@@ -55,7 +55,7 @@ namespace Road111
 					distlabel2.Text = "0";
 					info_but2.Sensitive = true;
 					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
-						lightsbutton1.Sensitive = true;
+						lightsbutton2.Sensitive = true;
 					break;
 				case 2:
 					label33.Text = transport.Name;
@@ -64,7 +64,7 @@ namespace Road111
 					distlabel3.Text = "0";
 					info_but3.Sensitive = true;
 					if (transport.GetType() != typeof(Horse)  && transport.GetType() != typeof(Kscooter))
-						lightsbutton1.Sensitive = true;
+						lightsbutton3.Sensitive = true;
 					break;
 				case 3:
 					label34.Text = transport.Name;
@@ -73,7 +73,7 @@ namespace Road111
 					distlabel4.Text = "0";
 					info_but4.Sensitive = true;
 					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
-						lightsbutton1.Sensitive = true;
+						lightsbutton4.Sensitive = true;
 					break;
 				case 4:
 					label35.Text = transport.Name;
@@ -82,7 +82,7 @@ namespace Road111
 					distlabel5.Text = "0";
 					info_but5.Sensitive = true;
 					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
-						lightsbutton1.Sensitive = true;
+						lightsbutton5.Sensitive = true;
 					break;
 			}
 			QueueDraw();
@@ -748,6 +748,21 @@ namespace Road111
 			button3.Sensitive = !button3.Sensitive;
 			button4.Sensitive = !button4.Sensitive;
 			button5.Sensitive = !button5.Sensitive;
+		}
+
+		protected void OnViewJournalActionActivated(object sender, EventArgs e)
+		{
+			MainClass.getSystem().ViewJournal();
+		}
+
+		protected void OnFuelActionActivated(object sender, EventArgs e)
+		{
+			if (MainClass.getSystem().getFuelList().Count == 0)
+			{
+
+				fuelDialog = new FuelList();
+			}
+			fuelDialog.Show();
 		}
 	}
 }

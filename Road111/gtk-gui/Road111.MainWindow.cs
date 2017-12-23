@@ -6,6 +6,16 @@ namespace Road111
 	{
 		private global::Gtk.UIManager UIManager;
 
+		private global::Gtk.Action AddFuelAction;
+
+		private global::Gtk.Action ViewJournalAction;
+
+		private global::Gtk.Action JournalAction;
+
+		private global::Gtk.Action FuelAction;
+
+		private global::Gtk.Action JournalAction1;
+
 		private global::Gtk.VBox vbox1;
 
 		private global::Gtk.MenuBar menubar1;
@@ -298,6 +308,21 @@ namespace Road111
 			// Widget Road111.MainWindow
 			this.UIManager = new global::Gtk.UIManager();
 			global::Gtk.ActionGroup w1 = new global::Gtk.ActionGroup("Default");
+			this.AddFuelAction = new global::Gtk.Action("AddFuelAction", global::Mono.Unix.Catalog.GetString("AddFuel"), null, null);
+			this.AddFuelAction.ShortLabel = global::Mono.Unix.Catalog.GetString("AddFuel");
+			w1.Add(this.AddFuelAction, null);
+			this.ViewJournalAction = new global::Gtk.Action("ViewJournalAction", global::Mono.Unix.Catalog.GetString("ViewJournal"), null, null);
+			this.ViewJournalAction.ShortLabel = global::Mono.Unix.Catalog.GetString("ViewJournal");
+			w1.Add(this.ViewJournalAction, null);
+			this.JournalAction = new global::Gtk.Action("JournalAction", global::Mono.Unix.Catalog.GetString("Journal"), null, null);
+			this.JournalAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Journal");
+			w1.Add(this.JournalAction, null);
+			this.FuelAction = new global::Gtk.Action("FuelAction", global::Mono.Unix.Catalog.GetString("Fuel"), null, null);
+			this.FuelAction.ShortLabel = global::Mono.Unix.Catalog.GetString("Fuel");
+			w1.Add(this.FuelAction, null);
+			this.JournalAction1 = new global::Gtk.Action("JournalAction1", global::Mono.Unix.Catalog.GetString("Journal"), null, null);
+			this.JournalAction1.ShortLabel = global::Mono.Unix.Catalog.GetString("Journal");
+			w1.Add(this.JournalAction1, null);
 			this.UIManager.InsertActionGroup(w1, 0);
 			this.AddAccelGroup(this.UIManager.AccelGroup);
 			this.WidthRequest = 700;
@@ -310,8 +335,8 @@ namespace Road111
 			this.vbox1.Name = "vbox1";
 			this.vbox1.Spacing = 6;
 			// Container child vbox1.Gtk.Box+BoxChild
-			this.UIManager.AddUiFromString("<ui><menubar name=\'menubar1\'><menu><menuitem/><menuitem/><menuitem/></menu><menu/" +
-					"><menu/></menubar></ui>");
+			this.UIManager.AddUiFromString("<ui><menubar name=\'menubar1\'><menu name=\'FuelAction\' action=\'FuelAction\'/><menu n" +
+					"ame=\'JournalAction1\' action=\'JournalAction1\'/></menubar></ui>");
 			this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menubar1")));
 			this.menubar1.Name = "menubar1";
 			this.vbox1.Add(this.menubar1);
@@ -327,7 +352,7 @@ namespace Road111
 			this.start_stop.Label = global::Mono.Unix.Catalog.GetString("START/STOP");
 			this.vbox1.Add(this.start_stop);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.start_stop]));
-			w3.Position = 1;
+			w3.Position = 2;
 			w3.Expand = false;
 			w3.Fill = false;
 			// Container child vbox1.Gtk.Box+BoxChild
@@ -1799,7 +1824,7 @@ namespace Road111
 			w133.YOptions = ((global::Gtk.AttachOptions)(4));
 			this.vbox1.Add(this.table1);
 			global::Gtk.Box.BoxChild w134 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.table1]));
-			w134.Position = 2;
+			w134.Position = 3;
 			// Container child vbox1.Gtk.Box+BoxChild
 			this.table2 = new global::Gtk.Table(((uint)(2)), ((uint)(4)), false);
 			this.table2.Name = "table2";
@@ -1883,7 +1908,7 @@ namespace Road111
 			w142.YOptions = ((global::Gtk.AttachOptions)(4));
 			this.vbox1.Add(this.table2);
 			global::Gtk.Box.BoxChild w143 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.table2]));
-			w143.Position = 3;
+			w143.Position = 4;
 			w143.Expand = false;
 			this.Add(this.vbox1);
 			if ((this.Child != null))
@@ -1894,6 +1919,9 @@ namespace Road111
 			this.DefaultHeight = 885;
 			this.Show();
 			this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
+			this.ViewJournalAction.Activated += new global::System.EventHandler(this.OnViewJournalActionActivated);
+			this.FuelAction.Activated += new global::System.EventHandler(this.OnFuelActionActivated);
+			this.JournalAction1.Activated += new global::System.EventHandler(this.OnViewJournalActionActivated);
 			this.start_stop.Clicked += new global::System.EventHandler(this.ToggleProgress);
 			this.common5.Clicked += new global::System.EventHandler(this.StripTypeToggled);
 			this.railway5.Clicked += new global::System.EventHandler(this.StripTypeToggled);

@@ -8,7 +8,36 @@
     <widget-library name="../bin/Debug/Road111.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="Road111.MainWindow" design-size="1096 885">
-    <action-group name="Default" />
+    <action-group name="Default">
+      <action id="AddFuelAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">AddFuel</property>
+        <property name="ShortLabel" translatable="yes">AddFuel</property>
+      </action>
+      <action id="ViewJournalAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">ViewJournal</property>
+        <property name="ShortLabel" translatable="yes">ViewJournal</property>
+        <signal name="Activated" handler="OnViewJournalActionActivated" />
+      </action>
+      <action id="JournalAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Journal</property>
+        <property name="ShortLabel" translatable="yes">Journal</property>
+      </action>
+      <action id="FuelAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Fuel</property>
+        <property name="ShortLabel" translatable="yes">Fuel</property>
+        <signal name="Activated" handler="OnFuelActionActivated" />
+      </action>
+      <action id="JournalAction1">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Journal</property>
+        <property name="ShortLabel" translatable="yes">Journal</property>
+        <signal name="Activated" handler="OnViewJournalActionActivated" />
+      </action>
+    </action-group>
     <property name="MemberName" />
     <property name="WidthRequest">700</property>
     <property name="HeightRequest">800</property>
@@ -22,14 +51,9 @@
         <child>
           <widget class="Gtk.MenuBar" id="menubar1">
             <property name="MemberName" />
-            <node name="menubar1" type="Menubar">
-              <node type="Menu">
-                <node type="Menuitem" />
-                <node type="Menuitem" />
-                <node type="Menuitem" />
-              </node>
-              <node type="Menu" />
-              <node type="Menu" />
+            <node name="__gtksharp_76_Stetic_Editor_ActionMenuBar" type="Menubar">
+              <node type="Menu" action="FuelAction" />
+              <node type="Menu" action="JournalAction1" />
             </node>
           </widget>
           <packing>
@@ -38,6 +62,9 @@
             <property name="Expand">False</property>
             <property name="Fill">False</property>
           </packing>
+        </child>
+        <child>
+          <placeholder />
         </child>
         <child>
           <widget class="Gtk.Button" id="start_stop">
@@ -49,7 +76,7 @@
             <signal name="Clicked" handler="ToggleProgress" />
           </widget>
           <packing>
-            <property name="Position">1</property>
+            <property name="Position">2</property>
             <property name="AutoSize">True</property>
             <property name="Expand">False</property>
             <property name="Fill">False</property>
@@ -2343,6 +2370,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2418,6 +2446,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2493,6 +2522,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2568,6 +2598,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2643,6 +2674,7 @@
                     <property name="MemberName" />
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Common</property>
+                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>
@@ -2711,7 +2743,7 @@
             </child>
           </widget>
           <packing>
-            <property name="Position">2</property>
+            <property name="Position">3</property>
             <property name="AutoSize">False</property>
           </packing>
         </child>
@@ -2872,7 +2904,7 @@
             </child>
           </widget>
           <packing>
-            <property name="Position">3</property>
+            <property name="Position">4</property>
             <property name="AutoSize">False</property>
             <property name="Expand">False</property>
           </packing>
@@ -2945,7 +2977,6 @@
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Label" translatable="yes">Велосипед</property>
-                        <property name="Active">True</property>
                         <property name="DrawIndicator">True</property>
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>
@@ -3244,7 +3275,6 @@
                     <property name="Sensitive">False</property>
                     <property name="CanFocus">True</property>
                     <property name="Label" translatable="yes">Бензин</property>
-                    <property name="Active">True</property>
                     <property name="DrawIndicator">True</property>
                     <property name="HasLabel">True</property>
                     <property name="UseUnderline">True</property>

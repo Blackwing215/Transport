@@ -23,10 +23,10 @@ namespace Road111
             workbook.Worksheets.Add(worksheet);  
              workbook.Save(file);  
             listF = new List<Fuel>();
-			listF.Add(new Fuel("Бензин"));
-			listF.Add(new Fuel("Газ"));
-			listF.Add(new Fuel("Дизель"));
-			listF.Add(new Fuel("Электричество"));
+			//listF.Add(new Fuel("Бензин"));
+			//listF.Add(new Fuel("Газ"));
+			//listF.Add(new Fuel("Дизель"));
+			//listF.Add(new Fuel("Электричество"));
             listT = new List<Vehicle>(5);
 			for (int i = 0; i < 5; i++)
 			{
