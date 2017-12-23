@@ -355,7 +355,7 @@ namespace Road111
 			// Container child table5.Gtk.Table+TableChild
 			this.label4 = new global::Gtk.Label();
 			this.label4.Name = "label4";
-			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString("Текущая скорость (км/ч):");
+			this.label4.LabelProp = global::Mono.Unix.Catalog.GetString("Начальная скорость (км/ч):");
 			this.table5.Add(this.label4);
 			global::Gtk.Table.TableChild w24 = ((global::Gtk.Table.TableChild)(this.table5[this.label4]));
 			w24.TopAttach = ((uint)(6));
