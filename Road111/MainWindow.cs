@@ -21,7 +21,7 @@ namespace Road111
 		int imW, imH;
 		int width, height;
 		static uint clock = 10;
-		static double roadLength = 500, fault = roadLength / 10000;
+		static double roadLength = 500, fault = roadLength / 10000, coef = 100;
 		static TimeSpan elapsed = TimeSpan.Zero, moving = TimeSpan.Zero, stop = TimeSpan.Zero;
 
 		public MainWindow() : base(Gtk.WindowType.Toplevel)
@@ -47,6 +47,7 @@ namespace Road111
 					info_but1.Sensitive = true;
 					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
 						lightsbutton1.Sensitive = true;
+					else lightsbutton1.Sensitive = false;
 					break;
 				case 1:
 					label32.Text = transport.Name;
@@ -55,7 +56,8 @@ namespace Road111
 					distlabel2.Text = "0";
 					info_but2.Sensitive = true;
 					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
-						lightsbutton1.Sensitive = true;
+						lightsbutton2.Sensitive = true;
+					else lightsbutton2.Sensitive = false;
 					break;
 				case 2:
 					label33.Text = transport.Name;
@@ -63,8 +65,9 @@ namespace Road111
 					label28.Text = fuel.GetFuel();
 					distlabel3.Text = "0";
 					info_but3.Sensitive = true;
-					if (transport.GetType() != typeof(Horse)  && transport.GetType() != typeof(Kscooter))
-						lightsbutton1.Sensitive = true;
+					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
+						lightsbutton3.Sensitive = true;
+					else lightsbutton3.Sensitive = false;
 					break;
 				case 3:
 					label34.Text = transport.Name;
@@ -73,7 +76,8 @@ namespace Road111
 					distlabel4.Text = "0";
 					info_but4.Sensitive = true;
 					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
-						lightsbutton1.Sensitive = true;
+						lightsbutton4.Sensitive = true;
+					else lightsbutton4.Sensitive = false;
 					break;
 				case 4:
 					label35.Text = transport.Name;
@@ -82,7 +86,8 @@ namespace Road111
 					distlabel5.Text = "0";
 					info_but5.Sensitive = true;
 					if (transport.GetType() != typeof(Horse) && transport.GetType() != typeof(Kscooter))
-						lightsbutton1.Sensitive = true;
+						lightsbutton5.Sensitive = true;
+					else lightsbutton5.Sensitive = false;
 					break;
 			}
 			QueueDraw();
@@ -137,12 +142,10 @@ namespace Road111
 			roadNumb = 2;
 			if (common3.Active)
 				rname = "Обычная";
-			if (electrified2.Active)
+			if (electrified3.Active)
 				rname = "Электро";
 			if (railway3.Active)
 				rname = "Рельсы";
-
-
 			Strip r3 = new Strip(rname);
 			tsDialog = new TransportDialog1(roadNumb, r3);
 			tsDialog.Show();
@@ -454,12 +457,82 @@ namespace Road111
 
 				if (timer && scaledDist < width - imW)
 				{
-					double speed = MainClass.getSystem().getTransportList()[road].StartSpeed + 
-					                        (MainClass.getSystem().getTransportList()[road].MaxSpeed - 
-					                         MainClass.getSystem().getTransportList()[road].StartSpeed) 
-					                        * (dist/(2*roadLength));
-					MainClass.getSystem().getTransportList()[road].Speed = speed;
-					dist += 20 * speed * clock / 3600000;
+					double speed = 0;
+					if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Car))
+		            {
+                        Car carr = (Car)MainClass.getSystem().getTransportList()[road];
+						speed = carr.Speed;
+						if (dist <= carr.MaxDist)
+						{
+							if (speed <= fault) speed += 0.1;
+							double incr = (carr.MaxSpeed - carr.Speed) * (2*dist / (roadLength))/(speed);
+							speed += carr.MaxSpeed > carr.Speed + incr ? incr : 0;
+							dist += coef* speed * clock / 3600000;
+						}
+		            }
+		            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Moto))
+		            {
+						Moto moto = (Moto)MainClass.getSystem().getTransportList()[road];
+						if (dist <= moto.MaxDist)
+						{
+							speed = moto.StartSpeed + (moto.MaxSpeed - moto.StartSpeed) * (dist / (2 * roadLength));
+							if (speed <= fault) speed += 0.1;
+							dist += coef * speed * clock / 3600000;
+						}
+		            }
+		            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Truck))
+		            {
+						Truck truck = (Truck)MainClass.getSystem().getTransportList()[road];
+						if (dist <= truck.MaxDist)
+						{
+							speed = truck.StartSpeed + (truck.MaxSpeed - truck.StartSpeed) * (dist / (2 * roadLength));
+							if (speed <= fault) speed += 0.1;
+							dist += coef * speed * clock / 3600000;
+						}
+		            }
+		            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Loader))
+		            {
+						Loader loader = (Loader)MainClass.getSystem().getTransportList()[road];
+						if (dist <= loader.MaxDist)
+						{
+							speed = loader.StartSpeed + (loader.MaxSpeed - loader.StartSpeed) * (dist / (2 * roadLength));
+							if (speed <= fault) speed += 0.1;
+							dist += coef * speed * clock / 3600000;
+						}
+		            }
+		            if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Bus))
+		            {
+						Bus bus = (Bus)MainClass.getSystem().getTransportList()[road];
+						if (dist <= bus.MaxDist)
+						{
+							speed = bus.StartSpeed + (bus.MaxSpeed - bus.StartSpeed) * (dist / (2 * roadLength));
+							if (speed <= fault) speed += 0.1;
+							dist += coef * speed * clock / 3600000;
+						}
+		            }
+					if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Tank))
+					{
+						Tank tank = (Tank)MainClass.getSystem().getTransportList()[road];
+						if (dist <= tank.MaxDist)
+						{
+							speed = tank.StartSpeed + (tank.MaxSpeed - tank.StartSpeed) * (dist / (2 * roadLength));
+							if (speed <= fault) speed += 0.1;
+							dist += coef * speed * clock / 3600000;
+						}
+					}
+					if (MainClass.getSystem().getTransportList()[road].GetType() == typeof(Horse) 
+					    || MainClass.getSystem().getTransportList()[road].GetType() == typeof(Kscooter)
+					    || MainClass.getSystem().getTransportList()[road].GetType() == typeof(Bike)
+					    || MainClass.getSystem().getTransportList()[road].GetType() == typeof(Tram)
+					    || MainClass.getSystem().getTransportList()[road].GetType() == typeof(Trolleybus))
+					{
+						speed = MainClass.getSystem().getTransportList()[road].StartSpeed +
+							(MainClass.getSystem().getTransportList()[road].MaxSpeed -
+							 MainClass.getSystem().getTransportList()[road].StartSpeed)
+							* (dist / (2 * roadLength));
+						if (speed <= fault) speed += 0.1;
+						dist += coef * speed * clock / 3600000;
+					}
 					switch (road)
 					{
 						case 0:
@@ -483,11 +556,12 @@ namespace Road111
 							speedlabel5.Text = Convert.ToString(Convert.ToInt32(speed));
 							break;
 					}
+					MainClass.getSystem().getTransportList()[road].Speed = speed;
 					MainClass.getSystem().getTransportList()[road].Distance = dist;
-																									//Writing in journal
-					if (dist > 0 && dist % (roadLength / 10) <= fault && Convert.ToInt32(scale * dist / (roadLength / 10)) 
-					    != MainClass.getSystem().getTransportList()[road].Stop_C - 2)
-							MainClass.getSystem().writeJ(road, MainClass.getSystem().getTransportList()[road]);
+					//Writing in journal
+					if (dist > 0 && dist % (roadLength / 10) <= fault && Convert.ToInt32(scale * dist / (roadLength / 10))
+						!= MainClass.getSystem().getTransportList()[road].Stop_C - 2)
+						MainClass.getSystem().writeJ(road, MainClass.getSystem().getTransportList()[road]);
 				}
 			}
 			switch (road)                                                                           //Drawing wires, if needed
@@ -748,6 +822,21 @@ namespace Road111
 			button3.Sensitive = !button3.Sensitive;
 			button4.Sensitive = !button4.Sensitive;
 			button5.Sensitive = !button5.Sensitive;
+		}
+
+		protected void OnViewJournalActionActivated(object sender, EventArgs e)
+		{
+			MainClass.getSystem().ViewJournal();
+		}
+
+		protected void OnFuelActionActivated(object sender, EventArgs e)
+		{
+			if (MainClass.getSystem().getFuelList().Count == 0)
+			{
+
+				fuelDialog = new FuelList();
+			}
+			fuelDialog.Show();
 		}
 	}
 }

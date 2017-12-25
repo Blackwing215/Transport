@@ -5,10 +5,11 @@ namespace Road111
     public partial class TransportDialog1 : Gtk.Dialog
     {
         private int road;
-        private Fuel fuel;
+        private Fuel fuel =null;
         private Strip strip;
         private bool tOk = false;
-        private bool fOk = false;
+		private bool fOk = false;  
+		private bool fLOk = false;
         private ExTWindow eror;
         private Vehicle transport;
         public TransportDialog1(int r,Strip st)
@@ -60,19 +61,19 @@ namespace Road111
         {
             if (MainClass.getSystem().getFuelList().Count > 0)
             {
-                if (this.benzin_rad.Active)
+				if (this.benzin_rad.Active && this.benzin_rad.Sensitive)
                 {
                     fuel = new Fuel("Бензин");
                 }
-                if (this.dizel_rad.Active)
+				if (this.dizel_rad.Active && this.dizel_rad.Sensitive)
                 {
                     fuel = new Fuel("Дизель");
                 }
-                if (this.electro_rad.Active)
+				if (this.electro_rad.Active && this.electro_rad.Sensitive)
                 {
                     fuel = new Fuel("Электричество");
                 }
-                if (this.gas_rad.Active)
+				if (this.gas_rad.Active && this.gas_rad.Sensitive)
                 {
                     fuel = new Fuel("Газ");
                 }
@@ -197,7 +198,8 @@ namespace Road111
 					checkStrip();
 					fOk = true;
 				}
-			if (fOk && tOk && transport != null)
+
+			if ((fOk && tOk && transport != null) && (fuel != null || horse_rad.Active || bike_rad.Active || kick_rad.Active ))
             {
 				if (MainClass.getSystem().getTransportList()[road] == null)
 					MainClass.getWin().addTsN();
@@ -210,7 +212,6 @@ namespace Road111
 					MainClass.getWin().setTsLabel(transport, new Fuel("-"), road, transport.Speed);
 				MainClass.getSystem().writeJ(road, MainClass.getSystem().getTransportList()[road]);
                 MainClass.getWin().QueueDraw();
-                this.QueueDraw();
                 this.Destroy();
             }
             else
@@ -227,24 +228,31 @@ namespace Road111
         {
             this.Destroy();
         }
-        private void checkStrip()
-        {
-            foreach (Strip value in transport.stripList())
-            {
-                if (value.Equals(strip))
-                {
-                    tOk = true;//совместимость транспорта и типа полосы
-                }
+		private void checkStrip()
+		{
+			foreach (Strip value in transport.stripList())
+			{
+				if (value.Equals(strip))
+				{
+					tOk = true;//совместимость транспорта и типа полосы
+				}
 
-            }
-            foreach (Fuel value in transport.FuelList())
-            {
-                if (value.Equals(fuel))
-                {
-                    fOk = true;//совместимость топлива транспорта и топлива
-                }
-            }
-        }
+			}
+			foreach (Fuel value in transport.FuelList())
+			{
+				if (value.Equals(fuel))
+				{
+					fOk = true;//совместимость топлива транспорта и топлива
+				}
+			}
+			/*foreach (Fuel value in MainClass.getSystem().getFuelList())
+			{
+				if (value.Equals(fuel))
+				{
+					fLOk = true;//совместимость топлива транспорта и топлива
+				}
+			}*/
+		}
 
         protected void OnBikeRadClicked(object sender, EventArgs e)
         {

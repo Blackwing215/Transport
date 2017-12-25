@@ -19,10 +19,12 @@ namespace Road111
         }
         public bool Equals(Fuel f)
         {
-            if (f.GetFuel() == this.GetFuel())
-                return true;
-            else
-                return false;
+			if (f != null)
+				if (f.GetFuel() == this.GetFuel())
+					return true;
+				else
+					return false;
+			else return false;
         }
     }
 }

@@ -9,12 +9,15 @@ namespace Road111
         private Fuel dizel = new Fuel("Дизель");
         private Fuel gas = new Fuel("Газ");
         public FuelList()
-        {         
+        {
+			Title = "Список топлива";
             this.Build();
         }
 
-        protected void OnButtonOkClicked(object sender, EventArgs e)
-        {
+		protected void OnButtonOkClicked(object sender, EventArgs e)
+		{
+			if (MainClass.getSystem().getFuelList().Count > 0)
+				MainClass.getSystem().getFuelList().Clear();
             if(benzin_but.Active)
             {
                 MainClass.getSystem().addFuel(benzin);
